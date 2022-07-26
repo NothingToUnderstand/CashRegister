@@ -1,0 +1,65 @@
+/*accounts*/
+.sidenav {
+    height: 100%;
+    width: 187px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #3a3939;
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+.hl {
+    border-top: 2px solid darkgreen;
+    width: 160px;
+}
+
+
+.sidenav a,p {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size:20px;
+    color: #101010;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.sidenav b {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #0a0a0a;
+    display: block;
+    text-align: left;
+}
+
+.sidenav a:hover,b:hover,p:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    margin-left: 180px; /* Same as the width of the sidenav */
+    margin-top: 10px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+.active {
+    background-color: green;
+    color: white;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
