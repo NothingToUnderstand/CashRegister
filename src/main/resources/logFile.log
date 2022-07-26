@@ -1070,3 +1070,15 @@ java.sql.SQLSyntaxErrorException: Table 'cash_register.receipts' doesn't exist
 2022-07-16 19:41:32 INFO  UserDAO:193 - Get user with id: 16
 2022-07-16 19:41:32 INFO  ManagerDB:52 - Connection success
 2022-07-16 19:41:32 INFO  UserDAO:213 - User found
+2022-07-26 13:14:47 INFO  ProductDAO:165 - Get product with id: 9
+2022-07-26 13:14:48 INFO  ManagerDB:52 - Connection success
+2022-07-26 13:14:48 INFO  ProductDAO:184 - Product found
+2022-07-26 13:30:50 INFO  ProductDAO:165 - Get product with id: 9
+2022-07-26 13:30:51 INFO  ManagerDB:52 - Connection success
+2022-07-26 13:30:51 INFO  ProductDAO:184 - Product found
+2022-07-26 13:32:30 INFO  ProductDAO:165 - Get product with id: 9
+2022-07-26 13:32:31 INFO  ManagerDB:52 - Connection success
+2022-07-26 13:32:31 INFO  ProductDAO:184 - Product found
+2022-07-26 13:32:58 INFO  ProductDAO:165 - Get product with id: 9
+2022-07-26 13:32:59 INFO  ManagerDB:52 - Connection success
+2022-07-26 13:32:59 INFO  ProductDAO:184 - Product found

@@ -1,5 +1,8 @@
 package com.example.cashregister.entity;
 
+/**
+ * Entity of user
+ * */
 public class User {
     private int id;
 

@@ -35,13 +35,15 @@ public class ProductDAO {
 
     /**
      * method for adding a new item (product) to the products table
+     *
      * @param name     name of product
      * @param quantity quantity of product
      * @param weight   weight of this product
      * @param price    price of this product
+     * @param img      img of this product
      * @return int product id
      */
-    public static int createProduct(String name, int quantity, double weight, double price) {
+    public static int createProduct(String name, int quantity, double weight, double price, byte[] img) {
         log.info("Add product to DB: " + name + " " + quantity + " " + weight + " " + price);
         int id = 0;
         try (Connection con = ManagerDB.getInstance().getConnection();
@@ -50,6 +52,7 @@ public class ProductDAO {
             ps.setInt(2, quantity);
             ps.setDouble(3, weight);
             ps.setDouble(4, price);
+            ps.setBytes(5, img);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -62,7 +65,7 @@ public class ProductDAO {
         if (id == 0) {
             log.warn("Product  not created");
         } else {
-            log.info("Product created with id: "+id);
+            log.info("Product created with id: " + id);
         }
         return id;
     }
@@ -70,14 +73,16 @@ public class ProductDAO {
 
     /**
      * method for changing the product field by its id
+     *
      * @param id       product's id
      * @param name     name of product
      * @param quantity quantity of product
      * @param weight   weight of this product
      * @param price    price of this product
+     * @param img      product image
      * @return boolean status
      */
-    public static boolean updateProduct(int id, String name, int quantity, double weight, double price) {
+    public static boolean updateProduct(int id, String name, int quantity, double weight, double price, byte[] img) {
         log.info("Updating product with id: " + id);
         boolean status = false;
         try (Connection con = ManagerDB.getInstance().getConnection();
@@ -86,7 +91,8 @@ public class ProductDAO {
             ps.setInt(2, quantity);
             ps.setDouble(3, weight);
             ps.setDouble(4, price);
-            ps.setInt(5, id);
+            ps.setBytes(5, img);
+            ps.setInt(6, id);
             status = ps.executeUpdate() == 1;
         } catch (SQLException | ClassNotFoundException e) {
             log.error("Error during updating the product", e);
@@ -103,6 +109,7 @@ public class ProductDAO {
 
     /**
      * product delete method
+     *
      * @param id product's id
      * @return boolean status
      */
@@ -128,6 +135,7 @@ public class ProductDAO {
 
     /**
      * the method receives the data of all products
+     *
      * @return List<User> List of all users
      */
     public static List<Product> getAllProducts() {
@@ -141,7 +149,9 @@ public class ProductDAO {
                         rs.getString("name"),
                         rs.getInt("quantity"),
                         rs.getDouble("weight"),
-                        rs.getDouble("price"));
+                        rs.getDouble("price"),
+                        rs.getBytes("img")
+                );
                 products.add(product);
             }
         } catch (SQLException | ClassNotFoundException e) {
@@ -154,6 +164,7 @@ public class ProductDAO {
 
     /**
      * the method receives information about product
+     *
      * @param id product's id
      * @return product
      */
@@ -169,7 +180,8 @@ public class ProductDAO {
                         rs.getString("name"),
                         rs.getInt("quantity"),
                         rs.getDouble("weight"),
-                        rs.getDouble("price"));
+                        rs.getDouble("price"),
+                        rs.getBytes("img"));
             }
         } catch (SQLException | ClassNotFoundException e) {
             log.error("Error during getting product", e);
@@ -182,11 +194,13 @@ public class ProductDAO {
         }
         return product;
     }
-/**
-* method to get the amount of a product by its id
-* @param  id :the id of a product
-* @return int amount
-* */
+
+    /**
+     * method to get the amount of a product by its id
+     *
+     * @param id :the id of a product
+     * @return int amount
+     */
 
     protected static int getAmount(int id) {
         int amount = 0;
@@ -211,17 +225,18 @@ public class ProductDAO {
 
     /**
      * method to set a new amount of a product by its id
-     * @param id :the id of a product
+     *
+     * @param id     :the id of a product
      * @param amount :the new amount of a product at db
      * @return boolean status
-     * */
-    protected static boolean setAmount(int id,int amount) {
-       boolean status=false;
+     */
+    protected static boolean setAmount(int id, int amount) {
+        boolean status = false;
         try (Connection con = ManagerDB.getInstance().getConnection();
              PreparedStatement ps = con.prepareStatement(prop.getProperty("set_product_amount"))) {
-           ps.setInt(1,amount);
-           ps.setInt(2,id);
-          status=  ps.executeUpdate()==1;
+            ps.setInt(1, amount);
+            ps.setInt(2, id);
+            status = ps.executeUpdate() == 1;
         } catch (SQLException | ClassNotFoundException e) {
             log.error("Error during getting amount of product", e);
             e.printStackTrace();

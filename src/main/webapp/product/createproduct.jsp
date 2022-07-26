@@ -2,30 +2,42 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="messages"/>
 <body>
-<h2>Create product:</h2>
-<form method="POST" action="${pageContext.request.contextPath}/create/product">
-    <table border="0">
+<header>
+    <div>
+        <jsp:include page="/menu.jsp"></jsp:include>
+    </div>
+</header>
+<h2><fmt:message key="createproduct"/> </h2>
+<form method="POST" action="${pageContext.request.contextPath}/create/product" enctype="multipart/form-data">
+    <table class="fa-table">
         <tr>
-            <td>Name:</td>
+            <td><fmt:message key="name"/></td>
             <td><input type="text" name="name" value="${product.name}"  required pattern="[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
         </tr>
         <tr>
-            <td>Quantity:</td>
+            <td><fmt:message key="quantity"/></td>
             <td><input type="number" name="quantity" value="${product.quantity}" required pattern="^[0-9]+$"/></td>
         </tr>
         <tr>
-            <td>Weight:</td>
+            <td><fmt:message key="weight"/></td>
             <td><input type="text" name="weight" value="${product.weight}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
         </tr>
         <tr>
-            <td>Price:</td>
+            <td><fmt:message key="price"/></td>
             <td><input type="text" name="price" value="${product.price}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
         </tr>
         <tr>
+            <td><fmt:message key="image"/></td>
+            <td><input type="file" name="img" value="${img}" size="2" required  placeholder="Product img" title="Product img"/></td>
+        </tr>
+        <tr>
             <td colspan="2">
-                <input class="btn btn-success" type="submit" value="Submit"/>
-                <a class="btn btn-danger" href="${pageContext.request.contextPath}/all/products">Cancel</a>
+                <input class="btn btn-success" type="submit" value="<fmt:message key="submit"/>"/>
+                <a class="btn btn-danger" href="${pageContext.request.contextPath}/acc/commodity_expert"><fmt:message key="cancel"/></a>
             </td>
         </tr>
     </table>

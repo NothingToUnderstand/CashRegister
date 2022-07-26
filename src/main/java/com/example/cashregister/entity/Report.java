@@ -1,5 +1,7 @@
 package com.example.cashregister.entity;
-
+/**
+ * Entity of report
+ * */
 public class Report {
     private int id;
     private int cashier_id;

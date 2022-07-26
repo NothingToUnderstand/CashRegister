@@ -6,7 +6,9 @@ import javax.json.JsonReader;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
+/**
+ * Class for reCaptcha
+ * */
 
 public class Captcha {
 
@@ -14,7 +16,6 @@ public class Captcha {
 
     public static boolean verify(String gRecaptchaResponse) {
         if (gRecaptchaResponse == null || gRecaptchaResponse.length() == 0) {
-            System.out.println("gRecaptchaResponse " + gRecaptchaResponse);
             return false;
         }
 

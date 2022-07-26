@@ -1,31 +1,30 @@
 package com.example.cashregister.controller.security;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
  * Logout servlet
- * */
-@WebServlet(name="logout",value="/logout")
+ */
+@WebServlet(name = "logout", value = "/logout")
 public class LogoutServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+    private static final Logger log = Logger.getLogger(LogoutServlet.class);
 
-    public LogoutServlet() {
-        super();
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        log.info("LogOut");
+        request.setAttribute("message","See you later");
         request.getSession().invalidate();
-        response.sendRedirect(request.getContextPath() + "/");
-
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
 }

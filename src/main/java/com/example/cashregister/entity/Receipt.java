@@ -1,7 +1,9 @@
 package com.example.cashregister.entity;
 
 import java.util.List;
-
+/**
+ * Entity of receipt
+ * */
 public class Receipt {
     private int id;
     private int cachier_id;

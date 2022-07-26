@@ -214,7 +214,8 @@ public class ReceiptDAO {
                         rs.getString("name"),
                         rs.getInt("quantity"),
                         rs.getDouble("weight"),
-                        rs.getDouble("price"));
+                        rs.getDouble("price"),
+                        rs.getBytes("img"));
                 products.add(product);
             }
             if (rsc.next()) {
@@ -411,7 +412,8 @@ public class ReceiptDAO {
                         rs.getString("name"),
                         rs.getInt("quantity"),
                         rs.getDouble("weight"),
-                        rs.getDouble("price"));
+                        rs.getDouble("price"),
+                        rs.getBytes("img"));
                 products.add(product);
             }
             if (rsc.next()) {

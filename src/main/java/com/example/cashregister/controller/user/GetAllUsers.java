@@ -5,6 +5,7 @@ package com.example.cashregister.controller.user;
 
 
 import com.example.cashregister.dao.UserDAO;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +18,11 @@ import java.io.IOException;
  * */
 @WebServlet(name="allUsers",value = "/all/users")
 public class GetAllUsers extends HttpServlet {
+    private static final Logger log = Logger.getLogger(GetAllUsers.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("doGet");
         req.setAttribute("users", UserDAO.getAllUsers() );
         getServletContext().getRequestDispatcher("/user/allusers.jsp").forward(req,resp);
     }

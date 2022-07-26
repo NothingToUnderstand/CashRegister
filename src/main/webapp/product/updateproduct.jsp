@@ -2,34 +2,46 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="messages"/>
 <body>
-<h2>Update product:</h2>
-<form method="POST" action="/update/product">
-    <table border="0">
+<header>
+    <div>
+        <jsp:include page="/menu.jsp"></jsp:include>
+    </div>
+</header>
+<h2><fmt:message key="productupdate"/> </h2>
+<form method="POST" action="${pageContext.request.contextPath}/update/product" enctype="multipart/form-data">
+    <table>
         <tr>
             <td>ID:</td>
-            <td ><input  name="id" value= "<%=request.getParameter("id").replaceAll("\\s","")%>" readonly/></td>
+            <td ><input  name="id" value="<%=request.getParameter("id").replaceAll("\\s","")%>" readonly /></td>
         </tr>
         <tr>
-            <td>Name:</td>
+            <td><fmt:message key="name"/> :</td>
             <td><input type="text" name="name" value="<%=request.getParameter("name").replaceAll("\\s","")%>" readonly/></td>
         </tr>
         <tr>
-            <td>Quantity:</td>
+            <td><fmt:message key="quantity"/> :</td>
             <td><input type="text" name="quantity" value="<%=request.getParameter("quantity").replaceAll("\\s","")%>" required pattern="^[0-9]+$"/></td>
         </tr>
         <tr>
-            <td>Weight:</td>
+            <td><fmt:message key="weight"/> :</td>
             <td><input type="text" name="weight" value="<%=request.getParameter("weight").replaceAll("\\s","")%>" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
         </tr>
         <tr>
-            <td>Price:</td>
+            <td><fmt:message key="price"/> :</td>
             <td><input type="text" name="price" value="<%=request.getParameter("price").replaceAll("\\s","")%>" readonly/></td>
         </tr>
         <tr>
+            <td><fmt:message key="image"/> :</td>
+            <td><input type="file" name="img"  size="2" required  placeholder="Product img" title="Product img"/></td>
+        </tr>
+        <tr>
             <td colspan="2">
-                <input class="btn btn-success" type="submit" value="Submit"/>
-                <a class="btn btn-danger" href="${pageContext.request.contextPath}/all/products">Cancel</a>
+                <input class="btn btn-success" type="submit" value="<fmt:message key="submit"/> "/>
+                <a class="btn btn-danger" href="${pageContext.request.contextPath}/acc/commodity_expert"><fmt:message key="cancel"/> </a>
             </td>
         </tr>
     </table>
