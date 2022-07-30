@@ -1,4 +1,4 @@
-package com.example.cashregister.dao;
+package com.example.cashregister.connection.notused;
 
 import org.apache.log4j.Logger;
 
@@ -10,6 +10,7 @@ import java.util.Properties;
 
 /**
  * the class that implements the database connection with the "Singleton" design pattern
+ * is not used
  */
 public class ManagerDB {
     private static final Logger log = Logger.getLogger(ManagerDB.class);
@@ -31,14 +32,14 @@ public class ManagerDB {
 
     static {
         try {
-            prop.load(UserDAO.class.getClassLoader().getResourceAsStream("app.properties"));
+            prop.load(ManagerDB.class.getClassLoader().getResourceAsStream("app.properties"));
         } catch (IOException ex) {
             log.error("Error in UserDao reading property file", ex);
             ex.printStackTrace();
         }
     }
 
-    public Connection getConnection() throws ClassNotFoundException {
+    public static Connection getConnection() throws ClassNotFoundException {
         Connection con = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

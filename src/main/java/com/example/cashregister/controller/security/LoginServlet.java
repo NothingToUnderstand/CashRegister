@@ -1,6 +1,7 @@
 package com.example.cashregister.controller.security;
 
-import com.example.cashregister.dao.UserDAO;
+import com.example.cashregister.dao.UserDao;
+import com.example.cashregister.dao.impl.UserDaoImpl;
 import com.example.cashregister.entity.User;
 import org.apache.log4j.Logger;
 
@@ -16,6 +17,11 @@ import java.net.URLEncoder;
 @WebServlet(name = "login", value = "/login")
 public class LoginServlet extends HttpServlet {
     private static final Logger log = Logger.getLogger(LoginServlet.class);
+    private final UserDao userDao;
+
+    public LoginServlet() {
+        this.userDao=new UserDaoImpl();
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,7 +39,7 @@ request.getSession().setAttribute("errormessage","You are already logged in");
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("doPost");
-        User user = UserDAO.validate(request.getParameter("fullname"), request.getParameter("password"));
+        User user = userDao.validate(request.getParameter("fullname"), request.getParameter("password"));
         if (user.getId() == 0) {
             log.warn("doPost user id is 0");
             request.getSession().setAttribute("errormessage","User fullname or password are invalid");

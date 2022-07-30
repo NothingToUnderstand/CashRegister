@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-/** RU: Фильтр, используемый для интернационализации проекта (английский и русский языки)
-   ENG: Locale Filter used for internationalisation of project (English and Russian languages)
+/**
+   ENG: Locale Filter used for internationalisation of project (English and Ukrainian languages)
 */
 @WebFilter("/*")
 public class LocaleFilter implements Filter {
@@ -23,13 +23,13 @@ public class LocaleFilter implements Filter {
         if(request.getParameter("lang")!=null){
             request.getSession().setAttribute("lang",request.getParameter("lang"));
         }
+
         if (session.getAttribute("lang") != null) {
             ResourceBundle resourceBundle = ResourceBundle.getBundle("messages",
                     new Locale((String) session.getAttribute("lang")));
             session.setAttribute("resourceBundle", resourceBundle);
         } else {
-            ResourceBundle defaultResourceBundle = ResourceBundle.getBundle("messages");
-            session.setAttribute("resourceBundle", defaultResourceBundle);
+            session.setAttribute("lang","en");
         }
         filterChain.doFilter(request,response);
     }

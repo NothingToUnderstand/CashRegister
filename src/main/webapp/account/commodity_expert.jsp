@@ -20,7 +20,7 @@
 </header>
 <div class="sidenav">
 
-    <b><fmt:message key="commodity_expert"/>:</b>
+    <h3><fmt:message key="commodity_expert"/>:</h3>
     <hr class="hl">
     <p>${user.getFullName()}</p>
     <p>Id: ${user.getId()}</p>
@@ -28,13 +28,67 @@
     <hr class="hl">
     <a href="${pageContext.request.contextPath}/create/product"><fmt:message key="createproduct"/></a>
 </div>
+
+
+
+
+
 <div class="main">
+    <b><fmt:message key="totalamount"/>: ${amount}</b>
+
+
+    <select class="form-control-sm" size="1" name="java-navigator" onchange="top.location.href =
+  this.options[this.selectedIndex].value;">
+        <option selected disabled>№</option>
+        <option class="ui-icon" value="?page=1&perpage=2">2</option>
+        <option  class="ui-icon selected" value="?page=1&perpage=5">5</option>
+        <option class="ui-icon" value="?page=1&perpage=10">10</option>
+    </select>
+    <div class="form-inline" style="float: right;">
+        <form action="${pageContext.request.contextPath}/acc/commodity_expert" method="post">
+            <input  class="form-control form-control-sm" type="text" placeholder="<fmt:message key="search"/>.." value="${name}" name="name">
+            <button class="btn btn-primary btn-sm" type="submit"><fmt:message key="search"/></button>
+        </form>
+    </div>
+    <c:if test="${search!=null}">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th><fmt:message key="image"/></th>
+                <th><fmt:message key="name"/></th>
+                <th><fmt:message key="quantity"/></th>
+                <th><fmt:message key="info"/></th>
+                <th><fmt:message key="update"/></th>
+                <th><fmt:message key="delete"/></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img alt="product image" src="data:image/jpg;base64, ${search.getImgbase64()}" title="product image"
+                         style="height:30px;width: 30px;"></td>
+                <td>${search.getName()}</td>
+                <td>${search.getQuantity()}</td>
+                <td><a class="btn btn-info"
+                       href="${pageContext.request.contextPath}/info/product?id=${search.getId()}"><fmt:message
+                        key="info"/></a></td>
+                <td><a class="btn btn-warning"
+                       href="${pageContext.request.contextPath}/update/product?id=${search.getId()}&name=${search.getName()}
+           &quantity=${search.getQuantity()}&weight=${search.getWeight()}&price=${search.getPrice()}"><fmt:message
+                        key="update"/></a></td>
+                <td><a class="btn btn-danger"
+                       href="${pageContext.request.contextPath}/delete/product?id=${search.getId()}"><fmt:message
+                        key="delete"/></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </c:if>
+    <c:if test="${search==null}">
     <table class="table">
         <thead class="thead-dark">
         <tr>
             <th><fmt:message key="image"/></th>
-            <th><fmt:message key="name"/></th>
-            <th><fmt:message key="quantity"/></th>
+            <th><a href="?col=name&dir=${dir}"><fmt:message key="name"/></a></th>
+            <th><a href="?col=quantity&dir=${dir}"><fmt:message key="quantity"/></a></th>
             <th><fmt:message key="info"/></th>
             <th><fmt:message key="update"/></th>
             <th><fmt:message key="delete"/></th>
@@ -57,6 +111,25 @@
         </c:forEach>
         </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <c:if test="${page >1}">
+                    <a  class="page-link" href="?page=${page-1}&perpage=${perpage}" tabindex="-1">&laquo;</a>
+                </c:if>
+            </li>
+            <c:forEach begin="1" end="${numpage}" var="i">
+                <li class="page-item"><a class="page-link"
+                                         href="?page=${i}&perpage=${perpage}">${i}</a></li>
+            </c:forEach>
+            <li>
+                <c:if test="${page <numpage}">
+                    <a class="page-link" href="?page=${page+1}&perpage=${perpage}">&raquo;</a>
+                </c:if>
+            </li>
+        </ul>
+    </nav>
+    </c:if>
 </div>
 </body>
 </html>

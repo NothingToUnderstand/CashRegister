@@ -34,31 +34,31 @@ function eng() {
             break;
         case "en":
             break;
-        case"ru":
-            newhref = href.replace('ru', 'en')
+        case"ua":
+            newhref = href.replace('ua', 'en')
             document.location.href = newhref
             break;
     }
 }
 
-function ru() {
+function ukr() {
     let href = document.location.href;
     let params = (new URL(document.location)).searchParams;
     let newhref;
     if (document.location.search === "") {
-        newhref = href + "?lang=ru"
+        newhref = href + "?lang=ua"
         document.location.href = newhref;
         return;
     }
     switch (params.get("lang")) {
         case null:
-            newhref = href + "&lang=ru"
+            newhref = href + "&lang=ua"
             document.location.href = newhref;
             break;
-        case "ru":
+        case "ua":
             break;
         case"en":
-            newhref = href.replace('en', 'ru')
+            newhref = href.replace('en', 'ua')
             document.location.href = newhref
             break;
     }

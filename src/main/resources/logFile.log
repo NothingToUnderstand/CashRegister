@@ -1082,3 +1082,724 @@ java.sql.SQLSyntaxErrorException: Table 'cash_register.receipts' doesn't exist
 2022-07-26 13:32:58 INFO  ProductDAO:165 - Get product with id: 9
 2022-07-26 13:32:59 INFO  ManagerDB:52 - Connection success
 2022-07-26 13:32:59 INFO  ProductDAO:184 - Product found
+2022-07-27 12:24:33 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:25:13 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:25:13 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:25:13 ERROR ProductDAO:166 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:154)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 12:25:13 INFO  ProductDAO:169 - List with products: []
+2022-07-27 12:27:48 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:27:48 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:27:48 ERROR ProductDAO:166 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:154)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 12:27:48 INFO  ProductDAO:169 - List with products: []
+2022-07-27 12:28:38 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:28:38 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:28:38 ERROR ProductDAO:166 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:154)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 12:28:38 INFO  ProductDAO:169 - List with products: []
+2022-07-27 12:30:22 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:30:22 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:30:22 INFO  ProductDAO:169 - List with products: [Product{id=1, name='Book', quantity=5, weight=2.5, price=123.3}, Product{id=4, name='Pen', quantity=7, weight=5.0, price=10.0}, Product{id=7, name='Apple', quantity=12, weight=345.0, price=1231.0}, Product{id=8, name='Potato', quantity=5, weight=12.0, price=15.0}, Product{id=9, name='Cucumber', quantity=12, weight=5.0, price=15.0}]
+2022-07-27 12:30:54 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:30:55 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:30:55 INFO  ProductDAO:169 - List with products: [Product{id=1, name='Book', quantity=5, weight=2.5, price=123.3}, Product{id=4, name='Pen', quantity=7, weight=5.0, price=10.0}, Product{id=7, name='Apple', quantity=12, weight=345.0, price=1231.0}, Product{id=8, name='Potato', quantity=5, weight=12.0, price=15.0}, Product{id=9, name='Cucumber', quantity=12, weight=5.0, price=15.0}]
+2022-07-27 12:33:09 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:33:09 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:33:09 INFO  ProductDAO:169 - List with products: [Product{id=1, name='Book', quantity=5, weight=2.5, price=123.3}, Product{id=4, name='Pen', quantity=7, weight=5.0, price=10.0}, Product{id=7, name='Apple', quantity=12, weight=345.0, price=1231.0}, Product{id=8, name='Potato', quantity=5, weight=12.0, price=15.0}, Product{id=9, name='Cucumber', quantity=12, weight=5.0, price=15.0}]
+2022-07-27 12:34:01 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:34:01 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:34:01 INFO  ProductDAO:169 - List with products: [Product{id=1, name='Book', quantity=5, weight=2.5, price=123.3}, Product{id=4, name='Pen', quantity=7, weight=5.0, price=10.0}, Product{id=7, name='Apple', quantity=12, weight=345.0, price=1231.0}, Product{id=8, name='Potato', quantity=5, weight=12.0, price=15.0}, Product{id=9, name='Cucumber', quantity=12, weight=5.0, price=15.0}]
+2022-07-27 12:34:59 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:34:59 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:35:22 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:35:22 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:37:07 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:37:07 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:38:12 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:38:12 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:45:28 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:45:28 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:45:49 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:45:50 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:08:10 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:08:11 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:08:29 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:08:29 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:09:24 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:09:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:10:15 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:10:16 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:10:43 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:10:43 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:11:15 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:11:15 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:12:50 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:12:50 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:12:50 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: SQL String cannot be NULL
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:85)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:218)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:192)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getInstance(ClientPreparedStatement.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.clientPrepareStatement(ConnectionImpl.java:670)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1643)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1563)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:149)
+	at com.example.cashregister.App.main(App.java:7)
+Caused by: com.mysql.cj.exceptions.WrongArgumentException: SQL String cannot be NULL
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.ClientPreparedQuery.checkNullOrEmptyQuery(ClientPreparedQuery.java:142)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:214)
+	... 7 more
+2022-07-27 13:13:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:13:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:13:24 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setString(ClientPreparedStatement.java:1714)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:150)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:13:56 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:13:56 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:15:07 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:15:07 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:07 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:16:08 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:17 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:16:18 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:47 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:16:47 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:54 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:16:55 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:55 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:152)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:17:29 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:17:29 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:17:29 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: No value specified for parameter 2
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:989)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:152)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:17:42 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:17:42 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:17:42 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:152)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:19:22 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:19:22 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:19:22 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:152)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:19:46 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:19:47 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:20:03 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:20:04 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:26:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:26:23 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:26:24 ERROR ProductDAO:171 - Error during getting all products
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:989)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:158)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:26:46 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:26:46 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:27:18 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:27:18 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:27:35 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:27:36 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:27:42 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:27:42 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:28:26 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:28:26 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:29:38 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:29:38 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:36:30 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:36:30 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:38:10 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:38:11 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:38:34 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:38:34 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:39:20 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:39:20 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:39:34 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:39:34 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:39:58 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:39:58 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:41:24 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:41:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:43:32 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:43:32 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:43:51 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:43:51 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:45:06 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:45:07 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:45:07 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''id DESC'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:45:21 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:45:21 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:45:21 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''id'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:45:30 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:45:31 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:45:31 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''id'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:46:00 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:46:00 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:47:11 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:47:11 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:47:18 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:47:18 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:48:47 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:48:47 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:54:09 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:54:09 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:54:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:54:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:55:58 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:55:58 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:56:24 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:56:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:56:42 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:56:42 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:57:10 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:57:10 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:57:10 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 'name'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:58:13 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:58:14 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:01:50 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:01:50 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:01:50 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''DESC'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:03:17 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:03:17 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:03:17 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: FUNCTION cash_register.id does not exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:05:08 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:05:08 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:12:36 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:12:37 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:12:37 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''DESC'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:13:41 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:13:41 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:13:41 ERROR ProductDAO:172 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''DESC'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:159)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:13:58 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:13:58 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:13:58 ERROR ProductDAO:172 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:159)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:14:07 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:14:07 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:14:07 ERROR ProductDAO:172 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''DESC')' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:159)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:14:38 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:14:39 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:17:32 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:17:33 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:17:43 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:17:43 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:18:19 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:18:19 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:18:38 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:18:39 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:18:51 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:18:51 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:19:52 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:19:52 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:21:46 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:21:46 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:24:50 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:24:50 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:26:06 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:26:06 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:34:15 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:34:15 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:34:31 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:34:32 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:35:01 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:35:02 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:50:06 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:50:06 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:56:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:56:23 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:18:12 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:18:12 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:23:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:23:23 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:23:23 ERROR ProductDAO:170 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:157)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 15:23:55 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:23:55 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:23:55 ERROR ProductDAO:170 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BYname ASC LIMIT02' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:157)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 15:24:25 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:24:25 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:24:25 ERROR ProductDAO:170 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BYname ASC  LIMIT 0,2' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:157)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 15:25:00 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:25:00 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:25:25 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:25:26 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:03:33 INFO  ProductDAO:211 - Get product with name: Apple
+2022-07-29 13:03:34 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:03:34 INFO  ProductDAO:230 - Product found
+2022-07-29 13:08:11 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:08:11 ERROR ProductDAO:167 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(0,5)' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:08:37 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:08:37 ERROR ProductDAO:167 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(0,5)' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:08:54 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:11:34 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:11:57 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:12:09 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:12:09 ERROR ProductDAO:167 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:12:48 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:12:48 ERROR ProductDAO:166 - Error during getting all products
+java.sql.SQLException: Parameter index out of range (4 > number of parameters, which is 3).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setInt(ClientPreparedStatement.java:1536)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:153)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:13:08 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:13:34 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:23:16 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:23:16 ERROR ProductDAO:168 - Error during getting all products
+java.sql.SQLException: Parameter index out of range (3 > number of parameters, which is 2).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setInt(ClientPreparedStatement.java:1536)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:24:55 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:24:55 ERROR ProductDAO:167 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC LIMIT 0,2' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:25:52 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:45:13 INFO  ManagerDB:52 - Connection success
+2022-07-29 16:29:56 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:29:57 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:29:57 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:29:57 ERROR ProductDAO:192 - Error during getting product
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:29:57 WARN  ProductDAO:198 - Product not found
+2022-07-29 16:30:31 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:30:32 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:30:32 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:30:32 ERROR ProductDAO:192 - Error during getting product
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:30:32 WARN  ProductDAO:198 - Product not found
+2022-07-29 16:31:02 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:31:02 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:31:02 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:31:02 ERROR ProductDAO:192 - Error during getting product
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:31:02 WARN  ProductDAO:198 - Product not found
+2022-07-29 16:31:43 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:31:43 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:31:43 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:31:43 ERROR ProductDAO:192 - Error during getting product
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:31:43 WARN  ProductDAO:198 - Product not found
+2022-07-29 16:49:33 INFO  UserDAO:113 - Get all users
+2022-07-29 16:49:34 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.UserDaoImpl.getAllUsers(UserDAO.java:115)
+	at com.example.cashregister.App.main(App.java:12)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:49:34 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.UserDaoImpl.getAllUsers(UserDAO.java:115)
+	at com.example.cashregister.App.main(App.java:12)
+2022-07-29 16:49:34 ERROR UserDAO:128 - Error during getting all users
+2022-07-29 16:49:34 INFO  UserDAO:131 - List with users: []
+2022-07-29 16:50:37 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.App.main(App.java:13)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 8 more
+2022-07-29 16:50:37 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.App.main(App.java:13)
+2022-07-29 16:51:12 INFO  ManagerDB:52 - Connection success
+2022-07-29 16:51:46 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:51:46 INFO  ManagerDB:52 - Connection success
+2022-07-29 16:51:47 INFO  ProductDAO:196 - Product found
+2022-07-29 16:52:08 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:52:09 INFO  ManagerDB:52 - Connection success
+2022-07-29 16:52:09 INFO  ProductDAO:196 - Product found
+2022-07-29 17:34:04 INFO  ProductDAO:210 - Get product with name: Apple
+2022-07-29 17:34:04 INFO  ManagerDB:52 - Connection success
+2022-07-29 17:34:04 INFO  ProductDAO:229 - Product found
+2022-07-29 17:34:53 INFO  ProductDAO:210 - Get product with name: Apple
+2022-07-29 17:34:54 INFO  ManagerDB:52 - Connection success
+2022-07-29 17:34:54 INFO  ProductDAO:229 - Product found
+2022-07-29 19:02:53 INFO  ManagerDB:52 - Connection success
+2022-07-29 19:26:42 INFO  MLog:191 - MLog clients using log4j logging.
+2022-07-29 19:26:42 DEBUG MLog:101 - Reading VM config for path list /com/mchange/v2/log/default-mchange-log.properties, /mchange-commons.properties, /c3p0.properties, hocon:/reference,/application,/c3p0,/, /mchange-log.properties, /
+2022-07-29 19:26:42 DEBUG MLog:101 - The configuration file for resource identifier '/mchange-commons.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MLog:101 - The configuration file for resource identifier '/c3p0.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MLog:101 - The configuration file for resource identifier 'hocon:/reference,/application,/c3p0,/' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MLog:101 - The configuration file for resource identifier '/mchange-log.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/mchange-commons.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/mchange-log.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier 'hocon:/reference,/application,/c3p0,/' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/c3p0.properties' could not be found. Skipping.
+2022-07-29 19:26:42 INFO  C3P0Registry:248 - Initializing c3p0-0.9.5.5 [built 11-December-2019 22:18:33 -0800; debug? true; trace: 10]
+2022-07-29 19:26:42 DEBUG DynamicPooledDataSourceManagerMBean:254 - MBean: com.mchange.v2.c3p0:type=PooledDataSource,identityToken=1hge0ywaqkqyzi8e9waez|dc24521,name=1hge0ywaqkqyzi8e9waez|dc24521 registered.
+2022-07-29 19:26:42 DEBUG DynamicPooledDataSourceManagerMBean:246 - MBean: com.mchange.v2.c3p0:type=PooledDataSource,identityToken=1hge0ywaqkqyzi8e9waez|dc24521,name=1hge0ywaqkqyzi8e9waez|dc24521 unregistered, in order to be reregistered after update.
+2022-07-29 19:26:42 DEBUG DynamicPooledDataSourceManagerMBean:254 - MBean: com.mchange.v2.c3p0:type=PooledDataSource,identityToken=1hge0ywaqkqyzi8e9waez|dc24521,name=1hge0ywaqkqyzi8e9waez|dc24521 registered.
+2022-07-29 19:26:42 INFO  AbstractPoolBackedDataSource:527 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, dataSourceName -> 1hge0ywaqkqyzi8e9waez|dc24521, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> null, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge0ywaqkqyzi8e9waez|dc24521, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/cash_register?serverTimezone=UTC&allowPublicKeyRetrieval=true, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 30, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {password=******, user=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {}, usesTraditionalReflectiveProxies -> false ]
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/mchange-commons.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/mchange-log.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/c3p0.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier 'hocon:/reference,/application,/c3p0,/' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG BasicResourcePool:360 - com.mchange.v2.resourcepool.BasicResourcePool@3c419631 config: [start -> 3; min -> 3; max -> 30; inc -> 3; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; max_resource_age -> 0; max_idle_time -> 0; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 0; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false; force_synchronous_checkins -> false]
+2022-07-29 19:26:42 DEBUG C3P0PooledConnectionPoolManager:401 - Created new pool for auth, username (masked): 'ro******'.
+2022-07-29 19:26:42 DEBUG BasicResourcePool:625 - acquire test -- pool size: 0; target_pool_size: 3; desired target? 1
+2022-07-29 19:26:42 DEBUG BasicResourcePool:1479 - awaitAvailable(): [unknown]
+2022-07-29 19:26:43 DEBUG NewProxyPreparedStatement:1700 - com.mchange.v2.c3p0.impl.NewProxyPreparedStatement@6aba2b86 [wrapping: com.mysql.cj.jdbc.ClientPreparedStatement: SELECT COUNT(1) FROM products] closed orphaned ResultSet: com.mchange.v2.c3p0.impl.NewProxyResultSet@3ce1e309 [wrapping: null]

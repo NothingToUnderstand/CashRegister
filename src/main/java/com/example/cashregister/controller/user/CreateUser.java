@@ -2,9 +2,9 @@ package com.example.cashregister.controller.user;
 
 
 import com.example.cashregister.controller.security.UserSession;
-import com.example.cashregister.dao.UserDAO;
+import com.example.cashregister.dao.UserDao;
+import com.example.cashregister.dao.impl.UserDaoImpl;
 import org.apache.log4j.Logger;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +18,11 @@ import java.io.IOException;
 @WebServlet(name = "createUser", value = "/create/user")
 public class CreateUser extends HttpServlet {
     private static final Logger log = Logger.getLogger(CreateUser.class);
+    private final UserDao userDao;
+
+    public CreateUser() {
+        this.userDao=new UserDaoImpl();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,14 +39,15 @@ public class CreateUser extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         log.info("doPost");
-        int id = UserDAO.createUser((String) req.getParameter("firstname"),
+
+        int id = userDao.createUser((String) req.getParameter("firstname"),
                 (String) req.getParameter("lastname"),
                 (String) req.getParameter("password"),
                 Integer.parseInt(req.getParameter("roleid")));
         if (id != 0) {
-            log.info("User was created with id: "+id);
+            log.info("User was created with id: " + id);
             resp.sendRedirect("/login");
         } else {
             log.warn("user wasn't created");

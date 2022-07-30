@@ -1,7 +1,5 @@
 package com.example.cashregister.entity;
 
-import com.example.cashregister.dao.ProductDAO;
-
 import java.util.Base64;
 
 /**

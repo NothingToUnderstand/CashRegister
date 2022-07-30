@@ -1,6 +1,7 @@
 package com.example.cashregister.controller.product;
 
-import com.example.cashregister.dao.ProductDAO;
+import com.example.cashregister.dao.ProductDao;
+import com.example.cashregister.dao.impl.ProductDaoImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -16,10 +17,15 @@ import java.io.IOException;
 public class DeleteProduct extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(DeleteProduct.class);
+    private final ProductDao productDao;
+
+    public DeleteProduct() {
+        this.productDao=new ProductDaoImpl();
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("Servlet to delete user");
-        if (ProductDAO.deleteProduct(Integer.parseInt(request.getParameter("id")))) {
+        if (productDao.deleteProduct(Integer.parseInt(request.getParameter("id")))) {
             log.info("Delete success");
             request.getSession().setAttribute("message","Product with id:"+request.getParameter("id")+" was deleted");
             response.sendRedirect("/acc/commodity_expert");

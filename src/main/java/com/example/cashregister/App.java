@@ -1,14 +1,15 @@
 package com.example.cashregister;
 
-import com.example.cashregister.dao.ProductDAO;
-import com.example.cashregister.dao.UserDAO;
+import com.example.cashregister.dao.ProductDao;
+import com.example.cashregister.dao.impl.ProductDaoImpl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
+import java.sql.SQLException;
+
+import static com.example.cashregister.connection.ApacheConPool.getConnection;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+//        ProductDao productDao=new ProductDaoImpl();
+//        System.out.println(productDao.countRows());
     }
 }

@@ -40,12 +40,18 @@
     <input id="lu" type="number" hidden readonly value="${loginedUser.getId()}">
 
     <div class="center">
-        <span id="errormessage" class="active " style="color: orangered">${errormessage}</span>
-        <span id="message" class="active " style="color: #4dd497">${message}</span>
+        <span id="errormessage" class="active " style="color: #8a0d0d"><b>${errormessage}</b></span>
+        <span id="message" class="active " style="color: #e7f608"><b>${message}</b></span>
     </div>
     <div class="topnav-right">
-        <button id="eng"  onclick="eng()" type="submit">Eng</button>
-        <button id="ru"  onclick="ru()" type="submit">Ru</button>
+        <c:choose>
+            <c:when test = "${lang =='ua'}">
+        <a class="btn" id="eng"  onclick="eng()" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/197/197374.png" width="30px" height="30px" alt="eng" title="eng"/></a>
+            </c:when>
+            <c:when test = "${lang == 'en'}">
+        <a class="btn" id="ukr"  onclick="ukr()" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/197/197572.png" width="30px" height="30px" alt="ukr" title="ukr"/></a>
+            </c:when>
+        </c:choose>
     </div>
 </div>
 <script>

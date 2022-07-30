@@ -1,4 +1,8 @@
-<%@ page import="com.example.cashregister.entity.User" %>
+﻿<%@ page import="com.example.cashregister.entity.User" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="messages"/>
 <!DOCTYPE HTML>
 <html>
 <header>
@@ -16,7 +20,14 @@
             out.print("<span> Role: " + loginedUser.getRole() + "</span>");
         }
     %>
+    <hr>
+
     <br>
+<p>For translate</p>
+    <h1 class="h3 mb-3 font-weight-normal"><fmt:message key="pleaseSignin"/></h1>
+    <br>
+    <hr>
+
 </div>
 
 </body>

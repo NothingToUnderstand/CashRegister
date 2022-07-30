@@ -1,7 +1,8 @@
 package com.example.cashregister.controller.user;
 
 
-import com.example.cashregister.dao.UserDAO;
+import com.example.cashregister.dao.UserDao;
+import com.example.cashregister.dao.impl.UserDaoImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -13,10 +14,15 @@ import java.io.IOException;
 
 /**
  * Update user servlet
- * */
-@WebServlet(name="updateUser",value="/update/user")
+ */
+@WebServlet(name = "updateUser", value = "/update/user")
 public class UpdateUser extends HttpServlet {
     private static final Logger log = Logger.getLogger(UpdateUser.class);
+    private final UserDao userDao;
+
+    public UpdateUser() {
+        this.userDao=new UserDaoImpl();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,15 +33,15 @@ public class UpdateUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("doPost");
-        if(UserDAO.updateUser(Integer.parseInt(req.getParameter("id")),
-                (String)req.getParameter("firstname"),
-                (String)req.getParameter("lastname"),
-                (String)req.getParameter("password"),
+        if (userDao.updateUser(Integer.parseInt(req.getParameter("id")),
+                (String) req.getParameter("firstname"),
+                (String) req.getParameter("lastname"),
+                (String) req.getParameter("password"),
                 Integer.parseInt(req.getParameter("roleid"))
-                )){
+        )) {
             log.info("user was updated");
             resp.sendRedirect("/all/users");
-        }else{
+        } else {
             log.warn("user wasn't updated");
             // TODO: 15.07.2022 how to show message create success or not +id
         }

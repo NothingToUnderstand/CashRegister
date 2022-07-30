@@ -1,7 +1,8 @@
 package com.example.cashregister.controller.user;
 
 
-import com.example.cashregister.dao.UserDAO;
+import com.example.cashregister.dao.UserDao;
+import com.example.cashregister.dao.impl.UserDaoImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -10,17 +11,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 /**
  * Delete user servlet
- * */
-@WebServlet(name="deleteUser",value="/delete/user")
+ */
+@WebServlet(name = "deleteUser", value = "/delete/user")
 public class DeleteUser extends HttpServlet {
     private static final Logger log = Logger.getLogger(DeleteUser.class);
+    private final UserDao userDao;
 
+    public DeleteUser() {
+        this.userDao=new UserDaoImpl();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (UserDAO.deleteUser(Integer.parseInt(request.getParameter("id")))) {
+        if (userDao.deleteUser(Integer.parseInt(request.getParameter("id")))) {
             log.info("user deleted successfully");
             response.sendRedirect("/all/users");
         } else {

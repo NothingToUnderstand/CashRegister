@@ -1,6 +1,7 @@
 package com.example.cashregister.controller.product;
 
-import com.example.cashregister.dao.ProductDAO;
+import com.example.cashregister.dao.ProductDao;
+import com.example.cashregister.dao.impl.ProductDaoImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * Update product servlet
@@ -21,7 +21,11 @@ import java.util.Arrays;
 @WebServlet(name="UpdateProduct",value="/update/product")
 public class UpdateProduct extends HttpServlet {
     private static final Logger log = Logger.getLogger(UpdateProduct.class);
+    private final ProductDao productDao;
 
+    public UpdateProduct() {
+        this.productDao=new ProductDaoImpl();
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("doGet,update product");
@@ -32,7 +36,7 @@ public class UpdateProduct extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("doPost,update product");
         System.out.println("~~~~~~"+req.getParameter("id"));
-        if (ProductDAO.updateProduct(
+        if (productDao.updateProduct(
                 Integer.parseInt(req.getParameter("id")),
                 (String) req.getParameter("name"),
                 Integer.parseInt(req.getParameter("quantity")),

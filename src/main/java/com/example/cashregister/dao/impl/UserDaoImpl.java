@@ -1,37 +1,26 @@
-package com.example.cashregister.dao;
+package com.example.cashregister.dao.impl;
 
 
+import com.example.cashregister.dao.UserDao;
 import com.example.cashregister.entity.User;
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
+
+import static com.example.cashregister.connection.ApacheConPool.getConnection;
+import static com.example.cashregister.property.Properties.getProperty;
 
 
 /**
  * DAO layer for program interaction with the user table in the database
  */
-public class UserDAO {
-    private static final Logger log = Logger.getLogger(UserDAO.class);
-    /**
-     * static block for getting properties from app.properties
-     */
-    static Properties prop = new Properties();
-
-    static {
-        try {
-            prop.load(UserDAO.class.getClassLoader().getResourceAsStream("app.properties"));
-        } catch (IOException ex) {
-            log.error("Error in UserDao reading property file", ex);
-            ex.printStackTrace();
-        }
-    }
+public class UserDaoImpl implements UserDao {
+    private static final Logger log = Logger.getLogger(UserDaoImpl.class);
 
     /**
      * method for validating a user at login
@@ -40,11 +29,12 @@ public class UserDAO {
      * @param pass     password
      * @return user
      */
-    public static User validate(String fullName, String pass) {
+    @Override
+    public  User validate(String fullName, String pass) {
         log.info("Validation for user: " + fullName + " with password: " + pass);
         User user = new User();
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("get_valid_user"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("get_valid_user"))) {
             ps.setString(1, fullName);
             ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
@@ -56,7 +46,7 @@ public class UserDAO {
                         rs.getString("password"),
                         rs.getString("role_name"));
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during user validation", e);
             e.printStackTrace();
         }
@@ -77,11 +67,12 @@ public class UserDAO {
      * @param roleId    role id
      * @return int new user's id
      */
-    public static int createUser(String firstName, String lastName, String password, int roleId) {
+    @Override
+    public  int createUser(String firstName, String lastName, String password, int roleId) {
         log.info("Add user to DB: " + firstName + " " + lastName + " " + password);
         int id = 0;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("create_user"), PreparedStatement.RETURN_GENERATED_KEYS)) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("create_user"), PreparedStatement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, firstName);
             ps.setString(2, lastName);
             ps.setString(3, password);
@@ -91,7 +82,7 @@ public class UserDAO {
                 id = generatedKey.getInt(1);
             }
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during user creation", e);
             e.printStackTrace();
         }
@@ -109,11 +100,12 @@ public class UserDAO {
      *
      * @return List<User> List of all users
      */
-    public static List<User> getAllUsers() {
+    @Override
+    public  List<User> getAllUsers() {
         log.info("Get all users");
         List<User> users = new ArrayList<>();
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("get_all_users"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("get_all_users"))) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 User user = new User(rs.getInt("id"),
@@ -124,7 +116,7 @@ public class UserDAO {
                         rs.getString("role_name"));
                 users.add(user);
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during getting all users");
             e.printStackTrace();
         }
@@ -138,14 +130,15 @@ public class UserDAO {
      * @param id user's id
      * @return boolean status
      */
-    public static boolean deleteUser(int id) {
+    @Override
+    public  boolean deleteUser(int id) {
         log.info("Delete user with id: " + id);
         boolean status = false;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("delete_user"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("delete_user"))) {
             ps.setInt(1, id);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during user validation", e);
             e.printStackTrace();
         }
@@ -167,17 +160,18 @@ public class UserDAO {
      * @param pass      password
      * @return boolean status
      */
-    public static boolean updateUser(int id, String firstName, String lastName, String pass, int idRole) {
+    @Override
+    public  boolean updateUser(int id, String firstName, String lastName, String pass, int idRole) {
         log.info("Update user with id: " + id);
         boolean status = false;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("update_user"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("update_user"))) {
             ps.setString(1, firstName);
             ps.setString(2, lastName);
             ps.setString(3, pass);
             ps.setInt(4, id);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during updating user", e);
             e.printStackTrace();
         }
@@ -196,12 +190,13 @@ public class UserDAO {
      * @param id user's id
      * @return user
      */
-    public static User getUser(int id) {
+    @Override
+    public  User getUser(int id) {
         log.info("Get user with id: " + id);
 
         User user = new User();
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("get_user"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("get_user"))) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -212,7 +207,7 @@ public class UserDAO {
                         rs.getString("password"),
                         rs.getString("role_name"));
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             log.error("Error during getting user", e);
             e.printStackTrace();
         }
@@ -229,17 +224,17 @@ public class UserDAO {
      *
      * @param userId user id
      * @param roleId role id
-     * @return boolean status
      */
-    private static boolean setRole(int userId, int roleId) {
+    @Override
+    public void setRole(int userId, int roleId) {
         log.info("Set role with id:" + roleId + " for user with id: " + userId);
         boolean status = false;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("set_role"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("set_role"))) {
             ps.setInt(1, userId);
             ps.setInt(2, roleId);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during setting user role", e);
             e.printStackTrace();
         }
@@ -248,7 +243,6 @@ public class UserDAO {
         } else {
             log.warn("User  role was not established");
         }
-        return status;
     }
 
 
@@ -260,15 +254,15 @@ public class UserDAO {
      * @return boolean status
      */
 
-    private static boolean updateRole(int idUser, int idRole) {
+    private  boolean updateRole(int idUser, int idRole) {
         log.info("Update role for user with id: " + idUser);
         boolean status = false;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("update_role"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("update_role"))) {
             ps.setInt(1, idRole);
             ps.setInt(2, idUser);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during updating user role", e);
             e.printStackTrace();
         }
@@ -280,31 +274,4 @@ public class UserDAO {
         return status;
     }
 
-
-//    /**
-//     * user role get method
-//     *
-//     * @param id user's id
-//     * @return String role name
-//     */
-
-//    public static String getRole(int id) {
-//        log.info("Get role for user with id: "+id);
-//        String role="";
-//        try (Connection con = ManagerDB.getInstance().getConnection();
-//             PreparedStatement ps = con.prepareStatement(prop.getProperty("get_role"))) {
-//            ps.setInt(1, id);
-//            ResultSet rs = ps.executeQuery();
-//            if(rs.next()){
-
-//                role=rs.getString(1);
-//            }
-//
-//        } catch (SQLException | ClassNotFoundException e) {
-//            log.error("Error during getting user role", e);
-//            e.printStackTrace();
-//        }
-//        log.info("User role with id: "+id+" role: "+role);
-//        return role;
-//    }
 }

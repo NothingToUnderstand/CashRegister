@@ -1,7 +1,9 @@
 package com.example.cashregister.controller.product;
 
 
-import com.example.cashregister.dao.ProductDAO;
+import com.example.cashregister.dao.ProductDao;
+import com.example.cashregister.dao.impl.ProductDaoImpl;
+import com.example.cashregister.entity.Product;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -21,6 +23,11 @@ import java.io.IOException;
 @WebServlet("/create/product")
 public class CreateProduct extends HttpServlet {
     private static final Logger log = Logger.getLogger(CreateProduct.class);
+    private final ProductDao productDao;
+
+    public CreateProduct() {
+        this.productDao=new ProductDaoImpl();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,7 +38,7 @@ public class CreateProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("CreateProduct Servlet doPost");
-        int id = ProductDAO.createProduct((String) req.getParameter("name"),
+        int id = productDao.createProduct((String) req.getParameter("name"),
                 Integer.parseInt(req.getParameter("quantity")),
                 Double.parseDouble(req.getParameter("weight")),
                 Double.parseDouble(req.getParameter("price")),

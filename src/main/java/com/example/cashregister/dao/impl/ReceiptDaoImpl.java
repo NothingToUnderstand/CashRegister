@@ -1,36 +1,26 @@
-package com.example.cashregister.dao;
+package com.example.cashregister.dao.impl;
 
 
+import com.example.cashregister.dao.ProductDao;
+import com.example.cashregister.dao.ReceiptDao;
 import com.example.cashregister.entity.Product;
 import com.example.cashregister.entity.Receipt;
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
+
+import static com.example.cashregister.connection.ApacheConPool.getConnection;
+import static com.example.cashregister.property.Properties.getProperty;
 
 
 /*
  * DAO layer for program interaction with the receipt table in the database
  */
 
-public class ReceiptDAO {
-    private static final Logger log = Logger.getLogger(ReceiptDAO.class);
-    /**
-     * static block for getting properties from app.properties
-     */
-    static Properties prop = new Properties();
-
-    static {
-        try {
-            prop.load(UserDAO.class.getClassLoader().getResourceAsStream("app.properties"));
-        } catch (IOException ex) {
-            log.error("Error in ReceiptDAO reading property file", ex);
-            ex.printStackTrace();
-        }
-    }
+public class ReceiptDaoImpl implements ReceiptDao {
+    private static final Logger log = Logger.getLogger(ReceiptDaoImpl.class);
 
     /**
      * method for adding a new receipt to the  table checks
@@ -39,11 +29,12 @@ public class ReceiptDAO {
      * @param cashierId   quantity of product
      * @return int receipt id
      */
-    public static int createReceipt(int cashierId, String cashierName) {
+    @Override
+    public  int createReceipt(int cashierId, String cashierName) {
         log.info("Create receipt by cashier : " + cashierName + " with id: " + cashierId);
         int id = 0;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("receipt_create"), PreparedStatement.RETURN_GENERATED_KEYS)) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("receipt_create"), PreparedStatement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, cashierId);
             ps.setString(2, cashierName);
             ps.executeUpdate();
@@ -51,7 +42,7 @@ public class ReceiptDAO {
             if (rs.next()) {
                 id = rs.getInt(1);
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             log.error("Error during the receipt creation", e);
             e.printStackTrace();
         }
@@ -71,36 +62,37 @@ public class ReceiptDAO {
      * @param productId product's id
      * @return boolean status
      */
-    public static boolean addProductToReceipt(int receiptId, int productId, int amount) {
+    @Override
+    public  boolean addProductToReceipt(int receiptId, int productId, int amount) {
         log.info("Add product with id:" + productId + " to  check with id: " + receiptId);
-        boolean status = false;
-        status = ifReceiptIsClosed(receiptId);
+        ProductDao productDao=new ProductDaoImpl();
+        boolean status = ifReceiptIsClosed(receiptId);
         if(status){
             log.warn("Can not add products to receipt because the receipt with id: "+receiptId+"is closed");
             return false;
         }
-        int amountAtDB = ProductDAO.getAmount(productId);
+        int amountAtDB = productDao.getAmount(productId);
         boolean checkAmount = amountAtDB >= amount;
         if (!checkAmount) {
             log.warn("Not enough amount of a product with id: " + productId + "to add to the receipt with id: " + receiptId);
             return status;
         }
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("add_product_to_receipt"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("add_product_to_receipt"))) {
             ps.setInt(1, receiptId);
             ps.setInt(2, productId);
             ps.setInt(3, amount);
             ps.setInt(4, amount);
             ps.setInt(5, productId);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during adding product to receipt ", e);
             e.printStackTrace();
         }
         if (status) {
             log.info("Adding product to check is successfully");
             addPriceAndAmountToReceipt(receiptId);
-            ProductDAO.setAmount(productId, (amountAtDB - amount));
+           productDao.setAmount(productId, (amountAtDB - amount));
         } else {
             log.warn("Adding product to receipt is failed");
         }
@@ -113,16 +105,16 @@ public class ReceiptDAO {
      * @param receiptId check's id
      * @return boolean status
      */
-    private static boolean addPriceAndAmountToReceipt(int receiptId) {
+    private  boolean addPriceAndAmountToReceipt(int receiptId) {
         log.info("Adding price and amount to check with id:" + receiptId);
         boolean status = false;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("price_and_amount_to_receipt"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("price_and_amount_to_receipt"))) {
             ps.setInt(1, receiptId);
             ps.setInt(2, receiptId);
             ps.setInt(3, receiptId);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             log.error("Error during the price and amount adding to receipt", e);
             e.printStackTrace();
         }
@@ -140,14 +132,15 @@ public class ReceiptDAO {
      * @param id receipt id
      * @return boolean status
      */
-    public static boolean deleteReceipt(int id) {
+    @Override
+    public  boolean deleteReceipt(int id) {
         log.info("Delete receipt with id: " + id);
         boolean status = false;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("delete_receipt"))) {
+        try (Connection con =getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("delete_receipt"))) {
             ps.setInt(1, id);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during deleting receipt", e);
             e.printStackTrace();
         }
@@ -166,7 +159,8 @@ public class ReceiptDAO {
      * @param idProduct product id
      * @return boolean status
      */
-    public static boolean deleteProductInReceipt(int idReceipt, int idProduct) {
+    @Override
+    public  boolean deleteProductInReceipt(int idReceipt, int idProduct) {
         log.info("Delete product with id: " + idProduct + " in check with id: " + idReceipt);
         boolean status = false;
         status = ifReceiptIsClosed(idReceipt);
@@ -174,12 +168,12 @@ public class ReceiptDAO {
             log.warn("Can not delete products in check because the check with id: "+idReceipt+"is closed");
             return false;
         }
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("delete_product_in_receipt"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("delete_product_in_receipt"))) {
             ps.setInt(1, idReceipt);
             ps.setInt(2, idProduct);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during deleting product in receipt ", e);
             e.printStackTrace();
         }
@@ -198,13 +192,14 @@ public class ReceiptDAO {
      * @param id receipt id
      * @return receipt
      */
-    public static Receipt getReceipt(int id) {
+    @Override
+    public  Receipt getReceipt(int id) {
         log.info("Get  receipt with id: "+id);
         Receipt receipt = new Receipt();
         List<Product> products = new ArrayList<>();
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("get_products_for_receipt"));
-             PreparedStatement psc = con.prepareStatement(prop.getProperty("get_receipt"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("get_products_for_receipt"));
+             PreparedStatement psc = con.prepareStatement(getProperty("get_receipt"))) {
             psc.setInt(1, id);
             ps.setInt(1, id);
             ResultSet rsc = psc.executeQuery();
@@ -228,7 +223,7 @@ public class ReceiptDAO {
                         rsc.getString("close_date_time"),
                         products);
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during getting all users");
             e.printStackTrace();
         }
@@ -244,15 +239,16 @@ public class ReceiptDAO {
      * method gets the all receipts
      * @return List<Receipt> checks
      */
-    public static List<Receipt> getALLReceipts() {
+    @Override
+    public  List<Receipt> getALLReceipts() {
         List<Receipt> receipts = new ArrayList<>();
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("get_all_receipts"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("get_all_receipts"))) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 receipts.add(getReceipt(rs.getInt("id")));
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during getting all receipts", e);
             e.printStackTrace();
         }
@@ -266,19 +262,20 @@ public class ReceiptDAO {
      * @param id what receipt to close
      * @return boolean status
      */
-    public static boolean closeReceipt(int id) {
+    @Override
+    public  boolean closeReceipt(int id) {
         boolean status = false;
         status = ifReceiptIsClosed(id);
         if(status){
             log.warn("Can not close the receipt with id: "+id+" twice");
             return false;
         }
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("close_receipt"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("close_receipt"))) {
             ps.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
             ps.setInt(2, id);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             log.error("Error during closing the receipt", e);
             e.printStackTrace();
         }
@@ -296,16 +293,17 @@ public class ReceiptDAO {
      *
      * @return List<Integer> receipt
      */
-    protected static List<Integer> getReceiptToReport() {
+    @Override
+    public List<Integer> getReceiptToReport() {
         List<Integer> receipt = new ArrayList<>();
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("get_receipts_to_report"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("get_receipts_to_report"))) {
             ps.setTimestamp(1, new Timestamp(System.currentTimeMillis() - 43200000));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 receipt.add(rs.getInt("id"));
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during getting closed checks id", e);
             e.printStackTrace();
         }
@@ -320,16 +318,17 @@ public class ReceiptDAO {
      * @param id receipt id
      * @return List<Integer> receipt
      */
-    public static boolean ifReceiptIsClosed(int id) {
+    @Override
+    public  boolean ifReceiptIsClosed(int id) {
         boolean status = false;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("if_receipt_closed"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("if_receipt_closed"))) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 status = rs.getTimestamp(1)!=null;
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during getting if the receipt is closed", e);
             e.printStackTrace();
         }
@@ -347,16 +346,16 @@ public class ReceiptDAO {
      * @param id receipt id
      * @return boolean status
      */
-    private static boolean addReceiptAndProductsToArchive(int id){
+    private  boolean addReceiptAndProductsToArchive(int id){
         log.info("Adding receipt to archive with id: "+id);
         boolean status = false;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("add_to_archive_receipt"));
-             PreparedStatement psc = con.prepareStatement(prop.getProperty("add_product_to_archive_receipt"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("add_to_archive_receipt"));
+             PreparedStatement psc = con.prepareStatement(getProperty("add_product_to_archive_receipt"))) {
             ps.setInt(1, id);
             psc.setInt(1, id);
             status = ps.executeUpdate()!=0 && psc.executeUpdate()!=0;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during adding products to receipt", e);
             e.printStackTrace();
         }
@@ -373,13 +372,14 @@ public class ReceiptDAO {
      * method for removing all receipts
      * @return boolean status
      */
-    protected static boolean deleteAllReceipts() {
+    @Override
+    public boolean deleteAllReceipts() {
         log.info("Delete all receipts");
         boolean status = false;
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("delete_all_receipts"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("delete_all_receipts"))) {
             status = ps.executeUpdate() >0;
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during deleting all receipts", e);
             e.printStackTrace();
         }
@@ -396,13 +396,14 @@ public class ReceiptDAO {
      * @param id receipt id
      * @return receipt
      */
-    public static Receipt getReceiptFromArchive(int id) {
+    @Override
+    public  Receipt getReceiptFromArchive(int id) {
         log.info("Get  receipt from archive with id: "+id);
         Receipt receipt = new Receipt();
         List<Product> products = new ArrayList<>();
-        try (Connection con = ManagerDB.getInstance().getConnection();
-             PreparedStatement ps = con.prepareStatement(prop.getProperty("get_products_to_receipt_from_archive"));
-             PreparedStatement psc = con.prepareStatement(prop.getProperty("get_receipt_from_archive"))) {
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("get_products_to_receipt_from_archive"));
+             PreparedStatement psc = con.prepareStatement(getProperty("get_receipt_from_archive"))) {
             psc.setInt(1, id);
             ps.setInt(1, id);
             ResultSet rsc = psc.executeQuery();
@@ -426,7 +427,7 @@ public class ReceiptDAO {
                         rsc.getString("close_date_time"),
                         products);
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             log.error("Error during getting all users");
             e.printStackTrace();
         }
