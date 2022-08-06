@@ -101,11 +101,14 @@ public class UserDaoImpl implements UserDao {
      * @return List<User> List of all users
      */
     @Override
-    public  List<User> getAllUsers() {
+    public  List<User> getAllUsers(String column, String direction, Integer limitfrom, Integer limitquantity) {
         log.info("Get all users");
+        String query = String.format(getProperty("get_all_users"), column + " " + direction);
         List<User> users = new ArrayList<>();
         try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(getProperty("get_all_users"))) {
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, limitfrom);
+            ps.setInt(2, limitquantity);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 User user = new User(rs.getInt("id"),
@@ -120,7 +123,6 @@ public class UserDaoImpl implements UserDao {
             log.error("Error during getting all users");
             e.printStackTrace();
         }
-        log.info("List with users: " + users);
         return users;
     }
 
@@ -154,14 +156,14 @@ public class UserDaoImpl implements UserDao {
      * method for changing user's data
      *
      * @param id        user's id
-     * @param idRole    role's id
+     * @param role    user's role
      * @param firstName user's first name
      * @param lastName  user's last name
      * @param pass      password
      * @return boolean status
      */
     @Override
-    public  boolean updateUser(int id, String firstName, String lastName, String pass, int idRole) {
+    public  boolean updateUser(int id, String firstName, String lastName, String pass, String role) {
         log.info("Update user with id: " + id);
         boolean status = false;
         try (Connection con = getConnection();
@@ -176,7 +178,7 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
         if (status) {
-            updateRole(id, idRole);
+            updateRole(id, role);
             log.info("User update is successfully");
         } else {
             log.warn("User update failed");
@@ -225,8 +227,7 @@ public class UserDaoImpl implements UserDao {
      * @param userId user id
      * @param roleId role id
      */
-    @Override
-    public void setRole(int userId, int roleId) {
+    private void setRole(int userId, int roleId) {
         log.info("Set role with id:" + roleId + " for user with id: " + userId);
         boolean status = false;
         try (Connection con = getConnection();
@@ -245,21 +246,78 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
+    /**
+     * method to get the amount of a users in db
+     *
+     * @return int amount
+     */
+    @Override
+    public int countRows() {
+        int amount = 0;
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("count_rows_in_users"))) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                amount = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            log.error("Error during getting amount of users", e);
+            e.printStackTrace();
+        }
+        return amount;
+    }
+
+    /**
+     * the method receives information about product
+     *
+     * @param fullname product's name
+     * @return product
+     */
+    @Override
+    public User searchUser(String fullname) {
+        log.info("Get user with fullname: " + fullname);
+        User user = new User();
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("get_user_by_fullname"))) {
+            ps.setString(1, fullname);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                user = new User(rs.getInt("id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getString("full_name"),
+                        rs.getString("password"),
+                        rs.getString("role"));
+
+            }
+        } catch (SQLException e) {
+            log.error("Error during getting user", e);
+            e.printStackTrace();
+        }
+        if (user.getId() != 0) {
+            log.info("User found");
+        } else {
+            log.warn("User not found");
+        }
+        return user;
+    }
+
+
 
     /**
      * user role updating method
      *
      * @param idUser user's id
-     * @param idRole role's id
+     * @param role user's role
      * @return boolean status
      */
 
-    private  boolean updateRole(int idUser, int idRole) {
+    private  boolean updateRole(int idUser, String role) {
         log.info("Update role for user with id: " + idUser);
         boolean status = false;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("update_role"))) {
-            ps.setInt(1, idRole);
+            ps.setString(1, role);
             ps.setInt(2, idUser);
             status = ps.executeUpdate() == 1;
         } catch (SQLException  e) {

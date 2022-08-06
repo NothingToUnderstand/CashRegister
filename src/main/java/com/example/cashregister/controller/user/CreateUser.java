@@ -1,7 +1,7 @@
 package com.example.cashregister.controller.user;
 
 
-import com.example.cashregister.controller.security.UserSession;
+import com.example.cashregister.security.UserSession;
 import com.example.cashregister.dao.UserDao;
 import com.example.cashregister.dao.impl.UserDaoImpl;
 import org.apache.log4j.Logger;
@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.example.cashregister.security.UserSession.getLoginedUser;
 
 /**
  * Create user servlet
@@ -27,13 +29,13 @@ public class CreateUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("doGet");
-        if (UserSession.getLoginedUser(req.getSession()).getId() != 0) {
+        if (getLoginedUser(req.getSession()).getId() != 0) {
             log.info("user has already logined");
             req.getSession().setAttribute("errormessage", "You are already had an account");
             resp.sendRedirect("/");
         } else {
             log.warn("user is not logined");
-            getServletContext().getRequestDispatcher("/user/createuser.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher("/signup.jsp").forward(req, resp);
         }
     }
 

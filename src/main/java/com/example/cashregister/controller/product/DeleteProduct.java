@@ -24,14 +24,14 @@ public class DeleteProduct extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.info("Servlet to delete user");
+        log.info("Servlet to delete product");
         if (productDao.deleteProduct(Integer.parseInt(request.getParameter("id")))) {
             log.info("Delete success");
             request.getSession().setAttribute("message","Product with id:"+request.getParameter("id")+" was deleted");
             response.sendRedirect("/acc/commodity_expert");
         } else {
             log.warn("Delete failed");
-            request.getSession().setAttribute("errormessage","Product with wasn't deleted");
+            request.getSession().setAttribute("errormessage","Product wasn't deleted");
         }
 
     }

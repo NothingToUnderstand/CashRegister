@@ -3,7 +3,6 @@ package com.example.cashregister.controller.product;
 
 import com.example.cashregister.dao.ProductDao;
 import com.example.cashregister.dao.impl.ProductDaoImpl;
-import com.example.cashregister.entity.Product;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;

@@ -4,7 +4,7 @@ import java.util.Base64;
 
 /**
  * Entity of product
-* */
+ */
 public class Product {
 
     private int id;
@@ -14,20 +14,33 @@ public class Product {
     private double price;
     private String imgbase64;
     private byte[] img;
+    private int number_in_receipt;
 
 
-    public Product(int id, String name, int quantity, double weight, double price,byte[] img) {
+
+    public Product(int id, String name, int quantity, double weight, double price, byte[] img) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.weight = weight;
         this.price = price;
-        this.img=img;
-        imgbase64= Base64.getEncoder().encodeToString(img);
+        this.img = img;
+        imgbase64 = Base64.getEncoder().encodeToString(img);
+    }
+
+    public Product(int number_in_receipt, int id, String name, int quantity, double weight, double price, byte[] img) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.weight = weight;
+        this.price = price;
+        this.img = img;
+        imgbase64 = Base64.getEncoder().encodeToString(img);
+        this.number_in_receipt = number_in_receipt;
     }
 
 
-    public Product( ) {
+    public Product() {
         this.id = 0;
     }
 
@@ -55,6 +68,7 @@ public class Product {
         return price;
     }
 
+    public int getNumberInReceipt() {return number_in_receipt;}
     @Override
     public String toString() {
         return "Product{" +

@@ -251,58 +251,48 @@ public class ProductDaoImpl implements ProductDao {
 
 
     /**
-     * method to get the amount of a product by its id
-     *
-     * @param id :the id of a product
-     * @return int amount
-     */
-    @Override
-    public int getAmount(int id) {
-        int amount = 0;
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(getProperty("get_product_amount"))) {
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                amount = rs.getInt(1);
-            }
-        } catch (SQLException  e) {
-            log.error("Error during getting product", e);
-            e.printStackTrace();
-        }
-        if (amount <= 0) {
-            log.warn("There is not enough amount of the product with id: " + id);
-        } else {
-            log.info("The amount of product with id:" + id + " at db: " + amount);
-        }
-        return amount;
-    }
-
-    /**
-     * method to set a new amount of a product by its id
+     * method to decrease amount of a product by its id
      *
      * @param id     :the id of a product
      * @param amount :the new amount of a product at db
-     * @return boolean status
      */
-    @Override
-    public boolean setAmount(int id, int amount) {
+    protected void decreaseAmount(int id, int amount) {
         boolean status = false;
         try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(getProperty("set_product_amount"))) {
-            ps.setInt(1, amount);
-            ps.setInt(2, id);
+             PreparedStatement ps = con.prepareStatement(String.format(getProperty("decrease_quantity"),amount))) {
+            ps.setInt(1, id);
             status = ps.executeUpdate() == 1;
         } catch (SQLException e) {
-            log.error("Error during getting amount of product", e);
+            log.error("Error during decreasing amount of product", e);
             e.printStackTrace();
         }
         if (status) {
-            log.info("Product amount updated");
+            log.info("Product amount decreased");
         } else {
-            log.warn("Product setting new amount failed");
+            log.warn("Product decreasing failed");
         }
-        return status;
+    }
+    /**
+     * method to increase amount of a product by its id
+     *
+     * @param id     :the id of a product
+     * @param amount :the new amount of a product at db
+     */
+    protected void increaseAmount(int id, int amount) {
+        boolean status = false;
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(String.format(getProperty("increase_quantity"),amount))) {
+            ps.setInt(1, id);
+            status = ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            log.error("Error during increasing amount of product", e);
+            e.printStackTrace();
+        }
+        if (status) {
+            log.info("Product amount increased");
+        } else {
+            log.warn("Product amount increasing failed");
+        }
     }
 }
 

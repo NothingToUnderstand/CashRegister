@@ -19,18 +19,21 @@ import java.io.IOException;
 public class GetAllProducts extends HttpServlet {
     private static final Logger log = Logger.getLogger(GetAllProducts.class);
     private final ProductDao productDao;
+
     public GetAllProducts() {
-        this.productDao=new ProductDaoImpl();
+        this.productDao = new ProductDaoImpl();
     }
+
+    private int receiptid = 0;
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Get all products");
 
-            req.setAttribute("dir", "ASC");
-            req.setAttribute("page", 1);
-            req.setAttribute("perpage", 5);
-            req.setAttribute("col", "name");
+        req.setAttribute("dir", "ASC");
+        req.setAttribute("page", 1);
+        req.setAttribute("perpage", 5);
+        req.setAttribute("col", "name");
 
 
         String dir = (String) req.getAttribute("dir");
@@ -40,21 +43,21 @@ public class GetAllProducts extends HttpServlet {
 
         if (req.getParameter("page") != null) {
             page = Integer.parseInt(req.getParameter("page"));
-            req.setAttribute("page",page);
+            req.setAttribute("page", page);
 
         }
         if (req.getParameter("perpage") != null) {
             perpage = Integer.parseInt(req.getParameter("perpage"));
-            req.setAttribute("perpage",perpage);
+            req.setAttribute("perpage", perpage);
         }
 
         if (req.getParameter("dir") != null) {
             dir = req.getParameter("dir");
-            req.setAttribute("dir",changeDir(req.getParameter("dir")));
+            req.setAttribute("dir", changeDir(req.getParameter("dir")));
         }
         if (req.getParameter("col") != null) {
             col = req.getParameter("col");
-            req.setAttribute("col",col);
+            req.setAttribute("col", col);
         }
 
         int amount = productDao.countRows();
@@ -65,8 +68,11 @@ public class GetAllProducts extends HttpServlet {
         req.setAttribute("products", productDao.getAllProducts(col, dir, limfrom, limto));
         req.setAttribute("numpage", amountpages);
         req.setAttribute("amount", amount);
-
-        getServletContext().getRequestDispatcher("/product/allproducts.jsp").forward(req, resp);
+        if (req.getParameter("receiptid") != null) {
+            receiptid = Integer.parseInt(req.getParameter("receiptid"));
+        }
+        req.setAttribute("receiptid", receiptid);
+        getServletContext().getRequestDispatcher("/forCashier/allproducts.jsp").forward(req, resp);
     }
 
     private String changeDir(String dir) {
@@ -75,7 +81,9 @@ public class GetAllProducts extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("search",productDao.searchProduct((String) req.getParameter("name")));
+        if (req.getParameter("name") != null) {
+            req.setAttribute("search", productDao.searchProduct(req.getParameter("name")));
+        }
         doGet(req, resp);
     }
 }

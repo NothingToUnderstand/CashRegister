@@ -9,14 +9,14 @@
 <head>
 
     <style>
-        <%@include file="style.css" %>
+        <%@include file="css/style.css" %>
     </style>
     <title>Cash Register</title>
 </head>
 
 <body>
 <div class="topnav">
-    <a style="font-size: 25px;margin-top: -5px" ><b>Cash Register:</b></a>
+    <a  style="font-size: 25px;margin-top: -5px" ><b>Cash Register:</b></a>
     <a class="vl"></a>
     <a href="/"><img id="home" src="https://static.thenounproject.com/png/411768-200.png" width="30px" height="30px"
                      alt="home" title="Home"/></a>

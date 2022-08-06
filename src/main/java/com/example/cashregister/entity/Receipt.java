@@ -12,13 +12,13 @@ public class Receipt {
     private double total_sum;
     private String openDate;
     private String closeDate;
-    private List<Product> products_in_check;
+    private List<Product> products_in_receipt;
 
     public Receipt() {
         this.id = 0;
     }
 
-    public Receipt(int id, int cachier_id, String cachier_name, int number_of_products, double total_sum, String openDate, String closeDate, List<Product> products_in_check) {
+    public Receipt(int id, int cachier_id, String cachier_name, int number_of_products, double total_sum, String openDate, String closeDate, List<Product> products_in_receipt) {
         this.id = id;
         this.cachier_id = cachier_id;
         this.cachier_name = cachier_name;
@@ -26,7 +26,7 @@ public class Receipt {
         this.total_sum = total_sum;
         this.openDate = openDate;
         this.closeDate = closeDate;
-        this.products_in_check = products_in_check;
+        this.products_in_receipt = products_in_receipt;
     }
 
     public int getId() {
@@ -58,8 +58,8 @@ public class Receipt {
         return closeDate;
     }
 
-    public List<Product> getProducts_in_check() {
-        return products_in_check;
+    public List<Product> getProductsInReceipt() {
+        return products_in_receipt;
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Receipt {
                 ", total_sum=" + total_sum +
                 ", openDate='" + openDate + '\'' +
                 ", closeDate='" + closeDate + '\'' +
-                ", products_in_check=" + products_in_check +
+                ", products_in_check=" + products_in_receipt +
                 '}';
     }
 }

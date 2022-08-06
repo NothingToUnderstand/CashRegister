@@ -1803,3 +1803,163 @@ java.lang.ClassNotFoundException
 2022-07-29 19:26:42 DEBUG BasicResourcePool:625 - acquire test -- pool size: 0; target_pool_size: 3; desired target? 1
 2022-07-29 19:26:42 DEBUG BasicResourcePool:1479 - awaitAvailable(): [unknown]
 2022-07-29 19:26:43 DEBUG NewProxyPreparedStatement:1700 - com.mchange.v2.c3p0.impl.NewProxyPreparedStatement@6aba2b86 [wrapping: com.mysql.cj.jdbc.ClientPreparedStatement: SELECT COUNT(1) FROM products] closed orphaned ResultSet: com.mchange.v2.c3p0.impl.NewProxyResultSet@3ce1e309 [wrapping: null]
+2022-07-31 20:43:37 INFO  UserDaoImpl:105 - Get all users
+2022-07-31 20:43:38 ERROR UserDaoImpl:123 - Error during getting all users
+2022-07-31 20:43:38 INFO  UserDaoImpl:126 - List with users: []
+2022-07-31 20:44:14 INFO  UserDaoImpl:105 - Get all users
+2022-07-31 20:44:15 INFO  UserDaoImpl:126 - List with users: [User{id=16, fullName='Viktor Best', role='admin', password='1234'}, User{id=3, fullName='Jack Nikson', role='commodity_expert', password='1234'}, User{id=2, fullName='Bob Bobchinski', role='cashier', password='qwe123'}]
+2022-07-31 20:44:42 INFO  UserDaoImpl:105 - Get all users
+2022-07-31 20:44:43 INFO  UserDaoImpl:126 - List with users: [User{id=16, fullName='Viktor Best', role='admin', password='1234'}, User{id=3, fullName='Jack Nikson', role='commodity_expert', password='1234'}]
+2022-07-31 20:49:20 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 9
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 8
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 7
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 4
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 1
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:258 - All receipts: [Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}, Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}, Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}, Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}, Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}]
+2022-07-31 21:04:26 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 7
+2022-07-31 21:04:26 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 21:05:27 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 7
+2022-07-31 21:05:28 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 21:07:03 INFO  ReceiptDaoImpl:424 - Get  receipt from archive with id: 7
+2022-07-31 21:07:03 ERROR ReceiptDaoImpl:454 - Error during getting all users
+2022-07-31 21:07:03 WARN  ReceiptDaoImpl:460 - Receipt not found
+2022-07-31 21:11:30 INFO  ReceiptDaoImpl:424 - Get  receipt from archive with id: 7
+2022-07-31 21:11:30 INFO  ReceiptDaoImpl:458 - Receipt found
+2022-07-31 21:21:48 ERROR ReportDaoImpl:159 - Error during getting all reports
+java.sql.SQLException: Column 'number_of_products' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:851)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getInt(DelegatingResultSet.java:633)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getInt(DelegatingResultSet.java:633)
+	at com.example.cashregister.dao.impl.ReportDaoImpl.getAllReports(ReportDaoImpl.java:152)
+	at com.example.cashregister.App.main(App.java:16)
+2022-07-31 21:23:09 ERROR ReportDaoImpl:159 - Error during getting all reports
+java.sql.SQLException: Column 'date' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getString(ResultSetImpl.java:896)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getString(DelegatingResultSet.java:898)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getString(DelegatingResultSet.java:898)
+	at com.example.cashregister.dao.impl.ReportDaoImpl.getAllReports(ReportDaoImpl.java:154)
+	at com.example.cashregister.App.main(App.java:16)
+2022-08-03 18:29:40 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 0
+2022-08-03 18:29:41 ERROR ReceiptDaoImpl:227 - Error during getting all users
+2022-08-03 18:29:41 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-08-03 18:30:39 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 80
+2022-08-03 18:30:40 ERROR ReceiptDaoImpl:227 - Error during getting all users
+2022-08-03 18:30:40 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-08-03 18:33:31 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 80
+2022-08-03 18:33:32 INFO  ReceiptDaoImpl:231 - Receipt found
+2022-08-04 19:48:57 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:48:57 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:48:57 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:50:09 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:50:10 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:50:10 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:52:05 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:52:06 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:52:06 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:52:06 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:52:06 ERROR ProductDaoImpl:290 - Error during increasing amount of product
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(p.quantity=p.quantity +2) WHERE id=9' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.increaseAmount(ProductDaoImpl.java:288)
+	at com.example.cashregister.dao.impl.ReceiptDaoImpl.cancelProduct(ReceiptDaoImpl.java:488)
+	at com.example.cashregister.App.main(App.java:15)
+2022-08-04 19:52:06 WARN  ProductDaoImpl:296 - Product amount increasing failed
+2022-08-04 19:52:06 INFO  ReceiptDaoImpl:493 - Product from receipt changed successfully
+2022-08-04 19:53:29 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:53:30 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:53:30 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:53:30 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:53:30 ERROR ProductDaoImpl:290 - Error during increasing amount of product
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(p.quantity=p.quantity + 2) WHERE id=9' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.increaseAmount(ProductDaoImpl.java:288)
+	at com.example.cashregister.dao.impl.ReceiptDaoImpl.cancelProduct(ReceiptDaoImpl.java:487)
+	at com.example.cashregister.App.main(App.java:15)
+2022-08-04 19:53:30 WARN  ProductDaoImpl:296 - Product amount increasing failed
+2022-08-04 19:53:30 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:55:11 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:55:12 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:55:12 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:55:12 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:55:12 ERROR ProductDaoImpl:290 - Error during increasing amount of product
+java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setInt(ClientPreparedStatement.java:1536)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.setInt(DelegatingPreparedStatement.java:418)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.setInt(DelegatingPreparedStatement.java:418)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.increaseAmount(ProductDaoImpl.java:287)
+	at com.example.cashregister.dao.impl.ReceiptDaoImpl.cancelProduct(ReceiptDaoImpl.java:487)
+	at com.example.cashregister.App.main(App.java:15)
+2022-08-04 19:55:12 WARN  ProductDaoImpl:296 - Product amount increasing failed
+2022-08-04 19:55:12 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:57:27 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:57:27 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:57:27 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:57:27 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:57:27 ERROR ProductDaoImpl:288 - Error during increasing amount of product
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(p.quantity=p.quantity + 2) WHERE id=9' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.increaseAmount(ProductDaoImpl.java:286)
+	at com.example.cashregister.dao.impl.ReceiptDaoImpl.cancelProduct(ReceiptDaoImpl.java:487)
+	at com.example.cashregister.App.main(App.java:15)
+2022-08-04 19:57:27 WARN  ProductDaoImpl:294 - Product amount increasing failed
+2022-08-04 19:57:27 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:58:08 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:58:09 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:58:09 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:58:09 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:58:09 INFO  ProductDaoImpl:292 - Product amount increased
+2022-08-04 19:58:09 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:58:46 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:58:47 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:58:47 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:58:47 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:58:47 INFO  ProductDaoImpl:292 - Product amount increased
+2022-08-04 19:58:47 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:59:54 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:59:55 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:59:55 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90

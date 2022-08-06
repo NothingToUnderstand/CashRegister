@@ -63,3 +63,16 @@ function ukr() {
             break;
     }
 }
+
+
+function lock() {
+    var x = document.getElementById("password-input");
+    var y = document.getElementById("img");
+    if (x.type === "password") {
+        y.src="https://cdn-icons-png.flaticon.com/512/100/100849.png"
+        x.type = "text";
+    } else {
+        x.type = "password";
+        y.src="https://cdn-icons-png.flaticon.com/512/61/61457.png"
+    }
+}

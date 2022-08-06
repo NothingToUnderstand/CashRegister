@@ -1,7 +1,6 @@
 package com.example.cashregister.dao.impl;
 
 
-import com.example.cashregister.dao.ProductDao;
 import com.example.cashregister.dao.ReceiptDao;
 import com.example.cashregister.entity.Product;
 import com.example.cashregister.entity.Receipt;
@@ -65,17 +64,11 @@ public class ReceiptDaoImpl implements ReceiptDao {
     @Override
     public  boolean addProductToReceipt(int receiptId, int productId, int amount) {
         log.info("Add product with id:" + productId + " to  check with id: " + receiptId);
-        ProductDao productDao=new ProductDaoImpl();
+        ProductDaoImpl productDao=new ProductDaoImpl();
         boolean status = ifReceiptIsClosed(receiptId);
         if(status){
             log.warn("Can not add products to receipt because the receipt with id: "+receiptId+"is closed");
             return false;
-        }
-        int amountAtDB = productDao.getAmount(productId);
-        boolean checkAmount = amountAtDB >= amount;
-        if (!checkAmount) {
-            log.warn("Not enough amount of a product with id: " + productId + "to add to the receipt with id: " + receiptId);
-            return status;
         }
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("add_product_to_receipt"))) {
@@ -85,17 +78,13 @@ public class ReceiptDaoImpl implements ReceiptDao {
             ps.setInt(4, amount);
             ps.setInt(5, productId);
             status = ps.executeUpdate() == 1;
+            addPriceAndAmountToReceipt(receiptId);
+            productDao.decreaseAmount(productId,amount);
         } catch (SQLException  e) {
             log.error("Error during adding product to receipt ", e);
             e.printStackTrace();
         }
-        if (status) {
-            log.info("Adding product to check is successfully");
-            addPriceAndAmountToReceipt(receiptId);
-           productDao.setAmount(productId, (amountAtDB - amount));
-        } else {
-            log.warn("Adding product to receipt is failed");
-        }
+        log.info("Adding product to check is successfully");
         return status;
     }
 
@@ -156,33 +145,29 @@ public class ReceiptDaoImpl implements ReceiptDao {
      * method for removing product in check
      *
      * @param idReceipt   receipt id
-     * @param idProduct product id
+     * @param numberProduct product number
      * @return boolean status
      */
     @Override
-    public  boolean deleteProductInReceipt(int idReceipt, int idProduct) {
-        log.info("Delete product with id: " + idProduct + " in check with id: " + idReceipt);
-        boolean status = false;
-        status = ifReceiptIsClosed(idReceipt);
+    public  boolean deleteProductInReceipt(int idReceipt, int productId ,int numberProduct) {
+        log.info("Delete product with number: " + numberProduct + " in check with id: " + idReceipt);
+        boolean status = ifReceiptIsClosed(idReceipt);
         if(status){
             log.warn("Can not delete products in check because the check with id: "+idReceipt+"is closed");
             return false;
         }
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("delete_product_in_receipt"))) {
-            ps.setInt(1, idReceipt);
-            ps.setInt(2, idProduct);
+            ps.setInt(1, numberProduct);
             status = ps.executeUpdate() == 1;
+            addPriceAndAmountToReceipt(idReceipt);
+            new ProductDaoImpl().increaseAmount(productId,numberProduct);
         } catch (SQLException  e) {
             log.error("Error during deleting product in receipt ", e);
             e.printStackTrace();
         }
-        if (status) {
-            log.info("Product from check deleted successfully");
-            addPriceAndAmountToReceipt(idReceipt);
-        } else {
-            log.warn("Product from receipt delete failed");
-        }
+
+        log.info("Product from receipt deleted successfully");
         return status;
     }
 
@@ -205,9 +190,11 @@ public class ReceiptDaoImpl implements ReceiptDao {
             ResultSet rsc = psc.executeQuery();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Product product = new Product(rs.getInt("id"),
+                Product product = new Product(
+                        rs.getInt("number"),
+                        rs.getInt("id"),
                         rs.getString("name"),
-                        rs.getInt("quantity"),
+                        rs.getInt("amount_of_product"),
                         rs.getDouble("weight"),
                         rs.getDouble("price"),
                         rs.getBytes("img"));
@@ -224,7 +211,7 @@ public class ReceiptDaoImpl implements ReceiptDao {
                         products);
             }
         } catch (SQLException  e) {
-            log.error("Error during getting all users");
+            log.error("Error during getting all receipts");
             e.printStackTrace();
         }
         if (receipt.getId() != 0) {
@@ -240,10 +227,13 @@ public class ReceiptDaoImpl implements ReceiptDao {
      * @return List<Receipt> checks
      */
     @Override
-    public  List<Receipt> getALLReceipts() {
+    public  List<Receipt> getAllReceipts(String column, String direction, Integer limitfrom, Integer limitquantity) {
+        String query = String.format(getProperty("get_all_receipts"), column + " " + direction);
         List<Receipt> receipts = new ArrayList<>();
         try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(getProperty("get_all_receipts"))) {
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, limitfrom);
+            ps.setInt(2, limitquantity);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 receipts.add(getReceipt(rs.getInt("id")));
@@ -252,7 +242,28 @@ public class ReceiptDaoImpl implements ReceiptDao {
             log.error("Error during getting all receipts", e);
             e.printStackTrace();
         }
-        log.info("All receipts: " + receipts);
+        return receipts;
+    }
+    /**
+     * method gets the all receipts from archive
+     * @return List<Receipt> checks
+     */
+    @Override
+    public  List<Receipt> getAllReceiptsFromArchive(String column, String direction, Integer limitfrom, Integer limitquantity) {
+        String query = String.format(getProperty("get_all_receipts_from_archive"), column + " " + direction);
+        List<Receipt> receipts = new ArrayList<>();
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, limitfrom);
+            ps.setInt(2, limitquantity);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                receipts.add(getReceiptFromArchive(rs.getInt("id")));
+            }
+        } catch (SQLException  e) {
+            log.error("Error during getting all receipts from archive", e);
+            e.printStackTrace();
+        }
         return receipts;
     }
 
@@ -318,8 +329,7 @@ public class ReceiptDaoImpl implements ReceiptDao {
      * @param id receipt id
      * @return List<Integer> receipt
      */
-    @Override
-    public  boolean ifReceiptIsClosed(int id) {
+    private  boolean ifReceiptIsClosed(int id) {
         boolean status = false;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("if_receipt_closed"))) {
@@ -372,8 +382,8 @@ public class ReceiptDaoImpl implements ReceiptDao {
      * method for removing all receipts
      * @return boolean status
      */
-    @Override
-    public boolean deleteAllReceipts() {
+
+    protected boolean deleteAllReceipts() {
         log.info("Delete all receipts");
         boolean status = false;
         try (Connection con = getConnection();
@@ -411,7 +421,7 @@ public class ReceiptDaoImpl implements ReceiptDao {
             while (rs.next()) {
                 Product product = new Product(rs.getInt("id"),
                         rs.getString("name"),
-                        rs.getInt("quantity"),
+                        rs.getInt("amount_of_product"),
                         rs.getDouble("weight"),
                         rs.getDouble("price"),
                         rs.getBytes("img"));
@@ -428,7 +438,7 @@ public class ReceiptDaoImpl implements ReceiptDao {
                         products);
             }
         } catch (SQLException  e) {
-            log.error("Error during getting all users");
+            log.error("Error during getting all receipts");
             e.printStackTrace();
         }
         if (receipt.getId() != 0) {
@@ -438,5 +448,57 @@ public class ReceiptDaoImpl implements ReceiptDao {
         }
         return receipt;
     }
+    @Override
+    public int countRows() {
+        int amount = 0;
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("count_rows_in_receipts"))) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                amount = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            log.error("Error during getting amount of reports", e);
+            e.printStackTrace();
+        }
+        return amount;
+    }
+    @Override
+    public int countRowsArchive() {
+        int amount = 0;
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("count_rows_in_archive_receipts"))) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                amount = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            log.error("Error during getting amount of reports", e);
+            e.printStackTrace();
+        }
+        return amount;
+    }
 
-}
+    @Override
+    public boolean cancelProduct(int number, int amount,int idReceipt,int idProduct) {
+        log.info("Cancel product with number: " + number + " in amount: " + amount);
+        boolean  status = ifReceiptIsClosed(idReceipt);
+        if(status){
+            log.warn("Can not delete products in check because the check with id: "+idReceipt+"is closed");
+            return false;
+        }
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(String.format(getProperty("change_product_amount_in_receipt"),amount))){
+            ps.setInt(1, idProduct);
+            ps.setInt(2, number);
+            status = ps.executeUpdate() == 1;
+            addPriceAndAmountToReceipt(idReceipt);
+          new ProductDaoImpl().increaseAmount( idProduct,amount);
+        } catch (SQLException  e) {
+            log.error("Error during changing product in receipt ", e);
+            e.printStackTrace();
+        }
+        log.info("Product from receipt changed successfully");
+        return status;
+    }
+    }

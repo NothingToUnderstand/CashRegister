@@ -34,7 +34,7 @@ public class ReportDaoImpl implements ReportDao {
     @Override
     public int createReport(int cashierId, String cashierName, boolean zReport) {
         log.info("Create report by cashier : " + cashierName + " with id: " + cashierId);
-        ReceiptDao receiptDao=new ReceiptDaoImpl();
+        ReceiptDaoImpl receiptDao=new ReceiptDaoImpl();
         int id = 0;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("report_create"), PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -68,8 +68,8 @@ public class ReportDaoImpl implements ReportDao {
      * @param reportID report's id
      * @return boolean status
      */
-    @Override
-    public boolean addReceiptsToReport(int reportID) {
+
+    private boolean addReceiptsToReport(int reportID) {
         ReceiptDao receiptDao=new ReceiptDaoImpl();
         List<Integer> list = new ArrayList<>();
         int a = 0;
@@ -116,7 +116,7 @@ public class ReportDaoImpl implements ReportDao {
                 report = new Report(rs.getInt("id"),
                         rs.getInt("cashier_id"),
                         rs.getString("cashier_name"),
-                        rs.getInt("number_of_checks"),
+                        rs.getInt("number_of_receipts"),
                         rs.getDouble("total_sum"),
                         rs.getString("date_time"),
                         rs.getBoolean("z_report")
@@ -132,6 +132,50 @@ public class ReportDaoImpl implements ReportDao {
             log.warn("Report not found");
         }
         return report;
+    }
+
+    @Override
+    public List<Report> getAllReports(String column, String direction, Integer limitfrom, Integer limitquantity) {
+        String query = String.format(getProperty("get_all_reports"), column + " " + direction);
+        ArrayList<Report> reports = new ArrayList<>();
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, limitfrom);
+            ps.setInt(2, limitquantity);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Report report = new Report(
+                        rs.getInt("id"),
+                        rs.getInt("cashier_id"),
+                        rs.getString("cashier_name"),
+                        rs.getInt("number_of_receipts"),
+                        rs.getDouble("total_sum"),
+                        rs.getString("date_time"),
+                        rs.getBoolean("z_report"));
+                reports.add(report);
+            }
+        } catch (SQLException e) {
+            log.error("Error during getting all reports", e);
+            e.printStackTrace();
+
+        }
+        return reports;
+    }
+
+    @Override
+    public int countRows() {
+        int amount = 0;
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("count_rows_in_reports"))) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                amount = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            log.error("Error during getting amount of reports", e);
+            e.printStackTrace();
+        }
+        return amount;
     }
 
     /**

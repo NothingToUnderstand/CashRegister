@@ -3,6 +3,8 @@ package com.example.cashregister.controller.user;
 
 import com.example.cashregister.dao.UserDao;
 import com.example.cashregister.dao.impl.UserDaoImpl;
+import com.example.cashregister.entity.User;
+import com.example.cashregister.security.UserSession;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -11,6 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.example.cashregister.security.UserSession.getLoginedUser;
+import static com.example.cashregister.security.UserSession.storeLoginedUser;
 
 /**
  * Update user servlet
@@ -21,29 +26,48 @@ public class UpdateUser extends HttpServlet {
     private final UserDao userDao;
 
     public UpdateUser() {
-        this.userDao=new UserDaoImpl();
+        this.userDao = new UserDaoImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("doGet");
-        getServletContext().getRequestDispatcher("/user/updateuser.jsp").forward(req, resp);
+        User user = getLoginedUser(req.getSession());
+        int id = Integer.parseInt(req.getParameter("id"));
+        if (id != user.getId()&&!user.getRole().equals("admin")) {
+            resp.sendRedirect("/");
+            req.getSession().setAttribute("errormessage", "you can`t change another user");
+            return;
+        }
+        req.setAttribute("user", userDao.getUser(id));
+        getServletContext().getRequestDispatcher("/forAdmin/updateuser.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("doPost");
-        if (userDao.updateUser(Integer.parseInt(req.getParameter("id")),
-                (String) req.getParameter("firstname"),
-                (String) req.getParameter("lastname"),
-                (String) req.getParameter("password"),
-                Integer.parseInt(req.getParameter("roleid"))
-        )) {
+        User user = getLoginedUser(req.getSession());
+        int id = Integer.parseInt(req.getParameter("id"));
+
+//        if (id != user.getId()&&!user.getRole().equals("admin")) {
+//            resp.sendRedirect("/");
+//            req.getSession().setAttribute("errormessage", "you can`t change another user");
+//            return;
+//        }
+
+        if (userDao.updateUser(id,
+                req.getParameter("firstname"),
+                req.getParameter("lastname"),
+                req.getParameter("password"),
+                req.getParameter("roleid"))) {
             log.info("user was updated");
-            resp.sendRedirect("/all/users");
+            req.getSession().setAttribute("message", "user was updated");
+            if (id == user.getId()) {
+                storeLoginedUser(req.getSession(), userDao.getUser(id));
+            }
         } else {
             log.warn("user wasn't updated");
-            // TODO: 15.07.2022 how to show message create success or not +id
+            req.getSession().setAttribute("errormessage", "user was not updated");
         }
+
+        resp.sendRedirect("/acc/" + user.getRole());
     }
 }

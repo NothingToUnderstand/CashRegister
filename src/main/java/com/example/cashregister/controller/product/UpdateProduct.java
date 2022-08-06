@@ -29,7 +29,7 @@ public class UpdateProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("doGet,update product");
-        getServletContext().getRequestDispatcher("/product/updateproduct.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/forCommodityExpert/updateproduct.jsp").forward(req, resp);
     }
 
     @Override
