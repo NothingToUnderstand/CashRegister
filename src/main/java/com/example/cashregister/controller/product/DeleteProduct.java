@@ -28,11 +28,11 @@ public class DeleteProduct extends HttpServlet {
         if (productDao.deleteProduct(Integer.parseInt(request.getParameter("id")))) {
             log.info("Delete success");
             request.getSession().setAttribute("message","Product with id:"+request.getParameter("id")+" was deleted");
-            response.sendRedirect("/acc/commodity_expert");
+
         } else {
             log.warn("Delete failed");
             request.getSession().setAttribute("errormessage","Product wasn't deleted");
         }
-
+        response.sendRedirect("/acc");
     }
 }

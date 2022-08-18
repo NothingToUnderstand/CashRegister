@@ -1,7 +1,9 @@
 package com.example.cashregister.controller.receipt.archive;
 
 import com.example.cashregister.controller.product.GetProduct;
+import com.example.cashregister.dao.ArchiveReceiptDao;
 import com.example.cashregister.dao.ReceiptDao;
+import com.example.cashregister.dao.impl.ArchiveReceiptDaoImpl;
 import com.example.cashregister.dao.impl.ReceiptDaoImpl;
 import org.apache.log4j.Logger;
 
@@ -16,18 +18,19 @@ import java.io.IOException;
 @WebServlet("/info/archive/receipt")
 public class GetArchiveReceipt extends HttpServlet {
     private static final Logger log = Logger.getLogger(GetArchiveReceipt.class);
-    private final ReceiptDao receiptDao;
+    private final ArchiveReceiptDao dao;
 
-    private int receiptId = 0;
     public GetArchiveReceipt() {
-        this.receiptDao=new ReceiptDaoImpl();
+        this.dao = new ArchiveReceiptDaoImpl();
+
     }
+    private int receiptId = 0;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("id") != null) {
             receiptId=Integer.parseInt(request.getParameter("id"));
         }
-        request.setAttribute("receipt", receiptDao.getReceiptFromArchive(receiptId));
+        request.setAttribute("receipt", dao.get(receiptId));
         request.getSession().setAttribute("message","Getting archive receipt with id: "+receiptId);
         getServletContext().getRequestDispatcher("/forAdmin/infoarchivereceipt.jsp").forward(request,response);
     }

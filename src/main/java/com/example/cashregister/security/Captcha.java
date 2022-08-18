@@ -25,7 +25,7 @@ public class Captcha {
             conn.setRequestMethod("POST");
             conn.setRequestProperty("User-Agent", "Mozilla/5.0");
             conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-            String postParams = "secret=" + "6LdAPwwhAAAAANc9uJNakzU5I_XyYMM0MiwtJoT5"
+            String postParams = "secret=" + "6LeafYQhAAAAAHExuMCF0Duz9R6QICczcC6qPSW9"
                     + "&response=" + gRecaptchaResponse;
 
             conn.setDoOutput(true);

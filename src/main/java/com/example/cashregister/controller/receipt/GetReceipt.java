@@ -29,7 +29,7 @@ public class GetReceipt extends HttpServlet {
         if (request.getParameter("id") != null) {
             receiptId=Integer.parseInt(request.getParameter("id"));
         }
-        request.setAttribute("receipt", receiptDao.getReceipt(receiptId));
+        request.setAttribute("receipt", receiptDao.get(receiptId));
         request.getSession().setAttribute("message","Getting receipt with id: "+receiptId);
         getServletContext().getRequestDispatcher("/forSeniorCashier/inforeceipt.jsp").forward(request,response);
     }

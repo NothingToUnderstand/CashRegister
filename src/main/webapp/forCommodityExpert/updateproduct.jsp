@@ -16,26 +16,26 @@
 </header>
 <h2><b><fmt:message key="productupdate"/> </b></h2>
 <form method="POST" action="${pageContext.request.contextPath}/update/product" enctype="multipart/form-data">
-    <table class="table">
+    <table style="width: 50%" class="table">
         <tr>
             <td class="title">ID:</td>
-            <td class="option"><input  name="id" value="<%=request.getParameter("id").replaceAll("\\s","")%>" readonly /></td>
+            <td class="option"><input  name="id" value="${product.getId()}" readonly /></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="name"/> :</td>
-            <td class="option"><input type="text" name="name" value="<%=request.getParameter("name").replaceAll("\\s","")%>" readonly/></td>
+            <td class="option"><input type="text" name="name" value="${product.getName()}" readonly/></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="quantity"/> :</td>
-            <td class="option"><input type="text" name="quantity" value="<%=request.getParameter("quantity").replaceAll("\\s","")%>" required pattern="^[0-9]+$"/></td>
+            <td class="option"><input type="text" name="quantity" value="${product.getQuantity()}" required pattern="^[0-9]+$"/></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="weight"/> :</td>
-            <td  class="option"><input type="text" name="weight" value="<%=request.getParameter("weight").replaceAll("\\s","")%>" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
+            <td  class="option"><input type="text" name="weight" value="${product.getWeight()}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="price"/> :</td>
-            <td class="option"><input type="text" name="price" value="<%=request.getParameter("price").replaceAll("\\s","")%>" readonly/></td>
+            <td class="option"><input type="text" name="price" value="${product.getPrice()}" readonly/></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="image"/> :</td>
@@ -44,7 +44,7 @@
         <tr>
             <td colspan="2">
                 <input class="btn btn-success" type="submit" value="<fmt:message key="submit"/> "/>
-                <a class="btn btn-danger" href="${pageContext.request.contextPath}/acc/commodity_expert"><fmt:message key="cancel"/> </a>
+                <a class="btn btn-danger" href="${pageContext.request.contextPath}/acc"><fmt:message key="cancel"/> </a>
             </td>
         </tr>
     </table>

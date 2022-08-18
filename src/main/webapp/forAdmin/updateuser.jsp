@@ -59,7 +59,7 @@
         <tr>
             <td colspan="2">
                 <input class="btn btn-success" type="submit" value="Submit"/>
-                <a class="btn btn-warning" href="${pageContext.request.contextPath}/acc/${loginedUser.getRole()}"><fmt:message key="cancel"/></a>
+                <a class="btn btn-warning" href="${pageContext.request.contextPath}/acc"><fmt:message key="cancel"/></a>
             </td>
         </tr>
     </table>

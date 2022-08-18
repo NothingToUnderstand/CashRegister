@@ -47,7 +47,7 @@
         <option class="ui-icon" value="?page=1&perpage=10">10</option>
     </select>
     <div class="form-inline" style="float: right;">
-        <form action="${pageContext.request.contextPath}/acc/commodity_expert" method="post">
+        <form action="${pageContext.request.contextPath}/acc" method="post">
             <input style="width:120px;" class="form-control form-control-sm" type="text" placeholder="<fmt:message key="search"/>.." value="${name}" name="name">
             <button style="width:80px;" class="btn btn-primary btn-sm" type="submit"><fmt:message key="search"/></button>
         </form>
@@ -74,8 +74,7 @@
                        href="${pageContext.request.contextPath}/info/product?id=${search.getId()}"><fmt:message
                         key="info"/></a></td>
                 <td><a class="btn btn-warning"
-                       href="${pageContext.request.contextPath}/update/product?id=${search.getId()}&name=${search.getName()}
-           &quantity=${search.getQuantity()}&weight=${search.getWeight()}&price=${search.getPrice()}"><fmt:message
+                       href="${pageContext.request.contextPath}/update/product?id=${search.getId()}"><fmt:message
                         key="update"/></a></td>
                 <td><a class="btn btn-danger"
                        href="${pageContext.request.contextPath}/delete/product?id=${search.getId()}"><fmt:message
@@ -97,7 +96,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${product}" var="product">
+        <c:forEach items="${items}" var="product">
             <tr>
                 <td><img alt="product image" src="data:image/jpg;base64, ${product.getImgbase64()}" title="product image" style="height:30px;width: 30px;"></td>
                 <td>${product.getName()}</td>

@@ -101,10 +101,10 @@ public class UserDaoImpl implements UserDao {
      * @return List<User> List of all users
      */
     @Override
-    public  List<User> getAllUsers(String column, String direction, Integer limitfrom, Integer limitquantity) {
+    public  ArrayList<User> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) {
         log.info("Get all users");
         String query = String.format(getProperty("get_all_users"), column + " " + direction);
-        List<User> users = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, limitfrom);
@@ -193,7 +193,7 @@ public class UserDaoImpl implements UserDao {
      * @return user
      */
     @Override
-    public  User getUser(int id) {
+    public  User get(int id) {
         log.info("Get user with id: " + id);
 
         User user = new User();
@@ -246,6 +246,8 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
+
+
     /**
      * method to get the amount of a users in db
      *
@@ -267,6 +269,8 @@ public class UserDaoImpl implements UserDao {
         return amount;
     }
 
+
+
     /**
      * the method receives information about product
      *
@@ -287,7 +291,7 @@ public class UserDaoImpl implements UserDao {
                         rs.getString("last_name"),
                         rs.getString("full_name"),
                         rs.getString("password"),
-                        rs.getString("role"));
+                        rs.getString("role_name"));
 
             }
         } catch (SQLException e) {

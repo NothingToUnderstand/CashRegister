@@ -20,7 +20,19 @@ public class SecurityConfig {
     }
 
     private static void init() {
-        mapConfig.put(ADMIN, null);
+
+        List<String> urlPatterns0 = new ArrayList<String>();
+        urlPatterns0.add("/favicon.ico");
+        urlPatterns0.add("/login");
+        urlPatterns0.add("/logout");
+        urlPatterns0.add("/");
+        urlPatterns0.add("/acc");
+        urlPatterns0.add("/update/user");
+        urlPatterns0.add("/all/reports");
+        urlPatterns0.add("/archive/receipts");
+        urlPatterns0.add("/info/archive/receipt");
+
+        mapConfig.put(ADMIN, urlPatterns0);
 
 
         List<String> urlPatterns1 = new ArrayList<String>();
@@ -30,7 +42,7 @@ public class SecurityConfig {
         urlPatterns1.add("/");
         urlPatterns1.add("/info/product");
         urlPatterns1.add("/all/products");
-        urlPatterns1.add("/acc/cashier");
+        urlPatterns1.add("/acc");
         urlPatterns1.add("/update/user");
 
         urlPatterns1.add("/create/receipt");
@@ -43,7 +55,7 @@ public class SecurityConfig {
         urlPatterns2.add("/login");
         urlPatterns2.add("/logout");
         urlPatterns2.add("/");
-        urlPatterns2.add("/acc/senior_cashier");
+        urlPatterns2.add("/acc");
 
         urlPatterns2.add("/info/product");
 
@@ -68,7 +80,7 @@ public class SecurityConfig {
         urlPatterns3.add("/delete/product");
         urlPatterns3.add("/all/products");
         urlPatterns3.add("/update/user");
-        urlPatterns3.add("/acc/commodity_expert");
+        urlPatterns3.add("/acc");
         urlPatterns3.add("/favicon.ico");
         mapConfig.put(COMMODITY_EXPERT, urlPatterns3);
 

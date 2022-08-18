@@ -50,10 +50,12 @@ public class CreateUser extends HttpServlet {
                 Integer.parseInt(req.getParameter("roleid")));
         if (id != 0) {
             log.info("User was created with id: " + id);
-            resp.sendRedirect("/login");
+            req.getSession().setAttribute("message","User was created");
+
         } else {
             log.warn("user wasn't created");
-            // TODO: 15.07.2022 how to show message create success or not +id
+            req.getSession().setAttribute("errormessage","User was not created");
         }
+        resp.sendRedirect("/login");
     }
 }

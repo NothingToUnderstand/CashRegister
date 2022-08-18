@@ -38,7 +38,7 @@ public class UpdateUser extends HttpServlet {
             req.getSession().setAttribute("errormessage", "you can`t change another user");
             return;
         }
-        req.setAttribute("user", userDao.getUser(id));
+        req.setAttribute("user", userDao.get(id));
         getServletContext().getRequestDispatcher("/forAdmin/updateuser.jsp").forward(req, resp);
     }
 
@@ -46,12 +46,6 @@ public class UpdateUser extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = getLoginedUser(req.getSession());
         int id = Integer.parseInt(req.getParameter("id"));
-
-//        if (id != user.getId()&&!user.getRole().equals("admin")) {
-//            resp.sendRedirect("/");
-//            req.getSession().setAttribute("errormessage", "you can`t change another user");
-//            return;
-//        }
 
         if (userDao.updateUser(id,
                 req.getParameter("firstname"),
@@ -61,13 +55,13 @@ public class UpdateUser extends HttpServlet {
             log.info("user was updated");
             req.getSession().setAttribute("message", "user was updated");
             if (id == user.getId()) {
-                storeLoginedUser(req.getSession(), userDao.getUser(id));
+                storeLoginedUser(req.getSession(), userDao.get(id));
             }
         } else {
             log.warn("user wasn't updated");
             req.getSession().setAttribute("errormessage", "user was not updated");
         }
 
-        resp.sendRedirect("/acc/" + user.getRole());
+        resp.sendRedirect("/acc");
     }
 }

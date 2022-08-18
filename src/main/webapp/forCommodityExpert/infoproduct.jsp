@@ -50,7 +50,7 @@
             <a class="btn btn-secondary btn-block" href="${pageContext.request.contextPath}/all/products" ><fmt:message key="back"/> </a>
             </c:if>
             <c:if test="${user.getRole()=='commodity_expert'}">
-                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/acc/commodity_expert" ><fmt:message key="back"/> </a>
+                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/acc" ><fmt:message key="back"/> </a>
             <a class="btn btn-warning" href="${pageContext.request.contextPath}/update/product?id=${product.getId()}"><fmt:message key="update"/> </a>
             <a class="btn btn-danger" href="${pageContext.request.contextPath}/delete/product?id=${product.getId()}"><fmt:message key="delete"/> </a>
             </c:if>

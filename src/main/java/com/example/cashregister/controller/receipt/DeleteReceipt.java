@@ -32,11 +32,11 @@ public class DeleteReceipt extends HttpServlet {
         if (receiptDao.deleteReceipt(Integer.parseInt(request.getParameter("id")))) {
             log.info("Delete success");
             request.getSession().setAttribute("message","Receipt with id:"+request.getParameter("id")+" was deleted");
-            response.sendRedirect("/acc/senior_cashier");
+
         } else {
             log.warn("Delete failed");
             request.getSession().setAttribute("errormessage","Receipt wasn't deleted");
         }
-
+        response.sendRedirect("/acc");
     }
 }

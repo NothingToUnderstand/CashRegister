@@ -1,7 +1,9 @@
 package com.example.cashregister.controller.product;
 
+import com.example.cashregister.Service.SortingAndPagination;
 import com.example.cashregister.dao.ProductDao;
 import com.example.cashregister.dao.impl.ProductDaoImpl;
+import com.example.cashregister.entity.Product;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -28,46 +30,20 @@ public class GetAllProducts extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("Get all products");
+        SortingAndPagination sort= new SortingAndPagination(productDao);
+        sort.setParams(
+                req.getParameter("col"),
+                req.getParameter("dir"),
+                req.getParameter("page"),
+                req.getParameter("perpage"));
 
-        req.setAttribute("dir", "ASC");
-        req.setAttribute("page", 1);
-        req.setAttribute("perpage", 5);
-        req.setAttribute("col", "name");
-
-
-        String dir = (String) req.getAttribute("dir");
-        int page = (int) req.getAttribute("page");
-        int perpage = (int) req.getAttribute("perpage");
-        String col = (String) req.getAttribute("col");
-
-        if (req.getParameter("page") != null) {
-            page = Integer.parseInt(req.getParameter("page"));
-            req.setAttribute("page", page);
-
-        }
-        if (req.getParameter("perpage") != null) {
-            perpage = Integer.parseInt(req.getParameter("perpage"));
-            req.setAttribute("perpage", perpage);
-        }
-
-        if (req.getParameter("dir") != null) {
-            dir = req.getParameter("dir");
-            req.setAttribute("dir", changeDir(req.getParameter("dir")));
-        }
-        if (req.getParameter("col") != null) {
-            col = req.getParameter("col");
-            req.setAttribute("col", col);
-        }
-
-        int amount = productDao.countRows();
-        int limto = page * perpage;
-        int limfrom = limto - perpage;
-        int amountpages = amount / perpage;
-
-        req.setAttribute("products", productDao.getAllProducts(col, dir, limfrom, limto));
-        req.setAttribute("numpage", amountpages);
-        req.setAttribute("amount", amount);
+        req.setAttribute("dir",changeDir(sort.getDir()));
+        req.setAttribute("col", sort.getColumn());
+        req.setAttribute("perpage", sort.getPerpage());
+        req.setAttribute("page", sort.getPage());
+        req.setAttribute("amount", sort.getAmount());
+        req.setAttribute("numpage", sort.getNumberOfPages());
+        req.setAttribute("receipt",sort.getList());
         if (req.getParameter("receiptid") != null) {
             receiptid = Integer.parseInt(req.getParameter("receiptid"));
         }

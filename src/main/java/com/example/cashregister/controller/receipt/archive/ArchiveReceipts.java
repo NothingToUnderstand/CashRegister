@@ -1,7 +1,10 @@
 package com.example.cashregister.controller.receipt.archive;
 
-import com.example.cashregister.dao.ReceiptDao;
+import com.example.cashregister.Service.SortingAndPagination;
+import com.example.cashregister.dao.ArchiveReceiptDao;
+import com.example.cashregister.dao.impl.ArchiveReceiptDaoImpl;
 import com.example.cashregister.dao.impl.ReceiptDaoImpl;
+import com.example.cashregister.entity.Receipt;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -11,65 +14,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.example.cashregister.security.UserSession.getLoginedUser;
 @WebServlet("/archive/receipts")
 public class ArchiveReceipts extends HttpServlet {
     private static final Logger log = Logger.getLogger(ArchiveReceipts.class);
-    private final ReceiptDao receiptDao;
+    private final ArchiveReceiptDao dao;
 
     public ArchiveReceipts() {
-        this.receiptDao = new ReceiptDaoImpl();
+        this.dao = new ArchiveReceiptDaoImpl();
+
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("dir", "ASC");
-        req.setAttribute("page", 1);
-        req.setAttribute("perpage", 5);
-        req.setAttribute("col", "id");
+        SortingAndPagination sort= new SortingAndPagination(dao);
+        sort.setParams(
+                req.getParameter("col"),
+                req.getParameter("dir"),
+                req.getParameter("page"),
+                req.getParameter("perpage"));
 
-
-        String dir = (String) req.getAttribute("dir");
-        int page = (int) req.getAttribute("page");
-        int perpage = (int) req.getAttribute("perpage");
-        String col = (String) req.getAttribute("col");
-
-        if (req.getParameter("page") != null) {
-            page = Integer.parseInt(req.getParameter("page"));
-            req.setAttribute("page", page);
-
-        }
-        if (req.getParameter("perpage") != null) {
-            perpage = Integer.parseInt(req.getParameter("perpage"));
-            req.setAttribute("perpage", perpage);
-        }
-
-        if (req.getParameter("dir") != null) {
-            dir = req.getParameter("dir");
-            req.setAttribute("dir", changeDir(req.getParameter("dir")));
-        }
-        if (req.getParameter("col") != null) {
-            col = req.getParameter("col");
-            req.setAttribute("col", col);
-        }
-
-        int amount = receiptDao.countRowsArchive();
-        int limto = page * perpage;
-        int limfrom = limto - perpage;
-        int amountpages = amount / perpage;
-
-        req.setAttribute("receipt", receiptDao.getAllReceiptsFromArchive(col, dir, limfrom, limto));
-        req.setAttribute("numpage", amountpages);
-        req.setAttribute("amount", amount);
+        req.setAttribute("dir",changeDir(sort.getDir()));
+        req.setAttribute("col", sort.getColumn());
+        req.setAttribute("perpage", sort.getPerpage());
+        req.setAttribute("page", sort.getPage());
+        req.setAttribute("amount", sort.getAmount());
+        req.setAttribute("numpage", sort.getNumberOfPages());
+        req.setAttribute("receipt",sort.getList());
         getServletContext().getRequestDispatcher("/forAdmin/archivereceipts.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("search", receiptDao.getReceiptFromArchive(Integer.parseInt(req.getParameter("id"))));
+        req.setAttribute("search", dao.get(Integer.parseInt(req.getParameter("id"))));
         doGet(req, resp);
     }
-
     private String changeDir(String dir) {
         return dir.equals("ASC") ? "DESC" : "ASC";
     }

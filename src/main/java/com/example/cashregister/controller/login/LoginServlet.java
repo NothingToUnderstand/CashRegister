@@ -68,7 +68,7 @@ request.getSession().setAttribute("errormessage","You are already logged in");
             }
             UserSession.storeLoginedUser(request.getSession(), user);
             request.getSession().setAttribute("message","Welcome: "+user.getFullName());
-            response.sendRedirect("/acc/"+user.getRole());
+            response.sendRedirect("/acc");
         }
     }
 

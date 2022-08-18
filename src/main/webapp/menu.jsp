@@ -31,7 +31,7 @@
             src="https://www.iconpacks.net/icons/2/free-user-logout-icon-3056-thumb.png"
             width="30px" height="30px" alt="logout"
             title="Logout"/></a>
-    <a id="account" class="nav-link" href="${pageContext.request.contextPath}/acc/${loginedUser.getRole()}"><img
+    <a id="account" class="nav-link" href="${pageContext.request.contextPath}/acc"><img
             src="https://i.pinimg.com/originals/c7/ab/cd/c7abcd3ce378191a3dddfa4cdb2be46f.png" width="30px"
             height="30px" alt="account" title="Account"/></a>
     <a class="vl"></a>

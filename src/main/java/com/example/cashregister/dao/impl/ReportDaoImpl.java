@@ -105,7 +105,7 @@ public class ReportDaoImpl implements ReportDao {
      * @return report
      */
     @Override
-    public Report getReport(int id) {
+    public Report get(int id) {
         log.info("Get report with id: " + id);
         Report report = new Report();
         try (Connection con = getConnection();
@@ -135,7 +135,7 @@ public class ReportDaoImpl implements ReportDao {
     }
 
     @Override
-    public List<Report> getAllReports(String column, String direction, Integer limitfrom, Integer limitquantity) {
+    public ArrayList<Report> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) {
         String query = String.format(getProperty("get_all_reports"), column + " " + direction);
         ArrayList<Report> reports = new ArrayList<>();
         try (Connection con = getConnection();

@@ -70,10 +70,10 @@
         <tbody>
         <tr>
             <td>${receipt.getId()}</td>
-            <td>${receipt.getCachier_id()}</td>
-            <td>${receipt.getCachier_name()}</td>
-            <td>${receipt.getNumber_of_products()}</td>
-            <td>${receipt. getTotal_sum()}</td>
+            <td>${receipt.getCashierId()}</td>
+            <td>${receipt.getCashierName()}</td>
+            <td>${receipt.getNumberOfProducts()}</td>
+            <td>${receipt. getTotalSum()}</td>
             <td>${receipt.getOpenDate()}</td>
         </tr>
         </tbody>

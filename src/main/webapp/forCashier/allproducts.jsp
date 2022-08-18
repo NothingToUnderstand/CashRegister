@@ -13,7 +13,7 @@
 </header>
 <h2><fmt:message key="products"/>: </h2>
 <div class="btn-group" role="group">
-    <a class="btn btn-dark btn-sm" href="${pageContext.request.contextPath}/acc/cashier"><fmt:message key="back"/></a>
+    <a class="btn btn-dark btn-sm" href="${pageContext.request.contextPath}/acc"><fmt:message key="back"/></a>
     <select class="form-control-sm" size="1" name="java-navigator" onchange="top.location.href =
   this.options[this.selectedIndex].value;">
         <option selected disabled>№</option>
@@ -85,7 +85,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${products}" var="product">
+        <c:forEach items="${receipt}" var="product">
             <form method="post" action="/add/product">
                 <tr>
                     <input name="receiptId" value="${receiptid}" type="hidden" readonly/>

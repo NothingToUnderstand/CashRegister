@@ -55,7 +55,7 @@
         <tr>
             <td colspan="3">
                 <div class="btn-group btn-group-md" role="group">
-                    <a class="btn btn-secondary btn-block" href="${pageContext.request.contextPath}/acc/senior_cashier" ><fmt:message key="back"/> </a>
+                    <a class="btn btn-secondary btn-block" href="${pageContext.request.contextPath}/acc" ><fmt:message key="back"/> </a>
                 </div>
             </td>
         </tr>

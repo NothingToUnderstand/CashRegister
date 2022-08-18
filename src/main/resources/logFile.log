@@ -1963,3 +1963,32 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 2022-08-04 19:59:54 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
 2022-08-04 19:59:55 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
 2022-08-04 19:59:55 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-15 19:34:15 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:34:57 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:36:05 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:36:25 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:38:34 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:39:25 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:39:41 INFO  UserDaoImpl:105 - Get all users
+2022-08-16 13:26:20 INFO  ProductDaoImpl:170 - Get product with id: 1
+2022-08-16 13:26:21 INFO  ProductDaoImpl:189 - Product found
+2022-08-16 13:47:14 INFO  UserDaoImpl:197 - Get user with id: 16
+2022-08-16 13:47:15 INFO  UserDaoImpl:217 - User found
+2022-08-16 14:20:18 INFO  ProductDaoImpl:205 - Get product with name: book
+2022-08-16 14:20:19 INFO  ProductDaoImpl:224 - Product found
+2022-08-16 16:35:21 INFO  UserDaoImpl:282 - Get user with fullname: Tom Cat
+2022-08-16 16:35:22 ERROR UserDaoImpl:298 - Error during getting user
+java.sql.SQLException: Column 'role' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getString(ResultSetImpl.java:896)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getString(DelegatingResultSet.java:898)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getString(DelegatingResultSet.java:898)
+	at com.example.cashregister.dao.impl.UserDaoImpl.searchUser(UserDaoImpl.java:294)
+	at com.example.cashregister.App.main(App.java:11)
+2022-08-16 16:35:22 WARN  UserDaoImpl:304 - User not found
+2022-08-16 16:36:09 INFO  UserDaoImpl:282 - Get user with fullname: Tom Cat
+2022-08-16 16:36:10 INFO  UserDaoImpl:302 - User found

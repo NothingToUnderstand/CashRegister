@@ -26,7 +26,7 @@ public class CreateReport extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-       req.setAttribute("report",reportDao.getReport(Integer.parseInt(req.getParameter("id"))));
+       req.setAttribute("report",reportDao.get(Integer.parseInt(req.getParameter("id"))));
        getServletContext().getRequestDispatcher("/forSeniorCashier/createdreport.jsp").forward(req,resp);
     }
 

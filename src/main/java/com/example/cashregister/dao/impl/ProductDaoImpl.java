@@ -133,7 +133,7 @@ public class ProductDaoImpl implements ProductDao {
      * @return List<User> List of all users
      */
     @Override
-    public ArrayList<Product> getAllProducts(String column, String direction, Integer limitfrom, Integer limitquantity) {
+    public ArrayList<Product> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) {
         String query = String.format(getProperty("get_all_products"), column + " " + direction);
         ArrayList<Product> products = new ArrayList<>();
         try (Connection con = getConnection();
@@ -166,7 +166,7 @@ public class ProductDaoImpl implements ProductDao {
      * @return product
      */
     @Override
-    public Product getProduct(int id) {
+    public Product get(int id) {
         log.info("Get product with id: " + id);
         Product product = new Product();
         try (Connection con = getConnection();

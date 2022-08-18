@@ -41,7 +41,7 @@
         <tr>
             <td colspan="2">
                 <input class="btn btn-success" type="submit" value="<fmt:message key="submit"/>"/>
-                <a class="btn btn-danger" href="${pageContext.request.contextPath}/acc/commodity_expert"><fmt:message key="cancel"/></a>
+                <a class="btn btn-danger" href="${pageContext.request.contextPath}/acc"><fmt:message key="cancel"/></a>
             </td>
         </tr>
     </table>

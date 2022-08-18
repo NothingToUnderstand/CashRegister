@@ -32,10 +32,7 @@ public class SecurityFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         String uri= request.getRequestURI();
         String role = UserSession.getLoginedUser(request.getSession()).getRole();
-        if (role.equals("admin")) {
-            log.info("admin entered");
-            chain.doFilter(request, response);
-        } else if (SecurityConfig.getUrlPatternsForRole(role).contains(uri)) {
+        if (SecurityConfig.getUrlPatternsForRole(role).contains(uri)) {
             log.info(role+" entered and he can visit: "+uri);
             chain.doFilter(request, response);
         } else {

@@ -26,7 +26,7 @@ public class GetProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("Get product");
         request.setAttribute("user", UserSession.getLoginedUser(request.getSession()));
-        request.setAttribute("product", productDao.getProduct(Integer.parseInt(request.getParameter("id"))));
+        request.setAttribute("product", productDao.get(Integer.parseInt(request.getParameter("id"))));
         request.getSession().setAttribute("message","Getting product with id: "+request.getParameter("id"));
         getServletContext().getRequestDispatcher("/forCommodityExpert/infoproduct.jsp").forward(request,response);
     }

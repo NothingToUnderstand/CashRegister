@@ -22,19 +22,19 @@
         </tr>
         <tr>
             <td class="title"><fmt:message key="cahierid"/>:</td>
-            <td class="option">${receipt.getCachier_id()}</td>
+            <td class="option">${receipt.getCashierId()}</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="cahiername"/> :</td>
-            <td class="option">${receipt.getCachier_name()}</td>
+            <td class="option">${receipt.getCashierName()}</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="numberofproducts"/> :</td>
-            <td class="option">${receipt.getNumber_of_products()}</td>
+            <td class="option">${receipt.getNumberOfProducts()}</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="totalsum"/> :</td>
-            <td class="option">${receipt.getTotal_sum()}</td>
+            <td class="option">${receipt.getTotalSum()}</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="opened"/> :</td>
@@ -47,7 +47,7 @@
         <tr>
             <td colspan="3">
                 <div class="btn-group btn-group-md" role="group">
-                    <a class="btn btn-secondary btn-block" href="${pageContext.request.contextPath}/acc/${loginedUser.getRole()}" ><fmt:message key="back"/> </a>
+                    <a class="btn btn-secondary btn-block" href="${pageContext.request.contextPath}/acc" ><fmt:message key="back"/> </a>
                 </div>
             </td>
         </tr>

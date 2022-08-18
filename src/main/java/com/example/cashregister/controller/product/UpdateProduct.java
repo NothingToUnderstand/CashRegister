@@ -29,13 +29,13 @@ public class UpdateProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("doGet,update product");
+        req.setAttribute("product",productDao.get(Integer.parseInt(req.getParameter("id"))));
         getServletContext().getRequestDispatcher("/forCommodityExpert/updateproduct.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("doPost,update product");
-        System.out.println("~~~~~~"+req.getParameter("id"));
         if (productDao.updateProduct(
                 Integer.parseInt(req.getParameter("id")),
                 (String) req.getParameter("name"),

@@ -31,7 +31,7 @@ public class CreateProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Servlet doGet");
-        getServletContext().getRequestDispatcher("/product/createproduct.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/forCommodityExpert/createproduct.jsp").forward(req, resp);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class CreateProduct extends HttpServlet {
         if (id != 0) {
             log.info("Product created with id: " + id);
             req.getSession().setAttribute("message", "New product created with id: " + id);
-            resp.sendRedirect("/acc/commodity_expert");
+            resp.sendRedirect("/acc");
         } else {
             log.warn("Product wasn't created ");
             req.getSession().setAttribute("errormessage", "New product wasn't created");

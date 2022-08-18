@@ -31,6 +31,6 @@ public class CloseReceipt extends HttpServlet {
             log.warn("Receipt is not closed");
             req.getSession().setAttribute("errormessage","receipt with id "+req.getParameter("id")+" is not closed");
         }
-        resp.sendRedirect("/acc/cashier?id="+id);
+        resp.sendRedirect("/acc?id="+id);
     }
 }

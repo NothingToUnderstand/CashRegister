@@ -1,15 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="messages"/>
 <html>
 <head>
     <style>
         <%@include file="../css/styleForAccounts.css" %>
     </style>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <fmt:setLocale value="${sessionScope.lang}"/>
-    <fmt:setBundle basename="messages"/>
 </head>
 <body>
 
@@ -30,11 +30,6 @@
     <hr class="hl">
     <a href="${pageContext.request.contextPath}/archive/receipts"><fmt:message key="archivereceipts"/></a>
     <a href="${pageContext.request.contextPath}/all/reports"><fmt:message key="allreports"/></a>
-
-
-
-
-
 </div>
 
 <div class="main">
@@ -49,8 +44,8 @@
         <option class="ui-icon" value="?page=1&perpage=10">10</option>
     </select>
     <div class="form-inline" style="float: right;">
-        <form action="${pageContext.request.contextPath}/archive/receipts" method="post">
-            <input  style="width:120px;" class="form-control form-control-sm" type="text" placeholder="<fmt:message key="search"/>.." value="${id}" name="id">
+        <form action="${pageContext.request.contextPath}/acc" method="post">
+            <input style="width:120px;" class="form-control form-control-sm" type="text" placeholder="<fmt:message key="search"/>.." name="fullname">
             <button style="width:80px;" class="btn btn-primary btn-sm" type="submit"><fmt:message key="search"/></button>
         </form>
     </div>
@@ -67,15 +62,12 @@
             </thead>
             <tbody>
             <tr>
-                <c:forEach items="${users}" var="u" >
-            <tr>
-                <td>${u.getId()}</td>
-                <td>${u.getFullName()}</td>
-                <td>${u.getRole()}</td>
-                <td> <a class="btn btn-warning" href="${pageContext.request.contextPath}/update/user?id=${u.getId()}" ><fmt:message key="update"/></a></td>
-                <td> <a class="btn btn-danger" href="${pageContext.request.contextPath}/delete/user?id=${u.getId()}"><fmt:message key="delete"/></a></td>
+                <td>${search.getId()}</td>
+                <td>${search.getFullName()}</td>
+                <td>${search.getRole()}</td>
+                <td> <a class="btn btn-warning" href="${pageContext.request.contextPath}/update/user?id=${search.getId()}" ><fmt:message key="update"/></a></td>
+                <td> <a class="btn btn-danger" href="${pageContext.request.contextPath}/delete/user?id=${search.getId()}"><fmt:message key="delete"/></a></td>
             </tr>
-            </c:forEach>
             </tbody>
         </table>
     </c:if>
@@ -88,18 +80,18 @@
                 <th><fmt:message key="role"/></th>
                 <th><fmt:message key="update"/></th>
                 <th><fmt:message key="delete"/></th>
+            </tr>
             </thead>
             <tbody>
-            <tr>
-                <c:forEach items="${users}" var="u" >
-            <tr>
-                <td>${u.getId()}</td>
-                <td>${u.getFullName()}</td>
-                <td>${u.getRole()}</td>
-                <td> <a class="btn btn-warning" href="${pageContext.request.contextPath}/update/user?id=${u.getId()}" ><fmt:message key="update"/></a></td>
-                <td> <a class="btn btn-danger" href="${pageContext.request.contextPath}/delete/user?id=${u.getId()}"><fmt:message key="delete"/></a></td>
-            </tr>
-            </c:forEach>
+            <c:forEach items="${items}" var="u">
+                <tr>
+                    <td>${u.getId()}</td>
+                    <td>${u.getFullName()}</td>
+                    <td>${u.getRole()}</td>
+                    <td> <a class="btn btn-warning" href="${pageContext.request.contextPath}/update/user?id=${u.getId()}" ><fmt:message key="update"/></a></td>
+                    <td> <a class="btn btn-danger" href="${pageContext.request.contextPath}/delete/user?id=${u.getId()}"><fmt:message key="delete"/></a></td>
+                   </tr>
+                    </c:forEach>
             </tbody>
         </table>
         <nav aria-label="Page navigation example">

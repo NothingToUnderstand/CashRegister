@@ -1,9 +1,11 @@
 package com.example.cashregister.controller.report;
 
 
+import com.example.cashregister.Service.SortingAndPagination;
 import com.example.cashregister.dao.ReportDao;
 import com.example.cashregister.dao.impl.ProductDaoImpl;
 import com.example.cashregister.dao.impl.ReportDaoImpl;
+import com.example.cashregister.entity.Report;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -26,46 +28,20 @@ public class GetAllReports extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("Get all reports");
+        SortingAndPagination sort= new SortingAndPagination(reportDao);
+        sort.setParams(
+                req.getParameter("col"),
+                req.getParameter("dir"),
+                req.getParameter("page"),
+                req.getParameter("perpage"));
 
-        req.setAttribute("dir", "ASC");
-        req.setAttribute("page", 1);
-        req.setAttribute("perpage", 5);
-        req.setAttribute("col", "id");
-
-
-        String dir = (String) req.getAttribute("dir");
-        int page = (int) req.getAttribute("page");
-        int perpage = (int) req.getAttribute("perpage");
-        String col = (String) req.getAttribute("col");
-
-        if (req.getParameter("page") != null) {
-            page = Integer.parseInt(req.getParameter("page"));
-            req.setAttribute("page", page);
-
-        }
-        if (req.getParameter("perpage") != null) {
-            perpage = Integer.parseInt(req.getParameter("perpage"));
-            req.setAttribute("perpage", perpage);
-        }
-
-        if (req.getParameter("dir") != null) {
-            dir = req.getParameter("dir");
-            req.setAttribute("dir", changeDir(req.getParameter("dir")));
-        }
-        if (req.getParameter("col") != null) {
-            col = req.getParameter("col");
-            req.setAttribute("col", col);
-        }
-
-        int amount = reportDao.countRows();
-        int limto = page * perpage;
-        int limfrom = limto - perpage;
-        int amountpages = amount / perpage;
-
-        req.setAttribute("reports", reportDao.getAllReports(col, dir, limfrom, limto));
-        req.setAttribute("numpage", amountpages);
-        req.setAttribute("amount", amount);
+        req.setAttribute("dir",changeDir(sort.getDir()));
+        req.setAttribute("col", sort.getColumn());
+        req.setAttribute("perpage", sort.getPerpage());
+        req.setAttribute("page", sort.getPage());
+        req.setAttribute("amount", sort.getAmount());
+        req.setAttribute("numpage", sort.getNumberOfPages());
+        req.setAttribute("reports",sort.getList());
         if (req.getParameter("reportid") != null) {
             reportid = Integer.parseInt(req.getParameter("reportid"));
         }
@@ -80,7 +56,7 @@ public class GetAllReports extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("id") != null&&(String)req.getParameter("id") !="") {
-            req.setAttribute("search", reportDao.getReport(Integer.parseInt(req.getParameter("id"))));
+            req.setAttribute("search", reportDao.get(Integer.parseInt(req.getParameter("id"))));
         }
         doGet(req, resp);
     }

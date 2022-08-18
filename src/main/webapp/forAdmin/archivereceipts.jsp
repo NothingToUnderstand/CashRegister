@@ -46,10 +46,10 @@
         </thead>
         <tbody>
         <tr>
-            <td>${search.getCachier_id()}</td>
-            <td>${search.getCachier_name()}</td>
-            <td>${search.getNumber_of_products()}</td>
-            <td>${search.getTotal_sum()}</td>
+            <td>${search.getCashierId()}</td>
+            <td>${search.getCashierName()}</td>
+            <td>${search.getNumberOfPoducts()}</td>
+            <td>${search.getTotalSum()}</td>
             <td>${search.getOpenDate()}</td>
             <td>${search.getCloseDate()}</td>
             <td><a class="btn btn-info"
@@ -74,10 +74,10 @@
         <tbody>
         <c:forEach items="${receipt}" var="receipt">
             <tr>
-                <td>${receipt.getCachier_id()}</td>
-                <td>${receipt.getCachier_name()}</td>
-                <td>${receipt.getNumber_of_products()}</td>
-                <td>${receipt. getTotal_sum()}</td>
+                <td>${receipt.getCashierId()}</td>
+                <td>${receipt.getCashierName()}</td>
+                <td>${receipt.getNumberOfProducts()}</td>
+                <td>${receipt. getTotalSum()}</td>
                 <td>${receipt.getOpenDate()}</td>
                 <td>${receipt.getCloseDate()}</td>
                 <td><a class="btn btn-info"

@@ -35,7 +35,7 @@ public class CreateReceipt extends HttpServlet {
             log.warn("Receipt wasn't created ");
             req.getSession().setAttribute("errormessage", "New receipt wasn't created");
         }
-        resp.sendRedirect("/acc/cashier?id="+id);
+        resp.sendRedirect("/acc?id="+id);
     }
 
 }

@@ -1,15 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="messages"/>
 <html>
 <head>
     <style>
         <%@include file="../css/styleForAccounts.css" %>
     </style>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <fmt:setLocale value="${sessionScope.lang}"/>
-    <fmt:setBundle basename="messages"/>
 </head>
 <body>
 
@@ -39,7 +39,6 @@
 
 <div class="main">
     <b><fmt:message key="totalamount"/>: ${amount}</b>
-
     <select class="form-control-sm" size="1" name="java-navigator" onchange="top.location.href =
   this.options[this.selectedIndex].value;">
         <option selected disabled>№</option>
@@ -69,16 +68,19 @@
             </thead>
             <tbody>
             <tr>
-                <td>${search.getCashier_id()}</td>
-                <td>${search.getCashier_name()}</td>
-                <td>${search.getNumber_of_products()}</td>
-                <td>${search.getTotal_sum()}</td>
+                <td>${search.getCashierId()}</td>
+                <td>${search.getCashierName()}</td>
+                <td>${search.getNumberOfProducts()}</td>
+                <td>${search.getTotalSum()}</td>
                 <td>${search.getOpenDate()}</td>
                 <td>${search.getCloseDate()}</td>
                 <td><a class="btn btn-info"
                        href="${pageContext.request.contextPath}/info/receipt?id=${search.getId()}"><fmt:message key="info"/></a></td>
+                <c:if test="${search.getCloseDate()==null}">
+
                 <td><a class="btn btn-danger"
                        href="${pageContext.request.contextPath}/delete/receipt?id=${search.getId()}"><fmt:message key="delete"/></a></td>
+                </c:if>
             </tr>
             </tbody>
         </table>
@@ -98,18 +100,21 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${receipt}" var="receipt">
+            <c:forEach items="${items}" var="i">
                 <tr>
-                    <td>${receipt.getCashier_id()}</td>
-                    <td>${receipt.getCashier_name()}</td>
-                    <td>${receipt.getNumber_of_products()}</td>
-                    <td>${receipt. getTotal_sum()}</td>
-                    <td>${receipt.getOpenDate()}</td>
-                    <td>${receipt.getCloseDate()}</td>
+                    <td>${i.getCashierId()}</td>
+                    <td>${i.getCashierName()}</td>
+                    <td>${i.getNumberOfProducts()}</td>
+                    <td>${i. getTotalSum()}</td>
+                    <td>${i.getOpenDate()}</td>
+                    <td>${i.getCloseDate()}</td>
                     <td><a class="btn btn-info"
-                           href="${pageContext.request.contextPath}/info/receipt?id=${receipt.getId()}"><fmt:message key="info"/></a></td>
+                           href="${pageContext.request.contextPath}/info/receipt?id=${i.getId()}"><fmt:message key="info"/></a></td>
+                    <c:if test="${i.getCloseDate()==null}">
                     <td><a class="btn btn-danger"
-                           href="${pageContext.request.contextPath}/delete/receipt?id=${receipt.getId()}"><fmt:message key="delete"/></a></td>
+                           href="${pageContext.request.contextPath}/delete/receipt?id=${i.getId()}"><fmt:message key="delete"/></a></td>
+                    </c:if>
+
                 </tr>
             </c:forEach>
             </tbody>

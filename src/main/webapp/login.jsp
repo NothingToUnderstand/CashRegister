@@ -46,7 +46,7 @@
                              width="20px" height="20px"/></a>
 
 
-    <div id="captcha" class="g-recaptcha" data-sitekey="6LdAPwwhAAAAANIM60XreZO9B1YhhyeiXYWJL-qV"
+    <div id="captcha" class="g-recaptcha" data-sitekey="6LeafYQhAAAAADr5PgzznoTXh6D474PGwNyLaCN_"
          aria-required="true"></div>
     <label for="remember"><fmt:message key="rememberMe"/></label>
     <input id="remember" type="checkbox" value="remember-me" name="rememberMe"/>

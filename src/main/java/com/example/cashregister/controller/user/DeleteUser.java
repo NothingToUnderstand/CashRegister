@@ -28,12 +28,11 @@ public class DeleteUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (userDao.deleteUser(Integer.parseInt(request.getParameter("id")))) {
             log.info("user deleted successfully");
-            response.sendRedirect("/all/users");
+            request.getSession().setAttribute("message","User was removed");
         } else {
             log.warn("user wasn't deleted");
-            // TODO: 15.07.2022 how to show message delete true or false
-
+            request.getSession().setAttribute("message","User was not removed");
         }
-
+        response.sendRedirect("/acc");
     }
 }
