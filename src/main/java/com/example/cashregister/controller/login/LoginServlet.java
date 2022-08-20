@@ -13,6 +13,8 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.net.URLEncoder;
 
+import static com.example.cashregister.security.ValidateUser.validateUser;
+
 /**
  * Login servlet
  */
@@ -41,7 +43,7 @@ request.getSession().setAttribute("errormessage","You are already logged in");
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("doPost");
-        User user = userDao.validate(request.getParameter("fullname"), request.getParameter("password"));
+        User user= validateUser(request.getParameter("fullname"), request.getParameter("password"));
         if (user.getId() == 0) {
             log.warn("user id is 0");
             request.getSession().setAttribute("errormessage","User fullname or password are invalid");

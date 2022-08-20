@@ -16,30 +16,33 @@
 </header>
 <h2><b><fmt:message key="productupdate"/> </b></h2>
 <form method="POST" action="${pageContext.request.contextPath}/update/product" enctype="multipart/form-data">
-    <table style="width: 50%" class="table">
+    <table style="width: 30%" class="table">
         <tr>
             <td class="title">ID:</td>
-            <td class="option"><input  name="id" value="${product.getId()}" readonly /></td>
+            <td ><input class="read"  name="id" value="${product.getId()}" readonly /></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="name"/> :</td>
-            <td class="option"><input type="text" name="name" value="${product.getName()}" readonly/></td>
+            <td ><input class="read" type="text" name="name" value="${product.getName()}" readonly/></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="quantity"/> :</td>
-            <td class="option"><input type="text" name="quantity" value="${product.getQuantity()}" required pattern="^[0-9]+$"/></td>
+            <td ><input type="text" name="quantity" value="${product.getQuantity()}" required pattern="^[0-9]+$"/></td>
+            <td>1</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="weight"/> :</td>
-            <td  class="option"><input type="text" name="weight" value="${product.getWeight()}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
+            <td  ><input type="text" name="weight" value="${product.getWeight()}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
+        <td>1.1</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="price"/> :</td>
-            <td class="option"><input type="text" name="price" value="${product.getPrice()}" readonly/></td>
+            <td ><input  type="text" name="price" value="${product.getPrice()}"/></td>
+            <td>1.1</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="image"/> :</td>
-            <td class="option"><input type="file" name="img"  size="2" required  placeholder="Product img" title="Product img"/></td>
+            <td ><input type="file" name="img" value="${product.getImgbase64()}" size="2" required  placeholder="Product img" title="Product img"/></td>
         </tr>
         <tr>
             <td colspan="2">

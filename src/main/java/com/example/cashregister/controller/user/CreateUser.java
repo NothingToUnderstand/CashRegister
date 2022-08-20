@@ -5,6 +5,7 @@ import com.example.cashregister.security.UserSession;
 import com.example.cashregister.dao.UserDao;
 import com.example.cashregister.dao.impl.UserDaoImpl;
 import org.apache.log4j.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.example.cashregister.security.PasswordEncryptionService.generateSalt;
+import static com.example.cashregister.security.PasswordEncryptionService.getEncryptedPassword;
 import static com.example.cashregister.security.UserSession.getLoginedUser;
 
 /**
@@ -23,7 +26,7 @@ public class CreateUser extends HttpServlet {
     private final UserDao userDao;
 
     public CreateUser() {
-        this.userDao=new UserDaoImpl();
+        this.userDao = new UserDaoImpl();
     }
 
     @Override
@@ -43,18 +46,20 @@ public class CreateUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         log.info("doPost");
-
-        int id = userDao.createUser((String) req.getParameter("firstname"),
-                (String) req.getParameter("lastname"),
-                (String) req.getParameter("password"),
+        byte[] salt = generateSalt();
+        byte[] password = getEncryptedPassword(req.getParameter("password"), salt);
+        int id = userDao.createUser(
+                req.getParameter("firstname"),
+                req.getParameter("lastname"),
+                password, salt,
                 Integer.parseInt(req.getParameter("roleid")));
         if (id != 0) {
             log.info("User was created with id: " + id);
-            req.getSession().setAttribute("message","User was created");
+            req.getSession().setAttribute("message", "User was created");
 
         } else {
             log.warn("user wasn't created");
-            req.getSession().setAttribute("errormessage","User was not created");
+            req.getSession().setAttribute("errormessage", "User was not created");
         }
         resp.sendRedirect("/login");
     }

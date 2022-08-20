@@ -12,11 +12,13 @@
 <%
     Cookie[] cookies = request.getCookies();
     String fullName = "";
+
     if (cookies != null) {
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("cookname")) {
                 fullName = cookie.getValue();
             }
+
         }
     }
 %>
@@ -30,7 +32,7 @@
     <jsp:include page="/menu.jsp"></jsp:include>
 </header>
 
-
+<p><%=pass%></p>
 <form class="form-signin" id="form-login" method="POST" action="${pageContext.request.contextPath}/login">
     <img class="mb-4"
          src="https://png.pngtree.com/png-vector/20191004/ourlarge/pngtree-cash-register-icon-png-image_1788618.jpg"
@@ -41,7 +43,7 @@
     <input type="text" id="inputUserName" placeholder="<fmt:message key="userfullname"/>" autofocus name="fullname"
            value="<%=fullName.replace("+"," ")%>" required>
 
-    <input type="password" name="password" id="password-input" placeholder="<fmt:message key="userpassword"/>" required>
+    <input type="password"  name="password" id="password-input" placeholder="<fmt:message key="userpassword"/>" required>
     <a onclick="lock()"><img alt="show password" id="img" src="https://cdn-icons-png.flaticon.com/512/61/61457.png"
                              width="20px" height="20px"/></a>
 
@@ -58,7 +60,7 @@
 <p >Bob Bobchinski - Qqwe123 -cashier</p>
 <p>Jack Nikson - Qqwe123 -commodity_expert</p>
 <p>David Murchanski - Qqwe123 -senior_cashier</p>
-<p>Tom Cat - Qqwe123 -admin</p>
+<p>Viktor Lysak - Qqwe123 -admin</p>
 
 <script>
     <%@include file="script.js" %>

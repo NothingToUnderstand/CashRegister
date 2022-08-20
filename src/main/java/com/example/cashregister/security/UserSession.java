@@ -23,7 +23,7 @@ public class UserSession {
         User loginedUser = (User) session.getAttribute("loginedUser");
        if(loginedUser==null){
            log.warn("there is no user in session");
-           loginedUser=new User(0,null,null,null,null,"unknown");
+           loginedUser=new User(0,null,null,null,null,null,"unknown");
        }else{
            log.info("user in session is found");
        }

@@ -24,7 +24,6 @@
     <hr class="hl">
     <p>${user.getFullName()}</p>
     <p>Id: ${user.getId()}</p>
-    <p><fmt:message key="userpassword"/>: ${user.getPassword()}</p>
     <hr class="hl">
     <a href="${pageContext.request.contextPath}/update/user?id=${user.getId()}"><fmt:message key="updateuser"/></a>
     <hr class="hl">
@@ -65,6 +64,7 @@
             <th><fmt:message key="numberofproducts"/></th>
             <th><fmt:message key="totalsum"/></th>
             <th><fmt:message key="opened"/></th>
+            <th><fmt:message key="info"/></th>
         </tr>
         </thead>
         <tbody>
@@ -75,7 +75,8 @@
             <td>${receipt.getNumberOfProducts()}</td>
             <td>${receipt. getTotalSum()}</td>
             <td>${receipt.getOpenDate()}</td>
-        </tr>
+            <td><a class="btn btn-info"
+                   href="${pageContext.request.contextPath}/info/receipt?id=${receipt.getId()}"><fmt:message key="info"/></a></td>        </tr>
         </tbody>
     </table>
 

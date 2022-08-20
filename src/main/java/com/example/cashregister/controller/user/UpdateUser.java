@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.example.cashregister.security.PasswordEncryptionService.getEncryptedPassword;
 import static com.example.cashregister.security.UserSession.getLoginedUser;
 import static com.example.cashregister.security.UserSession.storeLoginedUser;
 
@@ -33,7 +34,7 @@ public class UpdateUser extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = getLoginedUser(req.getSession());
         int id = Integer.parseInt(req.getParameter("id"));
-        if (id != user.getId()&&!user.getRole().equals("admin")) {
+        if (id != user.getId() && !user.getRole().equals("admin")) {
             resp.sendRedirect("/");
             req.getSession().setAttribute("errormessage", "you can`t change another user");
             return;
@@ -46,11 +47,11 @@ public class UpdateUser extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = getLoginedUser(req.getSession());
         int id = Integer.parseInt(req.getParameter("id"));
-
+        byte[] password =getEncryptedPassword(req.getParameter("password"),userDao.get(id).getSole());
         if (userDao.updateUser(id,
                 req.getParameter("firstname"),
                 req.getParameter("lastname"),
-                req.getParameter("password"),
+                password,
                 req.getParameter("roleid"))) {
             log.info("user was updated");
             req.getSession().setAttribute("message", "user was updated");

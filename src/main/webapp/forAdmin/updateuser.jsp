@@ -19,27 +19,32 @@
     <table  style=" width: 30%" class="table">
         <tr>
             <td class="title">ID:</td>
-            <td><input name="id" value="${user.getId()}" readonly/></td>
+            <td><input class="read" name="id" value="${user.getId()}" readonly/></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="firstname"/></td>
             <td><input type="text" name="firstname" value="${user.getFirstName()}" required
                        pattern="^[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
+            <td>Aaa</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="lastname"/></td>
             <td><input type="text" name="lastname" value="${user.getLastName()}" required
                        pattern="^[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
+            <td>Aaa</td>
+
         </tr>
         <tr>
             <td class="title"><fmt:message key="password"/></td>
             <td>
-                <input type="password" id="password-input" name="password" value="${user.getPassword()}" required
+                <input type="password" id="password-input" name="password"  required
                        pattern="[A-ZА-ЯЁ]{1,}[A-Za-zА-Яа-яЁё]{3,}[0-9]{3,}"/>
                 <a onclick="lock()"><img alt="show password" id="img"
                                          src="https://cdn-icons-png.flaticon.com/512/61/61457.png" width="20px"
                                          height="20px"/></a>
             </td>
+            <td>Aaaa123</td>
+
         </tr>
         <c:if test="${user.getRole()=='admin'}">
             <tr>
@@ -54,7 +59,7 @@
         </c:if>
         <c:if test="${user.getRole()!='admin'}">
             <td class="title"><fmt:message key="role"/> :</td>
-            <td><input name="roleid" value="<fmt:message key="${user.getRole()}"/>" readonly/></td>
+            <td><input class="read" name="roleid" value="<fmt:message key="${user.getRole()}"/>" readonly/></td>
         </c:if>
         <tr>
             <td colspan="2">

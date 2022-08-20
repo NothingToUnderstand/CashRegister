@@ -9,19 +9,21 @@ public class User {
     private String firstName;
     private String lastName;
     private String fullName;
-    private String password;
+    private byte[] password;
     private String role;
+    private byte[] sole;
 
      public User() {
         this.id=0;
     }
-    public User(int id,String firstName,String lastname,String fullName, String password,String role) {
+    public User(int id,String firstName,String lastname,String fullName, byte[] password,byte[] sole,String role) {
         this.id = id;
         this.fullName = fullName;
         this.password = password;
         this.role=role;
         this.firstName=firstName;
         this.lastName=lastname;
+        this.sole=sole;
     }
 
 
@@ -39,12 +41,16 @@ public class User {
         return fullName;
     }
 
-    public String getPassword() {
+    public byte[] getPassword() {
         return password;
     }
 
     public String getRole() {
         return this.role;
+    }
+
+    public byte[] getSole() {
+        return sole;
     }
 
     @Override

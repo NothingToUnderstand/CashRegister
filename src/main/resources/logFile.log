@@ -1992,3 +1992,56 @@ java.sql.SQLException: Column 'role' not found.
 2022-08-16 16:35:22 WARN  UserDaoImpl:304 - User not found
 2022-08-16 16:36:09 INFO  UserDaoImpl:282 - Get user with fullname: Tom Cat
 2022-08-16 16:36:10 INFO  UserDaoImpl:302 - User found
+2022-08-19 19:11:28 INFO  UserDaoImpl:73 - Add user to DB: Viktor Lysak [B@67b6d4ae
+2022-08-19 19:11:31 ERROR UserDaoImpl:88 - Error during user creation
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'password' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.UserDaoImpl.createUser(UserDaoImpl.java:81)
+	at com.example.cashregister.App.main(App.java:22)
+2022-08-19 19:11:31 WARN  UserDaoImpl:95 - User not added
+2022-08-19 19:13:22 INFO  UserDaoImpl:73 - Add user to DB: Viktor Lysak
+2022-08-19 19:13:24 INFO  UserDaoImpl:92 - User added successfully
+2022-08-19 19:13:24 INFO  UserDaoImpl:235 - Set role with id:4 for user with id: 19
+2022-08-19 19:13:24 INFO  UserDaoImpl:247 - User role established successfully
+2022-08-19 19:15:01 INFO  UserDaoImpl:34 - Validation for user: Viktor Lysak with password: Qwe123
+2022-08-19 19:15:04 WARN  UserDaoImpl:57 - User is not valid
+2022-08-19 19:27:04 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lysak
+2022-08-19 19:27:06 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:28:38 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lysak
+2022-08-19 19:28:40 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:40:59 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lysak
+2022-08-19 19:41:00 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:41:00 INFO  UserDaoImpl:170 - Update user with id: 19
+2022-08-19 19:41:00 INFO  UserDaoImpl:325 - Update role for user with id: 19
+2022-08-19 19:41:00 INFO  UserDaoImpl:337 - Role updated for user with id:19
+2022-08-19 19:41:00 INFO  UserDaoImpl:185 - User update is successfully
+2022-08-19 19:41:00 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lys
+2022-08-19 19:41:00 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:41:39 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lys
+2022-08-19 19:41:40 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:42:58 INFO  UserDaoImpl:200 - Get user with id: 19
+2022-08-19 19:42:59 ERROR UserDaoImpl:217 - Error during getting user
+java.sql.SQLException: Column 'sole' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getBytes(ResultSetImpl.java:736)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getBytes(DelegatingResultSet.java:408)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getBytes(DelegatingResultSet.java:408)
+	at com.example.cashregister.dao.impl.UserDaoImpl.get(UserDaoImpl.java:213)
+	at com.example.cashregister.App.main(App.java:24)
+2022-08-19 19:42:59 WARN  UserDaoImpl:223 - User not found
+2022-08-19 19:43:43 INFO  UserDaoImpl:200 - Get user with id: 19
+2022-08-19 19:43:44 INFO  UserDaoImpl:221 - User found
+2022-08-19 19:44:43 INFO  UserDaoImpl:107 - Get all users
+2022-08-19 19:53:35 INFO  UserDaoImpl:248 - Get user with fullname: Viktor Lys
+2022-08-19 19:53:36 INFO  UserDaoImpl:269 - User found

@@ -1,5 +1,6 @@
 package com.example.cashregister.connection;
 
+import com.example.cashregister.connection.notused.ManagerDB;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
@@ -10,9 +11,18 @@ import static com.example.cashregister.property.Properties.getProperty;
  * connection pool for this project
  * */
 public class ApacheConPool{
-    private final static BasicDataSource dataSource=new BasicDataSource();
+    private static BasicDataSource dataSource;
     private ApacheConPool(){}
-    static {
+
+    //Singleton
+    public static Connection getConnection() throws SQLException {
+        if (dataSource == null) {
+            dataSource = new BasicDataSource();
+        }
+        init();
+        return  dataSource.getConnection();
+    }
+    private static void  init() {
         dataSource.setUrl(getProperty("url"));
         dataSource.setUsername(getProperty("username"));
         dataSource.setPassword(getProperty("password"));
@@ -21,8 +31,5 @@ public class ApacheConPool{
         dataSource.setMaxIdle(10);
         dataSource.setMaxTotal(15);
     }
-
-    public static Connection getConnection() throws SQLException {
-         return  dataSource.getConnection();
-    }
 }
+

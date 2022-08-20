@@ -17,22 +17,26 @@
 <h2><b><fmt:message key="createproduct"/>: </b></h2>
 <br>
 <form   method="POST" action="${pageContext.request.contextPath}/create/product" enctype="multipart/form-data">
-    <table   class="table">
+    <table style="width:30%;" class="table">
         <tr>
             <td class="title"><fmt:message key="name"/></td>
             <td><input type="text" name="name" value="${product.name}"  required pattern="[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
+            <td>Aaa</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="quantity"/></td>
             <td><input type="number" name="quantity" value="${product.quantity}" required pattern="^[0-9]+$"/></td>
+            <td>1</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="weight"/></td>
             <td><input type="text" name="weight" value="${product.weight}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
+            <td>1.1</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="price"/></td>
             <td><input type="text" name="price" value="${product.price}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
+            <td>1.1</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="image"/></td>

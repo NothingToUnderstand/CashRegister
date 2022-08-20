@@ -20,6 +20,7 @@ public class LocaleFilter implements Filter {
         final HttpServletRequest request= (HttpServletRequest) servletRequest;
         final HttpServletResponse response=(HttpServletResponse) servletResponse;
         HttpSession session =request.getSession();
+
         if(request.getParameter("lang")!=null){
             request.getSession().setAttribute("lang",request.getParameter("lang"));
         }
@@ -31,6 +32,7 @@ public class LocaleFilter implements Filter {
         } else {
             session.setAttribute("lang","en");
         }
+
         filterChain.doFilter(request,response);
     }
 }

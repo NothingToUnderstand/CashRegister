@@ -5,9 +5,8 @@ import com.example.cashregister.entity.User;
 import java.util.List;
 
 public interface UserDao extends MainDao<User> {
-    User validate(String fullName, String pass);
-     int createUser(String firstName, String lastName, String password, int roleId);
+     int createUser(String firstName, String lastName, byte[] password,byte[] sole, int roleId);
     boolean deleteUser(int id);
-    boolean updateUser(int id, String firstName, String lastName, String pass, String role);
+    boolean updateUser(int id, String firstName, String lastName, byte[] pass, String role);
     User searchUser(String name);
 }

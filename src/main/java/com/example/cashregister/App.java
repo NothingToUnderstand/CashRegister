@@ -1,13 +1,14 @@
 package com.example.cashregister;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
-import com.example.cashregister.Service.SortingAndPagination;
-import com.example.cashregister.dao.abstractFactory.DaoAbstractFactoryImpl;
-import com.example.cashregister.dao.impl.ProductDaoImpl;
-import com.example.cashregister.dao.impl.UserDaoImpl;
+import static com.example.cashregister.security.ValidateUser.validateUser;
 
 public class App {
-    public static void main(String[] args)  {
-        System.out.println(new DaoAbstractFactoryImpl().createUserDao().searchUser("Tom Cat"));
+    public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        String pass= "Qwe1234";
+        System.out.println(validateUser("Viktor Lys",pass));
     }
-}
+
+    }

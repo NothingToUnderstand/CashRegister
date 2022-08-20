@@ -23,6 +23,7 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         log.info("LogOut");
         request.setAttribute("message","See you later");
+        request.setAttribute("lang","en");
         request.getSession().invalidate();
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }

@@ -21,43 +21,6 @@ import static com.example.cashregister.property.Properties.getProperty;
  */
 public class UserDaoImpl implements UserDao {
     private static final Logger log = Logger.getLogger(UserDaoImpl.class);
-
-    /**
-     * method for validating a user at login
-     *
-     * @param fullName user's full name
-     * @param pass     password
-     * @return user
-     */
-    @Override
-    public  User validate(String fullName, String pass) {
-        log.info("Validation for user: " + fullName + " with password: " + pass);
-        User user = new User();
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(getProperty("get_valid_user"))) {
-            ps.setString(1, fullName);
-            ps.setString(2, pass);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                 user = new User(rs.getInt("id"),
-                        rs.getString("first_name"),
-                        rs.getString("last_name"),
-                        rs.getString("full_name"),
-                        rs.getString("password"),
-                        rs.getString("role_name"));
-            }
-        } catch (SQLException  e) {
-            log.error("Error during user validation", e);
-            e.printStackTrace();
-        }
-        if (user.getId()!=0) {
-            log.info("User validation is successfully");
-        } else {
-            log.warn("User is not valid");
-        }
-        return user;
-    }
-
     /**
      * method adds new user and sets user's role
      *
@@ -68,14 +31,15 @@ public class UserDaoImpl implements UserDao {
      * @return int new user's id
      */
     @Override
-    public  int createUser(String firstName, String lastName, String password, int roleId) {
-        log.info("Add user to DB: " + firstName + " " + lastName + " " + password);
+    public  int createUser(String firstName, String lastName, byte[] password,byte[] sole, int roleId) {
+        log.info("Add user to DB: " + firstName + " " + lastName);
         int id = 0;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("create_user"), PreparedStatement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, firstName);
             ps.setString(2, lastName);
-            ps.setString(3, password);
+            ps.setBytes(3, password);
+            ps.setBytes(4, sole);
             ps.executeUpdate();
             ResultSet generatedKey = ps.getGeneratedKeys();
             if (generatedKey.next()) {
@@ -115,7 +79,8 @@ public class UserDaoImpl implements UserDao {
                         rs.getString("first_name"),
                         rs.getString("last_name"),
                         rs.getString("full_name"),
-                        rs.getString("password"),
+                        rs.getBytes("password"),
+                        rs.getBytes("sole"),
                         rs.getString("role_name"));
                 users.add(user);
             }
@@ -163,14 +128,14 @@ public class UserDaoImpl implements UserDao {
      * @return boolean status
      */
     @Override
-    public  boolean updateUser(int id, String firstName, String lastName, String pass, String role) {
+    public  boolean updateUser(int id, String firstName, String lastName, byte[] pass, String role) {
         log.info("Update user with id: " + id);
         boolean status = false;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("update_user"))) {
             ps.setString(1, firstName);
             ps.setString(2, lastName);
-            ps.setString(3, pass);
+            ps.setBytes(3, pass);
             ps.setInt(4, id);
             status = ps.executeUpdate() == 1;
         } catch (SQLException  e) {
@@ -206,7 +171,8 @@ public class UserDaoImpl implements UserDao {
                         rs.getString("first_name"),
                         rs.getString("last_name"),
                         rs.getString("full_name"),
-                        rs.getString("password"),
+                        rs.getBytes("password"),
+                        rs.getBytes("sole"),
                         rs.getString("role_name"));
             }
         } catch (SQLException e) {
@@ -290,7 +256,8 @@ public class UserDaoImpl implements UserDao {
                         rs.getString("first_name"),
                         rs.getString("last_name"),
                         rs.getString("full_name"),
-                        rs.getString("password"),
+                        rs.getBytes("password"),
+                        rs.getBytes("sole"),
                         rs.getString("role_name"));
 
             }

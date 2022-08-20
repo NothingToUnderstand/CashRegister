@@ -48,7 +48,7 @@
         <td colspan="3">
             <div class="btn-group btn-group-md" role="group">
             <a class="btn btn-secondary btn-block" href="${pageContext.request.contextPath}/acc" ><fmt:message key="back"/> </a>
-                <c:if test="${receipt.getCloseDate()==null}">
+                <c:if test="${receipt.getCloseDate()==null && loginedUser.getRole()=='senior_cashier'}">
 
                 <a class="btn btn-danger" href="${pageContext.request.contextPath}/delete/receipt?id=${receipt.getId()}"><fmt:message key="delete"/> </a>
                 </c:if>
@@ -67,28 +67,34 @@
                     <th><fmt:message key="image"/></th>
                     <th><fmt:message key="name"/></th>
                     <th><fmt:message key="quantityatreceipt"/></th>
+                    <c:if test="${receipt.getCloseDate()==null && loginedUser.getRole()=='senior_cashier'}">
                     <th><fmt:message key="quantity"/></th>
+                    </c:if>
                     <th><fmt:message key="info"/></th>
+                    <c:if test="${receipt.getCloseDate()==null && loginedUser.getRole()=='senior_cashier'}">
                     <th><fmt:message key="delete"/></th>
+                    </c:if>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${receipt.getProductsInReceipt()}" var="product">
                     <form method="post" action="/cancel/product">
-                        <input name="receiptid" value="${receipt.getId()}" type="hidden" readonly/>
+                        <input class="read" name="receiptid" value="${receipt.getId()}" type="hidden" readonly/>
                     <tr>
-                        <td><input name="productid" value="${product.getId()}" style="width: 40px" readonly></td>
-                        <td><input name="number" value="${product.getNumberInReceipt()}" style="width: 40px" readonly></td>
+                        <td><input class="read" name="productid" value="${product.getId()}" style="width: 40px" readonly></td>
+                        <td><input class="read" name="number" value="${product.getNumberInReceipt()}" style="width: 40px" readonly></td>
                         <td><img alt="product image" src="data:image/jpg;base64, ${product.getImgbase64()}" title="product image" style="height:30px;width: 30px;"></td>
                         <td>${product.getName()}</td>
-                        <td><input name="atdb" value="${product.getQuantity()}" style="width: 40px" readonly/></td>
+
+                        <td><input class="read" name="atdb" value="${product.getQuantity()}" style="width: 40px" readonly/></td>
+                        <c:if test="${receipt.getCloseDate()==null && loginedUser.getRole()=='senior_cashier'}">
                         <td><input name="quantity" value="1" type="number"
                                    max="${product.getQuantity()}" min="1" onkeypress="return false" style="width: 50px">
                         </td>
-
+                        </c:if>
                         <td><a class="btn btn-info"
                                href="${pageContext.request.contextPath}/info/product?id=${product.getId()}"><fmt:message key="info"/></a></td>
-                        <c:if test="${receipt.getCloseDate()==null}">
+                        <c:if test="${receipt.getCloseDate()==null && loginedUser.getRole()=='senior_cashier'}">
                            <td> <button class="btn btn-danger"
                                     type="submit"><fmt:message
                                     key="delete"/></button></td>

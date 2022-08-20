@@ -6,12 +6,6 @@ import java.util.*;
  * Configuration that describes links that can be visited by each role
  */
 public class SecurityConfig {
-    private final static String CASHIER = "cashier";
-    private final static String SENIOR_CASHIER = "senior_cashier";
-    private final static String COMMODITY_EXPERT = "commodity_expert";
-    private final static String UNKNOWN = "unknown";
-    private final static String ADMIN = "admin";
-
 
     private static final Map<String, List<String>> mapConfig = new HashMap<String, List<String>>();
 
@@ -32,7 +26,7 @@ public class SecurityConfig {
         urlPatterns0.add("/archive/receipts");
         urlPatterns0.add("/info/archive/receipt");
 
-        mapConfig.put(ADMIN, urlPatterns0);
+        mapConfig.put(Roles.ADMIN.getName(), urlPatterns0);
 
 
         List<String> urlPatterns1 = new ArrayList<String>();
@@ -48,8 +42,10 @@ public class SecurityConfig {
         urlPatterns1.add("/create/receipt");
         urlPatterns1.add("/add/product");
         urlPatterns1.add("/close/receipt");
+        urlPatterns1.add("/info/receipt");
 
-        mapConfig.put(CASHIER, urlPatterns1);
+
+        mapConfig.put(Roles.CASHIER.getName(), urlPatterns1);
 
         List<String> urlPatterns2 = new ArrayList<String>();
         urlPatterns2.add("/login");
@@ -68,7 +64,7 @@ public class SecurityConfig {
 
 
         urlPatterns2.add("/favicon.ico");
-        mapConfig.put(SENIOR_CASHIER, urlPatterns2);
+        mapConfig.put(Roles.SENIOR_CASHIER.getName(), urlPatterns2);
 
         List<String> urlPatterns3 = new ArrayList<String>();
         urlPatterns3.add("/login");
@@ -82,7 +78,7 @@ public class SecurityConfig {
         urlPatterns3.add("/update/user");
         urlPatterns3.add("/acc");
         urlPatterns3.add("/favicon.ico");
-        mapConfig.put(COMMODITY_EXPERT, urlPatterns3);
+        mapConfig.put(Roles.COMMODITY_EXPERT.getName(), urlPatterns3);
 
         List<String> urlPatterns4 = new ArrayList<String>();
         urlPatterns4.add("/login");
@@ -91,7 +87,7 @@ public class SecurityConfig {
         urlPatterns4.add("/");
         urlPatterns4.add("/favicon.ico");
 
-        mapConfig.put(UNKNOWN, urlPatterns4);
+        mapConfig.put(Roles.UNKNOWN.getName(), urlPatterns4);
 
     }
     public static List<String> getUrlPatternsForRole(String role) {

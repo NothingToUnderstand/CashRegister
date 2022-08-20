@@ -20,10 +20,12 @@
         <tr>
             <td class="title"><fmt:message key="firstname"/></td>
             <td ><input type="text" name="firstname" value="${firstname}" required pattern="^[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
+            <td>Aaa</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="lastname"/></td>
             <td ><input type="text" name="lastname" value="${lastname}" required pattern="^[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
+            <td>Aaa</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="password"/></td>
@@ -31,15 +33,16 @@
                 <input type="password" id="password-input" name="password"  required pattern="[A-ZА-ЯЁ]{1,}[A-Za-zА-Яа-яЁё]{3,}[0-9]{3,}"/>
                 <a onclick="lock()"><img alt="show password" id="img" src="https://cdn-icons-png.flaticon.com/512/61/61457.png" width="20px" height="20px" /></a>
             </td>
+            <td>Aaaa123</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="role"/>:</td>
             <td>
                 <select name="roleid" size="1" required>
-                    <option value="1"><fmt:message key="cashier"/></option>
+                    <option value="1" selected><fmt:message key="cashier"/></option>
                     <option value="2"><fmt:message key="senior_cashier"/></option>
                     <option value="3"><fmt:message key="commodity_expert"/></option>
-                    <option value="4"  selected><fmt:message key="admin"/></option>
+                    <option value="4"  ><fmt:message key="admin"/></option>
                 </select>
             </td>
         </tr>
