@@ -1,0 +1,163 @@
+/*!*menu*!*/
+.hide {
+    display: none !important;
+}
+
+.topnav {
+    position: sticky;
+    background-color: rgba(96, 153, 239, 0.85);
+    overflow: hidden;
+    z-index: 10;
+    height: 50px;
+}
+
+.topnav > a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    text-decoration: none;
+    font-size: 15px;
+
+}
+
+.topnav a:hover{
+    background-color: rgba(255, 251, 9, 0.8);
+    color: black;
+}
+
+.topnav-right a{
+    float: right;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+padding-bottom: 12px;
+
+}
+
+.center > span {
+    float: left;
+    background-color: rgba(96, 153, 239, 0.85);
+    text-align: center;
+    font-size: 20px;
+    margin-left: 15%;
+    margin-top: 10px;
+
+}
+
+.vl {
+    border-left: 2px solid black;
+    height: 55px;
+}
+
+/*login*/
+#form-login {
+    margin-top: 90px;
+}
+
+#captcha {
+    margin: 10px auto;
+    width: 300px;
+}
+
+/* Style the tab */
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: rgba(245, 245, 53, 0.43);
+    width: 12.2%;
+    height: 100%;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: rgba(96, 153, 239, 0.85);
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: rgba(0, 0, 255, 0.65);
+}
+
+/* Style the tab content */
+.tabcontent{
+
+    float: left;
+    padding: 0px 12px;
+    width: 85%;
+    border-left: none;
+    height: 100%;
+    font-size: 20px;
+
+}
+.hor{
+    margin-top:10%
+}
+
+.wrapper{
+    perspective: 2000px;
+    width: 220px;
+    height: 220px;
+    position: relative;
+    margin-left: 40%;
+}
+.front{
+  background-color: rgba(245, 245, 53, 0.43);
+    border-radius: 50%;
+}
+.back{
+    transform: rotateY(180deg);
+    background-color: rgba(0, 0, 255, 0.65);
+    border-radius: 50%;
+}
+.front, .back{
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.front{
+    animation: front-rotation 5s infinite;
+}
+.back{
+    animation: back-rotation 5s infinite;
+}
+
+@keyframes front-rotation{
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+@keyframes back-rotation{
+    from {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: rotateY(540deg);
+    }
+}

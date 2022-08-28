@@ -5,22 +5,43 @@ import com.example.cashregister.dao.UserDao;
 import com.example.cashregister.entity.User;
 import org.apache.log4j.Logger;
 
+import javax.enterprise.context.RequestScoped;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.cashregister.connection.ApacheConPool.getConnection;
-import static com.example.cashregister.property.Properties.getProperty;
+import static com.example.cashregister.Service.extra.Properties.getProperty;
 
 
 /**
  * DAO layer for program interaction with the user table in the database
  */
+@RequestScoped
 public class UserDaoImpl implements UserDao {
     private static final Logger log = Logger.getLogger(UserDaoImpl.class);
+
+    @Override
+    public boolean updatePasswordByEmail(int id, byte[] password) throws SQLException {
+        log.info("Update user password with id: " + id);
+        boolean status=false;
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(getProperty("update_user_password"))) {
+            ps.setBytes(1, password);
+            ps.setInt(2, id);
+           status=ps.executeUpdate()==1;
+        } catch (SQLException e) {
+            log.error("Error during updating user", e);
+            e.printStackTrace();
+            throw e;
+        }
+        log.info("User update is successfully");
+        return status;
+    }
+
+
     /**
      * method adds new user and sets user's role
      *
@@ -31,30 +52,46 @@ public class UserDaoImpl implements UserDao {
      * @return int new user's id
      */
     @Override
-    public  int createUser(String firstName, String lastName, byte[] password,byte[] sole, int roleId) {
+    public int createUser(String firstName, String lastName, byte[] password, byte[] sole, int roleId, String email) throws SQLException {
         log.info("Add user to DB: " + firstName + " " + lastName);
         int id = 0;
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(getProperty("create_user"), PreparedStatement.RETURN_GENERATED_KEYS)) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet generatedKey = null;
+        try {
+            con = getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement(getProperty("create_user"), PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, firstName);
             ps.setString(2, lastName);
             ps.setBytes(3, password);
             ps.setBytes(4, sole);
+            ps.setString(5, email);
             ps.executeUpdate();
-            ResultSet generatedKey = ps.getGeneratedKeys();
+            generatedKey = ps.getGeneratedKeys();
             if (generatedKey.next()) {
                 id = generatedKey.getInt(1);
             }
-
-        } catch (SQLException  e) {
+            setRole(con, id, roleId);
+            con.commit();
+        } catch (SQLException e) {
             log.error("Error during user creation", e);
             e.printStackTrace();
-        }
-        if (id != 0) {
-            log.info("User added successfully");
-            setRole(id, roleId);
-        } else {
-            log.warn("User not added");
+            if (con != null) {
+                con.rollback();
+            }
+            throw e;
+        } finally {
+            if (generatedKey != null) {
+                generatedKey.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.setAutoCommit(true);
+                con.close();
+            }
         }
         return id;
     }
@@ -65,7 +102,7 @@ public class UserDaoImpl implements UserDao {
      * @return List<User> List of all users
      */
     @Override
-    public  ArrayList<User> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) {
+    public ArrayList<User> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) throws SQLException {
         log.info("Get all users");
         String query = String.format(getProperty("get_all_users"), column + " " + direction);
         ArrayList<User> users = new ArrayList<>();
@@ -81,12 +118,15 @@ public class UserDaoImpl implements UserDao {
                         rs.getString("full_name"),
                         rs.getBytes("password"),
                         rs.getBytes("sole"),
-                        rs.getString("role_name"));
+                        rs.getString("role_name"),
+                        rs.getString("email")
+                );
                 users.add(user);
             }
-        } catch (SQLException  e) {
+        } catch (SQLException e) {
             log.error("Error during getting all users");
             e.printStackTrace();
+            throw e;
         }
         return users;
     }
@@ -98,21 +138,17 @@ public class UserDaoImpl implements UserDao {
      * @return boolean status
      */
     @Override
-    public  boolean deleteUser(int id) {
+    public boolean deleteUser(int id) throws SQLException {
         log.info("Delete user with id: " + id);
-        boolean status = false;
+        boolean status;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("delete_user"))) {
             ps.setInt(1, id);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException  e) {
+        } catch (SQLException e) {
             log.error("Error during user validation", e);
             e.printStackTrace();
-        }
-        if (status) {
-            log.info("User delete is successfully");
-        } else {
-            log.warn("User delete failed");
+            throw e;
         }
         return status;
     }
@@ -121,32 +157,45 @@ public class UserDaoImpl implements UserDao {
      * method for changing user's data
      *
      * @param id        user's id
-     * @param role    user's role
+     * @param role      user's role
      * @param firstName user's first name
      * @param lastName  user's last name
      * @param pass      password
      * @return boolean status
      */
     @Override
-    public  boolean updateUser(int id, String firstName, String lastName, byte[] pass, String role) {
+    public boolean updateUser(int id, String firstName, String lastName, byte[] pass, String role, String email) throws SQLException {
         log.info("Update user with id: " + id);
-        boolean status = false;
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(getProperty("update_user"))) {
+        boolean status;
+        Connection con = null;
+        PreparedStatement ps = null;
+        try {
+            con = getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement(getProperty("update_user"));
             ps.setString(1, firstName);
             ps.setString(2, lastName);
             ps.setBytes(3, pass);
-            ps.setInt(4, id);
+            ps.setString(4, email);
+            ps.setInt(5, id);
             status = ps.executeUpdate() == 1;
-        } catch (SQLException  e) {
+            updateRole(con,id, role);
+            con.commit();
+        } catch (SQLException e) {
             log.error("Error during updating user", e);
             e.printStackTrace();
-        }
-        if (status) {
-            updateRole(id, role);
-            log.info("User update is successfully");
-        } else {
-            log.warn("User update failed");
+            if (con != null) {
+                con.rollback();
+            }
+            throw e;
+        } finally {
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.setAutoCommit(true);
+                con.close();
+            }
         }
         return status;
     }
@@ -158,10 +207,9 @@ public class UserDaoImpl implements UserDao {
      * @return user
      */
     @Override
-    public  User get(int id) {
+    public User get(int id) throws SQLException {
         log.info("Get user with id: " + id);
-
-        User user = new User();
+        User user = null;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("get_user"))) {
             ps.setInt(1, id);
@@ -173,16 +221,14 @@ public class UserDaoImpl implements UserDao {
                         rs.getString("full_name"),
                         rs.getBytes("password"),
                         rs.getBytes("sole"),
-                        rs.getString("role_name"));
+                        rs.getString("role_name"),
+                        rs.getString("email")
+                );
             }
         } catch (SQLException e) {
             log.error("Error during getting user", e);
             e.printStackTrace();
-        }
-        if (user.getId() != 0) {
-            log.info("User found");
-        } else {
-            log.warn("User not found");
+            throw e;
         }
         return user;
     }
@@ -193,25 +239,18 @@ public class UserDaoImpl implements UserDao {
      * @param userId user id
      * @param roleId role id
      */
-    private void setRole(int userId, int roleId) {
+    private void setRole(Connection con, int userId, int roleId) throws SQLException {
         log.info("Set role with id:" + roleId + " for user with id: " + userId);
-        boolean status = false;
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(getProperty("set_role"))) {
+        try (PreparedStatement ps = con.prepareStatement(getProperty("set_role"))) {
             ps.setInt(1, userId);
             ps.setInt(2, roleId);
-            status = ps.executeUpdate() == 1;
-        } catch (SQLException  e) {
+             ps.executeUpdate();
+        } catch (SQLException e) {
             log.error("Error during setting user role", e);
             e.printStackTrace();
-        }
-        if (status) {
-            log.info("User role established successfully");
-        } else {
-            log.warn("User  role was not established");
+            throw e;
         }
     }
-
 
 
     /**
@@ -220,7 +259,7 @@ public class UserDaoImpl implements UserDao {
      * @return int amount
      */
     @Override
-    public int countRows() {
+    public int countRows() throws SQLException {
         int amount = 0;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("count_rows_in_users"))) {
@@ -231,10 +270,10 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException e) {
             log.error("Error during getting amount of users", e);
             e.printStackTrace();
+            throw e;
         }
         return amount;
     }
-
 
 
     /**
@@ -244,9 +283,9 @@ public class UserDaoImpl implements UserDao {
      * @return product
      */
     @Override
-    public User searchUser(String fullname) {
+    public User searchUser(String fullname) throws SQLException {
         log.info("Get user with fullname: " + fullname);
-        User user = new User();
+        User user = null;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("get_user_by_fullname"))) {
             ps.setString(1, fullname);
@@ -258,49 +297,38 @@ public class UserDaoImpl implements UserDao {
                         rs.getString("full_name"),
                         rs.getBytes("password"),
                         rs.getBytes("sole"),
-                        rs.getString("role_name"));
+                        rs.getString("role_name"),
+                        rs.getString("email")
+                );
 
             }
         } catch (SQLException e) {
             log.error("Error during getting user", e);
             e.printStackTrace();
-        }
-        if (user.getId() != 0) {
-            log.info("User found");
-        } else {
-            log.warn("User not found");
+            throw e;
         }
         return user;
     }
-
 
 
     /**
      * user role updating method
      *
      * @param idUser user's id
-     * @param role user's role
-     * @return boolean status
+     * @param role   user's role
      */
 
-    private  boolean updateRole(int idUser, String role) {
+    private void updateRole(Connection con, int idUser, String role) throws SQLException {
         log.info("Update role for user with id: " + idUser);
-        boolean status = false;
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(getProperty("update_role"))) {
+        try (PreparedStatement ps = con.prepareStatement(getProperty("update_role"))) {
             ps.setString(1, role);
             ps.setInt(2, idUser);
-            status = ps.executeUpdate() == 1;
-        } catch (SQLException  e) {
+            ps.executeUpdate();
+        } catch (SQLException e) {
             log.error("Error during updating user role", e);
             e.printStackTrace();
+            throw e;
         }
-        if (status) {
-            log.info("Role updated for user with id:" + idUser);
-        } else {
-            log.warn("Role not updated for user with id: " + idUser);
-        }
-        return status;
     }
 
 }

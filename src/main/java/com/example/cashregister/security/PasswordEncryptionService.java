@@ -9,7 +9,9 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 public class PasswordEncryptionService {
-
+/**
+ * Encryption password PBKDF2
+ * */
     public static boolean authenticate(String attemptedPassword, byte[] encryptedPassword, byte[] salt){
         byte[] encryptedAttemptedPassword = getEncryptedPassword(attemptedPassword, salt);
         return Arrays.equals(encryptedPassword, encryptedAttemptedPassword);

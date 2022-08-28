@@ -1,0 +1,73 @@
+/*accounts*/
+.sidenav {
+    height: 100%;
+    width: 187px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 251, 9, 0.4);
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+.hl {
+    border-top: 2px solid darkgreen;
+    width: 160px;
+}
+
+
+.sidenav a,p,button {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size:20px;
+    color: #101010;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.sidenav h3 {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #0a0a0a;
+    display: block;
+    text-align: left;
+    font-weight: bold;
+}
+
+.sidenav a:hover,h3:hover,p:hover,button:hover {
+    color: #2b63f3;
+}
+. main b{
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.main {
+    margin-left: 180px; /* Same as the width of the sidenav */
+    margin-top: 10px; /* Same as the width of the sidenav */ /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+.active {
+    background-color: green;
+    color: white;
+}
+.alert{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+}
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}

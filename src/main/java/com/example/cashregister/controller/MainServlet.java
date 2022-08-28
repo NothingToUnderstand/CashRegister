@@ -2,6 +2,7 @@ package com.example.cashregister.controller;
 
 import org.apache.log4j.Logger;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,15 +13,11 @@ import java.io.IOException;
 /**
  * Welcome  servlet
  * */
-@WebServlet(name = "mainServlet", value = "/")
+@WebServlet(name = "mainServlet", value = "/cashregister/")
 public class MainServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(MainServlet.class);
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/index.jsp").forward(req,resp);
     }
-
-
-    
 }

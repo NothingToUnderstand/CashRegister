@@ -6,6 +6,7 @@ import com.example.cashregister.entity.Product;
 import com.example.cashregister.entity.Receipt;
 import org.apache.log4j.Logger;
 
+import javax.enterprise.context.RequestScoped;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.cashregister.connection.ApacheConPool.getConnection;
-import static com.example.cashregister.property.Properties.getProperty;
+import static com.example.cashregister.Service.extra.Properties.getProperty;
 
-
+@RequestScoped
 public class ArchiveReceiptDaoImpl implements ArchiveReceiptDao {
     private static final Logger log = Logger.getLogger(ArchiveReceiptDaoImpl.class);
     /**
@@ -25,9 +26,9 @@ public class ArchiveReceiptDaoImpl implements ArchiveReceiptDao {
      * @return receipt
      */
     @Override
-    public Receipt get(int id) {
+    public Receipt get(int id) throws SQLException {
         log.info("Get  receipt from archive with id: "+id);
-        Receipt receipt = new Receipt();
+        Receipt receipt = null;
         List<Product> products = new ArrayList<>();
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("get_products_to_receipt_from_archive"));
@@ -58,16 +59,12 @@ public class ArchiveReceiptDaoImpl implements ArchiveReceiptDao {
         } catch (SQLException e) {
             log.error("Error during getting all receipts");
             e.printStackTrace();
-        }
-        if (receipt.getId() != 0) {
-            log.info("Receipt found");
-        } else {
-            log.warn("Receipt not found");
+            throw e;
         }
         return receipt;
     }
     @Override
-    public int countRows() {
+    public int countRows() throws SQLException {
         int amount = 0;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("count_rows_in_archive_receipts"))) {
@@ -78,6 +75,7 @@ public class ArchiveReceiptDaoImpl implements ArchiveReceiptDao {
         } catch (SQLException e) {
             log.error("Error during getting amount of reports", e);
             e.printStackTrace();
+            throw e;
         }
         return amount;
     }
@@ -86,7 +84,7 @@ public class ArchiveReceiptDaoImpl implements ArchiveReceiptDao {
      * @return List<Receipt> checks
      */
     @Override
-    public  ArrayList<Receipt> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) {
+    public  ArrayList<Receipt> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) throws SQLException {
         String query = String.format(getProperty("get_all_receipts_from_archive"), column + " " + direction);
         ArrayList<Receipt> receipts = new ArrayList<>();
         try (Connection con = getConnection();
@@ -100,6 +98,7 @@ public class ArchiveReceiptDaoImpl implements ArchiveReceiptDao {
         } catch (SQLException  e) {
             log.error("Error during getting all receipts from archive", e);
             e.printStackTrace();
+            throw e;
         }
         return receipts;
     }

@@ -40,10 +40,6 @@ public class Product {
     }
 
 
-    public Product() {
-        this.id = 0;
-    }
-
     public String getImgbase64() {
         return imgbase64;
     }

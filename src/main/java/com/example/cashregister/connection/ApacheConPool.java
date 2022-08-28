@@ -1,11 +1,10 @@
 package com.example.cashregister.connection;
 
-import com.example.cashregister.connection.notused.ManagerDB;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import static com.example.cashregister.property.Properties.getProperty;
+import static com.example.cashregister.Service.extra.Properties.getProperty;
 
 /**
  * connection pool for this project

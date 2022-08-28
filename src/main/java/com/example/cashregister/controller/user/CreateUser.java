@@ -1,17 +1,21 @@
 package com.example.cashregister.controller.user;
 
 
+import com.example.cashregister.Service.UserService;
+import com.example.cashregister.Service.abstractFactory.ServiceAbstractFactory;
 import com.example.cashregister.security.UserSession;
 import com.example.cashregister.dao.UserDao;
 import com.example.cashregister.dao.impl.UserDaoImpl;
 import org.apache.log4j.Logger;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import static com.example.cashregister.security.PasswordEncryptionService.generateSalt;
 import static com.example.cashregister.security.PasswordEncryptionService.getEncryptedPassword;
@@ -23,11 +27,8 @@ import static com.example.cashregister.security.UserSession.getLoginedUser;
 @WebServlet(name = "createUser", value = "/create/user")
 public class CreateUser extends HttpServlet {
     private static final Logger log = Logger.getLogger(CreateUser.class);
-    private final UserDao userDao;
-
-    public CreateUser() {
-        this.userDao = new UserDaoImpl();
-    }
+    @Inject
+    private ServiceAbstractFactory service;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,32 +36,30 @@ public class CreateUser extends HttpServlet {
         if (getLoginedUser(req.getSession()).getId() != 0) {
             log.info("user has already logined");
             req.getSession().setAttribute("errormessage", "You are already had an account");
-            resp.sendRedirect("/");
+            resp.sendRedirect("/cashregister/");
         } else {
             log.warn("user is not logined");
             getServletContext().getRequestDispatcher("/signup.jsp").forward(req, resp);
         }
     }
-
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        log.info("doPost");
-        byte[] salt = generateSalt();
-        byte[] password = getEncryptedPassword(req.getParameter("password"), salt);
-        int id = userDao.createUser(
-                req.getParameter("firstname"),
-                req.getParameter("lastname"),
-                password, salt,
-                Integer.parseInt(req.getParameter("roleid")));
-        if (id != 0) {
-            log.info("User was created with id: " + id);
-            req.getSession().setAttribute("message", "User was created");
-
-        } else {
-            log.warn("user wasn't created");
-            req.getSession().setAttribute("errormessage", "User was not created");
+        try {
+          int id= service.createUserService().createUser(
+                    req.getParameter("firstname"),
+                    req.getParameter("lastname"),
+                    req.getParameter("password"),
+                    req.getParameter("roleid"),
+                    req.getParameter("email"));
+            req.getSession().setAttribute("message", "User was created with id: "+id);
+            resp.sendRedirect("/cashregister/login");
+        } catch (SQLException e) {
+            log.error("error during user creation", e);
+            resp.sendRedirect("/cashregister/error");
+        } catch (NumberFormatException e) {
+            log.warn("not valid params", e);
+            req.getSession().setAttribute("errormessage", "Params are not valid");
+            resp.sendRedirect("/cashregister/create/user");
         }
-        resp.sendRedirect("/login");
     }
 }

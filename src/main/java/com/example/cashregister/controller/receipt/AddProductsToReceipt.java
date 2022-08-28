@@ -1,38 +1,48 @@
 package com.example.cashregister.controller.receipt;
 
 
+import com.example.cashregister.Service.abstractFactory.ServiceAbstractFactory;
 import com.example.cashregister.dao.ReceiptDao;
 import com.example.cashregister.dao.impl.ReceiptDaoImpl;
 import org.apache.log4j.Logger;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/add/product")
 public class AddProductsToReceipt extends HttpServlet {
     private static final Logger log = Logger.getLogger(AddProductsToReceipt.class);
-    private final ReceiptDao receiptDao;
-
-    public AddProductsToReceipt() {
-        this.receiptDao = new ReceiptDaoImpl();
-    }
+    @Inject
+    private ServiceAbstractFactory service;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (receiptDao.addProductToReceipt(
-                Integer.parseInt(req.getParameter("receiptId")),
-                Integer.parseInt(req.getParameter("productId")),
-                Integer.parseInt(req.getParameter("quantity")))) {
-            log.info("product with id: " + req.getParameter("productId") + " added");
-            req.getSession().setAttribute("message", "product with id: " + req.getParameter("productId") + " added");
-        } else {
-            req.getSession().setAttribute("errormessage", "product with id: " + req.getParameter("productId") + " not added");
-            log.info("product with id: " + req.getParameter("productId") + " not added");
+        try {
+            if (service.createReceiptService().addProductToReceipt(
+                    req.getParameter("receiptId"),
+                    req.getParameter("productId"),
+                    req.getParameter("quantity"))) {
+                log.info("product with id: " + req.getParameter("productId") + " added");
+                req.getSession().setAttribute("message", "product with id: " + req.getParameter("productId") + " added");
+            } else {
+                req.getSession().setAttribute("errormessage", "product with id: " + req.getParameter("productId") + " not added");
+                log.info("product with id: " + req.getParameter("productId") + " not added");
+            }
+            resp.sendRedirect("/cashregister/all/products");
+        } catch (SQLException e) {
+            log.error("error during removing product in receipt");
+            resp.sendRedirect("/cashregister/error");
+        } catch (NumberFormatException e) {
+            log.error("params are not valid");
+            req.getSession().setAttribute("errormessage", "params are not valid");
+            resp.sendRedirect("/cashregister/all/products");
         }
-        resp.sendRedirect("/all/products");
+
     }
 }

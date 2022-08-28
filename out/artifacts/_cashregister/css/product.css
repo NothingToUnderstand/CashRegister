@@ -1,0 +1,23 @@
+.title{
+    background: rgba(245, 245, 53, 0.43);
+}
+.option:hover{
+    background: rgba(245, 245, 53, 0.43);
+}
+.title:hover{
+    background: rgba(0, 0, 255, 0.5);
+}
+.option{
+    background: rgba(0, 0, 255, 0.5);
+}
+.table{
+    margin-left: auto;
+    margin-right: auto;
+}
+h2{
+    text-align: center
+}
+.read{
+    outline: none;
+    border: none;
+}

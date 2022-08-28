@@ -38,7 +38,7 @@ public class SecurityFilter implements Filter {
         } else {
             log.warn("User with role: "+role+" is not allowed to visit: "+uri);
             ((HttpServletRequest) req).getSession().setAttribute("errormessage","You are not allowed to visit this");
-            response.sendRedirect("/");
+            response.sendRedirect("/cashregister/");
         }
     }
 }

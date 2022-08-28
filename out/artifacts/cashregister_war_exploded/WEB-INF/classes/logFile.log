@@ -1,0 +1,2090 @@
+2022-07-09 22:39:03 INFO  Main:22 - Success
+2022-07-09 23:00:01 ERROR ManagerDB:44 - Connection Fail
+java.sql.SQLSyntaxErrorException: Unknown database 'cashregister'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at dao.ManagerDB.getConnection(ManagerDB.java:41)
+	at Main.main(Main.java:9)
+2022-07-09 23:00:01 ERROR ManagerDB:53 - Connection Fail
+java.lang.ClassNotFoundException
+	at dao.ManagerDB.getConnection(ManagerDB.java:52)
+	at Main.main(Main.java:9)
+2022-07-09 23:01:41 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:03:03 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:04:49 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:04:49 INFO  UserDAO:175 - Get all users
+2022-07-09 23:06:39 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:06:39 INFO  UserDAO:55 - User validation is successfull
+2022-07-09 23:08:24 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:08:24 ERROR UserDAO:90 - Error during user creation
+java.sql.SQLException: No value specified for parameter 3
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1084)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.UserDAO.addUser(UserDAO.java:83)
+	at Main.main(Main.java:12)
+2022-07-09 23:08:24 WARN  UserDAO:96 - User not added
+2022-07-09 23:08:56 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:08:56 ERROR UserDAO:90 - Error during user creation
+java.sql.SQLException: Before start of result set
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.checkRowPos(ResultSetImpl.java:532)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getObject(ResultSetImpl.java:1322)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:830)
+	at dao.UserDAO.addUser(UserDAO.java:85)
+	at Main.main(Main.java:12)
+2022-07-09 23:08:56 WARN  UserDAO:96 - User not added
+2022-07-09 23:16:04 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:16:04 ERROR UserDAO:86 - Error during user creation
+java.sql.SQLException: Before start of result set
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.checkRowPos(ResultSetImpl.java:532)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getObject(ResultSetImpl.java:1322)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:830)
+	at dao.UserDAO.addUser(UserDAO.java:84)
+	at Main.main(Main.java:12)
+2022-07-09 23:16:04 WARN  UserDAO:92 - User not added
+2022-07-09 23:16:04 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:16:04 ERROR UserDAO:115 - Error during setting user role
+java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cash_register`.`users_roles`, CONSTRAINT `users_roles_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.UserDAO.setRole(UserDAO.java:113)
+	at Main.main(Main.java:12)
+2022-07-09 23:16:04 WARN  UserDAO:121 - User  role was not established
+2022-07-09 23:18:01 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:18:01 ERROR UserDAO:86 - Error during user creation
+java.sql.SQLException: Column 'id' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:851)
+	at dao.UserDAO.addUser(UserDAO.java:84)
+	at Main.main(Main.java:12)
+2022-07-09 23:18:01 WARN  UserDAO:92 - User not added
+2022-07-09 23:18:01 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:18:01 ERROR UserDAO:115 - Error during setting user role
+java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cash_register`.`users_roles`, CONSTRAINT `users_roles_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.UserDAO.setRole(UserDAO.java:113)
+	at Main.main(Main.java:12)
+2022-07-09 23:18:01 WARN  UserDAO:121 - User  role was not established
+2022-07-09 23:19:00 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:19:00 ERROR UserDAO:86 - Error during user creation
+java.sql.SQLException: Column 'id' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:851)
+	at dao.UserDAO.addUser(UserDAO.java:84)
+	at Main.main(Main.java:12)
+2022-07-09 23:19:00 WARN  UserDAO:92 - User not added
+2022-07-09 23:19:22 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:19:22 ERROR UserDAO:86 - Error during user creation
+java.sql.SQLException: Before start of result set
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.checkRowPos(ResultSetImpl.java:532)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getObject(ResultSetImpl.java:1322)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:830)
+	at dao.UserDAO.addUser(UserDAO.java:84)
+	at Main.main(Main.java:12)
+2022-07-09 23:19:22 WARN  UserDAO:92 - User not added
+2022-07-09 23:21:45 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:21:45 ERROR UserDAO:87 - Error during user creation
+java.sql.SQLException: Before start of result set
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.checkRowPos(ResultSetImpl.java:532)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getObject(ResultSetImpl.java:1322)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:830)
+	at dao.UserDAO.addUser(UserDAO.java:85)
+	at Main.main(Main.java:12)
+2022-07-09 23:21:45 WARN  UserDAO:93 - User not added
+2022-07-09 23:27:54 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:27:54 INFO  UserDAO:194 - User delete is successfull
+2022-07-09 23:28:01 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:28:01 WARN  UserDAO:196 - User delete failed
+2022-07-09 23:28:24 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:28:24 INFO  UserDAO:194 - User delete is successfull
+2022-07-09 23:28:32 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:28:32 INFO  UserDAO:194 - User delete is successfull
+2022-07-09 23:28:40 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:28:40 INFO  UserDAO:194 - User delete is successfull
+2022-07-09 23:28:47 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:28:47 INFO  UserDAO:194 - User delete is successfull
+2022-07-09 23:28:55 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:28:55 INFO  UserDAO:194 - User delete is successfull
+2022-07-09 23:29:10 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:29:10 INFO  UserDAO:194 - User delete is successfull
+2022-07-09 23:29:15 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:29:15 INFO  UserDAO:194 - User delete is successfull
+2022-07-09 23:30:55 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:30:55 ERROR UserDAO:146 - Error during getting user role
+java.sql.SQLException: Before start of result set
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.checkRowPos(ResultSetImpl.java:532)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getString(ResultSetImpl.java:878)
+	at dao.UserDAO.getRole(UserDAO.java:144)
+	at Main.main(Main.java:15)
+2022-07-09 23:32:18 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:32:18 ERROR UserDAO:258 - Error during user validation
+java.sql.SQLException: Before start of result set
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.checkRowPos(ResultSetImpl.java:532)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getObject(ResultSetImpl.java:1322)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:830)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:851)
+	at dao.UserDAO.getUser(UserDAO.java:253)
+	at Main.main(Main.java:15)
+2022-07-09 23:32:18 WARN  UserDAO:264 - User not found
+2022-07-09 23:35:49 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:35:49 INFO  UserDAO:94 - User added successfully
+2022-07-09 23:40:18 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:40:18 INFO  UserDAO:123 - User role established successfully
+2022-07-09 23:41:27 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:42:24 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:42:24 INFO  UserDAO:235 - User update is successfull
+2022-07-09 23:43:20 INFO  ManagerDB:49 - Connection success
+2022-07-09 23:43:20 INFO  UserDAO:268 - User found
+2022-07-10 16:17:26 INFO  UserDAO:257 - Get user with id: 14
+2022-07-10 16:17:26 INFO  ManagerDB:49 - Connection success
+2022-07-10 16:17:26 INFO  UserDAO:275 - User found
+2022-07-10 16:17:38 INFO  UserDAO:257 - Get user with id: 14
+2022-07-10 16:17:38 INFO  ManagerDB:49 - Connection success
+2022-07-10 16:17:38 INFO  UserDAO:275 - User found
+2022-07-10 16:17:50 INFO  UserDAO:257 - Get user with id: 14
+2022-07-10 16:17:51 INFO  ManagerDB:49 - Connection success
+2022-07-10 16:17:51 INFO  UserDAO:275 - User found
+2022-07-10 18:13:19 INFO  UserDAO:50 - Add product to DB: book 2 2.0 123.25
+2022-07-10 18:13:19 INFO  ManagerDB:49 - Connection success
+2022-07-10 18:13:19 ERROR UserDAO:64 - Error during the product creation
+java.sql.SQLException: No value specified for parameter 5
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1084)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ProductDAO.addProduct(ProductDAO.java:58)
+	at App.main(App.java:7)
+2022-07-10 18:13:19 WARN  UserDAO:68 - Product  not created
+2022-07-10 18:14:07 INFO  UserDAO:50 - Add product to DB: book 2 2.0 123.25
+2022-07-10 18:14:07 INFO  ManagerDB:49 - Connection success
+2022-07-10 18:14:07 INFO  UserDAO:70 - Product created
+2022-07-10 18:15:47 INFO  UserDAO:90 - Updating product with id: 1
+2022-07-10 18:15:48 INFO  ManagerDB:49 - Connection success
+2022-07-10 18:15:48 ERROR UserDAO:101 - Error during updating the product
+java.sql.SQLException: Parameter index out of range (5 > number of parameters, which is 4).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setInt(ClientPreparedStatement.java:1536)
+	at dao.ProductDAO.updateProduct(ProductDAO.java:98)
+	at App.main(App.java:5)
+2022-07-10 18:15:48 WARN  UserDAO:107 - Product update failed
+2022-07-10 18:16:51 INFO  UserDAO:90 - Updating product with id: 1
+2022-07-10 18:16:52 INFO  ManagerDB:49 - Connection success
+2022-07-10 18:16:52 INFO  UserDAO:105 - Product update is successfull
+2022-07-10 18:17:53 INFO  UserDAO:181 - Get product with id: 1
+2022-07-10 18:17:54 INFO  ManagerDB:49 - Connection success
+2022-07-10 18:17:54 INFO  UserDAO:199 - Product found
+2022-07-10 18:19:03 INFO  UserDAO:50 - Add product to DB: pen 5 0.1 25.5
+2022-07-10 18:19:04 INFO  ManagerDB:49 - Connection success
+2022-07-10 18:19:04 INFO  UserDAO:70 - Product created
+2022-07-10 18:19:39 INFO  UserDAO:151 - Get all products
+2022-07-10 18:19:40 INFO  ManagerDB:49 - Connection success
+2022-07-10 18:19:40 INFO  UserDAO:168 - List with products: [Product{id=1, name='book', quantity=2, weight=2.04, price=123.25}, Product{id=2, name='pen', quantity=5, weight=0.1, price=25.5}]
+2022-07-10 18:20:05 INFO  UserDAO:123 - Delete product with id: 2
+2022-07-10 18:20:05 INFO  ManagerDB:49 - Connection success
+2022-07-10 18:20:05 INFO  UserDAO:134 - Product deleted successfully
+2022-07-10 19:02:43 INFO  UserDAO:50 - Add product to DB: pen 5 0.1 25.5
+2022-07-10 19:02:44 INFO  ManagerDB:49 - Connection success
+2022-07-10 19:03:34 ERROR UserDAO:64 - Error during the product creation
+com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transaction
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:123)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ProductDAO.addProduct(ProductDAO.java:58)
+	at App.main(App.java:6)
+2022-07-10 19:03:34 WARN  UserDAO:68 - Product  not created
+2022-07-10 19:04:00 INFO  UserDAO:50 - Add product to DB: pen 5 0.1 25.5
+2022-07-10 19:04:00 INFO  ManagerDB:49 - Connection success
+2022-07-10 19:04:00 INFO  UserDAO:70 - Product created
+2022-07-10 23:09:36 INFO  CheсkDAO:51 - Create cheсk by cashier : Anna with id: 1
+2022-07-10 23:09:37 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:09:37 ERROR CheсkDAO:63 - Error during the cheсk creation
+java.sql.SQLException: SQL String cannot be NULL
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:85)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:218)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:192)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getInstance(ClientPreparedStatement.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.clientPrepareStatement(ConnectionImpl.java:670)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1643)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1563)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1568)
+	at dao.CheсkDAO.createCheсk(CheсkDAO.java:54)
+	at App.main(App.java:7)
+Caused by: com.mysql.cj.exceptions.WrongArgumentException: SQL String cannot be NULL
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.ClientPreparedQuery.checkNullOrEmptyQuery(ClientPreparedQuery.java:142)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:214)
+	... 8 more
+2022-07-10 23:09:37 WARN  CheсkDAO:67 - Check  not created
+2022-07-10 23:12:20 INFO  CheсkDAO:51 - Create cheсk by cashier : Anna with id: 1
+2022-07-10 23:12:20 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:12:20 ERROR CheсkDAO:63 - Error during the cheсk creation
+java.sql.SQLException: SQL String cannot be NULL
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:85)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:218)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:192)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getInstance(ClientPreparedStatement.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.clientPrepareStatement(ConnectionImpl.java:670)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1643)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1563)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1568)
+	at dao.CheсkDAO.createCheсk(CheсkDAO.java:54)
+	at App.main(App.java:7)
+Caused by: com.mysql.cj.exceptions.WrongArgumentException: SQL String cannot be NULL
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.ClientPreparedQuery.checkNullOrEmptyQuery(ClientPreparedQuery.java:142)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:214)
+	... 8 more
+2022-07-10 23:12:20 WARN  CheсkDAO:67 - Check  not created
+2022-07-10 23:13:27 INFO  CheсkDAO:51 - Create cheсk by cashier : Anna with id: 1
+2022-07-10 23:13:27 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:13:27 INFO  CheсkDAO:69 - Check created
+2022-07-10 23:15:02 INFO  CheсkDAO:84 - Add product with id:1 to  receipt with id: 1
+2022-07-10 23:15:03 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:15:03 ERROR CheсkDAO:92 - Error during the receipt creation
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.CheсkDAO.addProductToCheck(CheсkDAO.java:90)
+	at App.main(App.java:7)
+2022-07-10 23:15:03 WARN  CheсkDAO:98 - Adding product to chek is failed
+2022-07-10 23:15:03 INFO  CheсkDAO:84 - Add product with id:4 to  receipt with id: 1
+2022-07-10 23:15:03 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:15:03 ERROR CheсkDAO:92 - Error during the receipt creation
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.CheсkDAO.addProductToCheck(CheсkDAO.java:90)
+	at App.main(App.java:8)
+2022-07-10 23:15:03 WARN  CheсkDAO:98 - Adding product to chek is failed
+2022-07-10 23:15:58 INFO  CheсkDAO:84 - Add product with id:1 to  receipt with id: 1
+2022-07-10 23:15:58 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:15:58 ERROR CheсkDAO:92 - Error during the receipt creation
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.CheсkDAO.addProductToCheck(CheсkDAO.java:90)
+	at App.main(App.java:7)
+2022-07-10 23:15:58 WARN  CheсkDAO:98 - Adding product to chek is failed
+2022-07-10 23:16:48 INFO  CheсkDAO:84 - Add product with id:1 to  receipt with id: 1
+2022-07-10 23:16:49 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:16:49 ERROR CheсkDAO:92 - Error during the receipt creation
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.CheсkDAO.addProductToCheck(CheсkDAO.java:90)
+	at App.main(App.java:7)
+2022-07-10 23:16:49 WARN  CheсkDAO:98 - Adding product to chek is failed
+2022-07-10 23:17:12 INFO  CheсkDAO:84 - Add product with id:1 to  receipt with id: 1
+2022-07-10 23:17:12 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:17:12 ERROR CheсkDAO:92 - Error during the receipt creation
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.CheсkDAO.addProductToCheck(CheсkDAO.java:90)
+	at App.main(App.java:7)
+2022-07-10 23:17:12 WARN  CheсkDAO:98 - Adding product to chek is failed
+2022-07-10 23:20:10 INFO  CheсkDAO:84 - Add product with id:1 to  receipt with id: 1
+2022-07-10 23:20:10 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:20:11 ERROR CheсkDAO:92 - Error during adding product to receipt
+java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cash_register`.`products_in_check`, CONSTRAINT `products_in_check_ibfk_1` FOREIGN KEY (`id_check`) REFERENCES `receipts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.CheсkDAO.addProductToCheck(CheсkDAO.java:90)
+	at App.main(App.java:7)
+2022-07-10 23:20:11 WARN  CheсkDAO:98 - Adding product to chek is failed
+2022-07-10 23:20:27 INFO  CheсkDAO:84 - Add product with id:1 to  receipt with id: 2
+2022-07-10 23:20:27 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:20:27 INFO  CheсkDAO:96 - Adding product to chek is successfull
+2022-07-10 23:20:45 INFO  CheсkDAO:84 - Add product with id:4 to  receipt with id: 2
+2022-07-10 23:20:46 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:20:46 INFO  CheсkDAO:96 - Adding product to chek is successfull
+2022-07-10 23:21:13 INFO  CheсkDAO:112 - Adding price and amount to receipt with id:2
+2022-07-10 23:21:13 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:21:13 ERROR CheсkDAO:120 - Error during the price and amount adding
+java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setInt(ClientPreparedStatement.java:1536)
+	at dao.CheсkDAO.addPriceAndAmountToCheck(CheсkDAO.java:117)
+	at App.main(App.java:8)
+2022-07-10 23:21:13 WARN  CheсkDAO:126 - Adding  price and amount to receipt is failed
+2022-07-10 23:22:11 INFO  CheсkDAO:112 - Adding price and amount to receipt with id:2
+2022-07-10 23:22:11 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:22:11 ERROR CheсkDAO:120 - Error during the price and amount adding
+java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setInt(ClientPreparedStatement.java:1536)
+	at dao.CheсkDAO.addPriceAndAmountToCheck(CheсkDAO.java:117)
+	at App.main(App.java:8)
+2022-07-10 23:22:11 WARN  CheсkDAO:126 - Adding  price and amount to receipt is failed
+2022-07-10 23:23:20 INFO  CheсkDAO:112 - Adding price and amount to receipt with id:2
+2022-07-10 23:23:21 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:23:21 INFO  CheсkDAO:125 - Adding price and amount to receipt is successfull
+2022-07-10 23:24:50 INFO  CheсkDAO:51 - Create cheсk by cashier : BOB with id: 45
+2022-07-10 23:24:50 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:24:50 INFO  CheсkDAO:69 - Check created
+2022-07-10 23:25:19 INFO  CheсkDAO:84 - Add product with id:1 to  receipt with id: 3
+2022-07-10 23:25:20 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:25:20 INFO  CheсkDAO:96 - Adding product to chek is successfull
+2022-07-10 23:26:00 INFO  CheсkDAO:171 - Delete product with id: 1 in receipt with id: 3
+2022-07-10 23:26:00 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:26:00 INFO  CheсkDAO:183 - Product from receipt deleted successfully
+2022-07-10 23:26:30 INFO  CheсkDAO:142 - Delete receipt with id: 3
+2022-07-10 23:26:30 INFO  ManagerDB:49 - Connection success
+2022-07-10 23:26:30 INFO  CheсkDAO:153 - Check deleted successfully
+2022-07-11 00:05:53 INFO  CheсkDAO:199 - Get  receipt
+2022-07-11 00:05:54 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:05:54 INFO  CheсkDAO:231 - Check found
+2022-07-11 00:18:55 INFO  CheсkDAO:51 - Create cheсk by cashier : BOB with id: 45
+2022-07-11 00:18:56 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:18:56 INFO  CheсkDAO:69 - Check created
+2022-07-11 00:19:51 INFO  CheсkDAO:84 - Add product with id:1 to  receipt with id: 4
+2022-07-11 00:19:51 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:19:51 INFO  CheсkDAO:96 - Adding product to chek is successfull
+2022-07-11 00:32:40 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:33:27 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:34:02 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:35:38 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:35:38 INFO  CheсkDAO:203 - Get  receipt
+2022-07-11 00:35:38 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:35:38 INFO  CheсkDAO:235 - Check found
+2022-07-11 00:35:38 INFO  CheсkDAO:203 - Get  receipt
+2022-07-11 00:35:38 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:35:38 INFO  CheсkDAO:235 - Check found
+2022-07-11 00:35:38 INFO  CheсkDAO:263 - All cheks: [Chek{id=2, cachier_id=1, cachier_name='Anna', number_of_products=2, total_sum=148.75, date=2022-07-10 23:13:27, products_in_chek=[Product{id=1, name='book', quantity=2, weight=2.04, price=123.25}, Product{id=4, name='pen', quantity=5, weight=0.1, price=25.5}]}, Chek{id=4, cachier_id=45, cachier_name='BOB', number_of_products=0, total_sum=0.0, date=2022-07-11 00:18:56, products_in_chek=[Product{id=1, name='book', quantity=2, weight=2.04, price=123.25}]}]
+2022-07-11 00:39:26 INFO  CheсkDAO:52 - Create cheсk by cashier : John with id: 34
+2022-07-11 00:39:27 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:39:27 INFO  CheсkDAO:70 - Check created
+2022-07-11 00:39:27 INFO  CheсkDAO:86 - Add product with id:1 to  receipt with id: 5
+2022-07-11 00:39:27 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:39:27 INFO  CheсkDAO:98 - Adding product to chek is successfull
+2022-07-11 00:39:27 INFO  CheсkDAO:116 - Adding price and amount to receipt with id:5
+2022-07-11 00:39:27 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:39:27 INFO  CheсkDAO:129 - Adding price and amount to receipt is successfull
+2022-07-11 00:39:27 INFO  CheсkDAO:86 - Add product with id:4 to  receipt with id: 5
+2022-07-11 00:39:27 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:39:27 INFO  CheсkDAO:98 - Adding product to chek is successfull
+2022-07-11 00:39:27 INFO  CheсkDAO:116 - Adding price and amount to receipt with id:5
+2022-07-11 00:39:27 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:39:27 INFO  CheсkDAO:129 - Adding price and amount to receipt is successfull
+2022-07-11 00:40:21 INFO  CheсkDAO:175 - Delete product with id: 4 in receipt with id: 5
+2022-07-11 00:40:21 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:40:21 INFO  CheсkDAO:187 - Product from receipt deleted successfully
+2022-07-11 00:40:21 INFO  CheсkDAO:116 - Adding price and amount to receipt with id:5
+2022-07-11 00:40:21 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:40:21 INFO  CheсkDAO:129 - Adding price and amount to receipt is successfull
+2022-07-11 00:40:42 INFO  CheсkDAO:175 - Delete product with id: 1 in receipt with id: 5
+2022-07-11 00:40:42 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:40:42 INFO  CheсkDAO:187 - Product from receipt deleted successfully
+2022-07-11 00:40:42 INFO  CheсkDAO:116 - Adding price and amount to receipt with id:5
+2022-07-11 00:40:42 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:40:43 INFO  CheсkDAO:129 - Adding price and amount to receipt is successfull
+2022-07-11 00:59:16 INFO  ManagerDB:49 - Connection success
+2022-07-11 00:59:16 WARN  CheсkDAO:282 - Check not closed
+2022-07-11 01:04:02 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:04:02 WARN  CheсkDAO:283 - Check not closed
+2022-07-11 01:04:41 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:04:41 INFO  CheсkDAO:282 - Check closed
+2022-07-11 01:06:14 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:06:14 ERROR CheсkDAO:278 - Error during closing the receipt
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect datetime value: '1970-01-01' for column 'close_date_time' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.CheсkDAO.closeCheck(CheсkDAO.java:276)
+	at App.main(App.java:10)
+2022-07-11 01:06:14 WARN  CheсkDAO:284 - Check not closed
+2022-07-11 01:07:58 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:07:58 INFO  CheсkDAO:282 - Check closed
+2022-07-11 01:15:48 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:15:48 INFO  CheсkDAO:282 - Check closed
+2022-07-11 01:17:33 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:17:33 INFO  CheсkDAO:282 - Check closed
+2022-07-11 01:17:50 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:17:50 INFO  CheсkDAO:282 - Check closed
+2022-07-11 01:22:30 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:23:24 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:23:56 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:24:18 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:25:16 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:26:42 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:31:50 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:31:50 ERROR CheсkDAO:277 - Error during closing the receipt
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1084)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.CheсkDAO.closeCheck(CheсkDAO.java:275)
+	at App.main(App.java:10)
+2022-07-11 01:31:50 WARN  CheсkDAO:283 - Check not closed
+2022-07-11 01:32:41 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:33:35 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:33:35 INFO  CheсkDAO:281 - Check closed
+2022-07-11 01:38:49 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:40:15 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:44:42 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:44:42 INFO  CheсkDAO:286 - Check closed
+2022-07-11 01:44:58 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:44:58 INFO  CheсkDAO:286 - Check closed
+2022-07-11 01:47:11 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:51:16 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:53:38 INFO  ManagerDB:49 - Connection success
+2022-07-11 01:53:38 INFO  CheсkDAO:287 - Check closed
+2022-07-11 02:02:36 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:02:36 INFO  CheсkDAO:289 - Check closed
+2022-07-11 02:03:45 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:03:45 INFO  CheсkDAO:276 - Check closed
+2022-07-11 02:03:53 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:03:54 INFO  CheсkDAO:276 - Check closed
+2022-07-11 02:12:10 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:12:10 INFO  CheсkDAO:275 - Check closed
+2022-07-11 02:15:47 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:15:47 INFO  CheсkDAO:275 - Check closed
+2022-07-11 02:16:53 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:16:53 INFO  CheсkDAO:274 - Check closed
+2022-07-11 02:17:47 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:17:47 INFO  CheсkDAO:274 - Check closed
+2022-07-11 02:18:23 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:18:23 INFO  CheсkDAO:274 - Check closed
+2022-07-11 02:18:53 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:18:53 INFO  CheсkDAO:274 - Check closed
+2022-07-11 02:19:20 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:19:20 INFO  CheсkDAO:274 - Check closed
+2022-07-11 02:19:43 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:19:43 INFO  CheсkDAO:274 - Check closed
+2022-07-11 02:19:50 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:19:50 WARN  CheсkDAO:276 - Check not closed
+2022-07-11 02:20:06 INFO  ManagerDB:49 - Connection success
+2022-07-11 02:20:06 INFO  CheсkDAO:274 - Check closed
+2022-07-11 20:16:59 INFO  UserDAO:159 - Update role for user with id: 1
+2022-07-11 20:17:00 INFO  ManagerDB:49 - Connection success
+2022-07-11 20:17:00 WARN  UserDAO:174 - User with id: 1doesn't change his role
+2022-07-11 20:17:33 INFO  UserDAO:159 - Update role for user with id: 14
+2022-07-11 20:17:33 INFO  ManagerDB:49 - Connection success
+2022-07-11 20:17:33 INFO  UserDAO:172 - User with id: 14changes his role to role with id: 1
+2022-07-11 20:45:50 INFO  UserDAO:159 - Update role for user with id: 14
+2022-07-11 20:45:50 INFO  ManagerDB:49 - Connection success
+2022-07-11 20:45:50 WARN  UserDAO:174 - User with id: 14doesn't change his role
+2022-07-11 20:46:20 INFO  UserDAO:159 - Update role for user with id: 14
+2022-07-11 20:46:21 INFO  ManagerDB:49 - Connection success
+2022-07-11 20:46:21 WARN  UserDAO:174 - User with id: 14 doesn't change his role
+2022-07-11 20:47:17 INFO  UserDAO:159 - Update role for user with id: 14
+2022-07-11 20:47:17 INFO  ManagerDB:49 - Connection success
+2022-07-11 20:47:17 WARN  UserDAO:174 - User with id: 14 doesn't change his role
+2022-07-11 20:48:13 INFO  UserDAO:159 - Update role for user with id: 14
+2022-07-11 20:48:13 INFO  ManagerDB:49 - Connection success
+2022-07-11 20:48:13 WARN  UserDAO:174 - User with id: 14 doesn't change his role
+2022-07-11 21:11:09 INFO  UserDAO:158 - Delete role for user with id: 14
+2022-07-11 21:11:09 INFO  ManagerDB:49 - Connection success
+2022-07-11 21:11:09 INFO  UserDAO:170 - Role removed for user with id:14
+2022-07-11 21:14:33 INFO  ManagerDB:49 - Connection success
+2022-07-11 21:14:33 WARN  ProductDAO:205 - The amount of product with id:1 at db: 2
+2022-07-11 21:14:57 INFO  ManagerDB:49 - Connection success
+2022-07-11 21:14:57 WARN  ProductDAO:205 - The amount of product with id:4 at db: 5
+2022-07-11 21:15:35 INFO  ManagerDB:49 - Connection success
+2022-07-11 21:15:35 INFO  ProductDAO:228 - Product amount updated
+2022-07-11 21:51:03 INFO  CheсkDAO:72 - Add product with id:4 to  receipt with id: 5
+2022-07-11 21:51:04 INFO  ManagerDB:49 - Connection success
+2022-07-11 21:51:04 WARN  ProductDAO:205 - The amount of product with id:4 at db: 5
+2022-07-11 21:51:04 INFO  ManagerDB:49 - Connection success
+2022-07-11 21:51:04 INFO  CheсkDAO:94 - Adding product to receipt is successfully
+2022-07-11 21:51:04 INFO  CheсkDAO:110 - Adding price and amount to receipt with id:5
+2022-07-11 21:51:04 INFO  ManagerDB:49 - Connection success
+2022-07-11 21:51:04 INFO  CheсkDAO:123 - Adding price and amount to receipt is successfully
+2022-07-11 21:51:04 INFO  ManagerDB:49 - Connection success
+2022-07-11 21:51:04 INFO  ProductDAO:228 - Product amount updated
+2022-07-11 22:00:42 INFO  CheсkDAO:72 - Add product with id:1 to  receipt with id: 5
+2022-07-11 22:00:42 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:00:42 WARN  ProductDAO:205 - The amount of product with id:1 at db: 10
+2022-07-11 22:00:42 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:00:43 INFO  CheсkDAO:94 - Adding product to receipt is successfully
+2022-07-11 22:00:43 INFO  CheсkDAO:110 - Adding price and amount to receipt with id:5
+2022-07-11 22:00:43 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:00:43 INFO  CheсkDAO:123 - Adding price and amount to receipt is successfully
+2022-07-11 22:00:43 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:00:43 INFO  ProductDAO:228 - Product amount updated
+2022-07-11 22:03:02 INFO  CheсkDAO:72 - Add product with id:1 to  receipt with id: 4
+2022-07-11 22:03:03 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:03:03 WARN  ProductDAO:205 - The amount of product with id:1 at db: 6
+2022-07-11 22:03:03 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:03:03 ERROR CheсkDAO:90 - Error during adding product to receipt
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4-1' for key 'products_in_check.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.CheсkDAO.addProductToCheck(CheсkDAO.java:88)
+	at App.main(App.java:9)
+2022-07-11 22:03:03 WARN  CheсkDAO:98 - Adding product to receipt is failed
+2022-07-11 22:07:19 INFO  CheсkDAO:72 - Add product with id:1 to  receipt with id: 4
+2022-07-11 22:07:19 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:07:19 WARN  ProductDAO:205 - The amount of product with id:1 at db: 6
+2022-07-11 22:07:19 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:07:19 INFO  CheсkDAO:94 - Adding product to receipt is successfully
+2022-07-11 22:07:19 INFO  CheсkDAO:110 - Adding price and amount to receipt with id:4
+2022-07-11 22:07:19 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:07:19 INFO  CheсkDAO:123 - Adding price and amount to receipt is successfully
+2022-07-11 22:07:19 INFO  ManagerDB:49 - Connection success
+2022-07-11 22:07:19 INFO  ProductDAO:228 - Product amount updated
+2022-07-11 23:49:08 INFO  CheсkDAO:190 - Get  receipt
+2022-07-11 23:49:09 INFO  ManagerDB:49 - Connection success
+2022-07-11 23:49:09 INFO  CheсkDAO:223 - Check found
+2022-07-12 17:07:25 INFO  CheсkDAO:40 - Create cheсk by cashier : Lisa with id: 2
+2022-07-12 17:07:26 INFO  ManagerDB:49 - Connection success
+2022-07-12 17:07:26 INFO  CheсkDAO:58 - Check created
+2022-07-12 17:07:26 INFO  CheсkDAO:72 - Add product with id:1 to  receipt with id: 6
+2022-07-12 17:07:26 INFO  ManagerDB:49 - Connection success
+2022-07-12 17:07:26 INFO  ProductDAO:204 - The amount of product with id:1 at db: 1
+2022-07-12 17:07:26 INFO  ManagerDB:49 - Connection success
+2022-07-12 17:07:26 INFO  CheсkDAO:94 - Adding product to receipt is successfully
+2022-07-12 17:07:26 INFO  CheсkDAO:109 - Adding price and amount to receipt with id:6
+2022-07-12 17:07:26 INFO  ManagerDB:49 - Connection success
+2022-07-12 17:07:26 INFO  CheсkDAO:122 - Adding price and amount to receipt is successfully
+2022-07-12 17:07:26 INFO  ManagerDB:49 - Connection success
+2022-07-12 17:07:26 INFO  ProductDAO:227 - Product amount updated
+2022-07-12 17:07:26 INFO  ManagerDB:49 - Connection success
+2022-07-12 17:07:26 INFO  CheсkDAO:266 - Check closed
+2022-07-12 18:32:04 INFO  CheсkDAO:43 - Create report by cashier : Tom with id: 1
+2022-07-12 18:32:04 INFO  ManagerDB:49 - Connection success
+2022-07-12 18:32:04 INFO  CheсkDAO:61 - Report created
+2022-07-12 18:32:04 INFO  ManagerDB:49 - Connection success
+2022-07-12 18:32:04 INFO  ManagerDB:49 - Connection success
+2022-07-12 18:32:04 INFO  CheсkDAO:308 - Closed receipts id: [6]
+2022-07-12 18:32:04 ERROR CheсkDAO:88 - Error during adding receipt to report
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; receipt the manual that corresponds to your MySQL server version for the right syntax to use near '(id_report,id_check) checks_in_report VALUES(1,6)' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ReportDAO.addChecksToReport(ReportDAO.java:83)
+	at dao.ReportDAO.createReport(ReportDAO.java:62)
+	at App.main(App.java:12)
+2022-07-12 18:32:04 WARN  CheсkDAO:95 - Adding receipts to report is failed
+2022-07-12 18:41:01 INFO  CheсkDAO:43 - Create report by cashier : Tom with id: 1
+2022-07-12 18:41:01 INFO  ManagerDB:49 - Connection success
+2022-07-12 18:41:01 INFO  CheсkDAO:61 - Report created
+2022-07-12 18:41:01 INFO  ManagerDB:49 - Connection success
+2022-07-12 18:41:01 INFO  ManagerDB:49 - Connection success
+2022-07-12 18:41:01 INFO  CheсkDAO:308 - Closed receipts id: [5, 6]
+2022-07-12 18:41:01 INFO  CheсkDAO:94 - Adding receipts to report successfully
+2022-07-12 19:38:23 INFO  CheсkDAO:45 - Create report by cashier : Tom with id: 1
+2022-07-12 19:38:23 INFO  ManagerDB:49 - Connection success
+2022-07-12 19:38:23 INFO  CheсkDAO:63 - Report created
+2022-07-12 19:38:23 INFO  ManagerDB:49 - Connection success
+2022-07-12 19:38:23 INFO  ManagerDB:49 - Connection success
+2022-07-12 19:38:23 INFO  CheсkDAO:308 - Closed receipts id: [5, 6]
+2022-07-12 19:38:23 INFO  CheсkDAO:96 - Adding receipts to report successfully
+2022-07-12 19:38:23 INFO  CheсkDAO:162 - Adding price and amount to report with id:3
+2022-07-12 19:38:23 INFO  ManagerDB:49 - Connection success
+2022-07-12 19:38:23 INFO  CheсkDAO:175 - Adding price and amount to receipt is successfully
+2022-07-12 19:50:32 INFO  CheсkDAO:133 - Get report with id: 3
+2022-07-12 19:50:32 INFO  ManagerDB:49 - Connection success
+2022-07-12 19:51:03 INFO  CheсkDAO:133 - Get report with id: 3
+2022-07-12 19:51:03 INFO  ManagerDB:49 - Connection success
+2022-07-12 19:53:10 INFO  ReportDAO:133 - Get report with id: 3
+2022-07-12 19:53:11 INFO  ManagerDB:49 - Connection success
+2022-07-12 19:53:11 WARN  ReportDAO:155 - Product not found
+2022-07-12 19:55:29 INFO  ReportDAO:133 - Get report with id: 3
+2022-07-12 19:55:29 INFO  ManagerDB:49 - Connection success
+2022-07-12 19:55:29 INFO  ReportDAO:153 - Report found
+2022-07-13 20:37:45 INFO  UserDAO:71 - Add user to DB: Sveta Obolon 1234
+2022-07-13 20:37:46 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:37:46 INFO  UserDAO:89 - User added successfully
+2022-07-13 20:37:46 INFO  UserDAO:105 - Set role with id:3 for user with id: 15
+2022-07-13 20:37:46 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:37:46 INFO  UserDAO:117 - User role established successfully
+2022-07-13 20:39:18 INFO  UserDAO:159 - Delete role for user with id: 1
+2022-07-13 20:39:19 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:39:19 INFO  UserDAO:171 - Role removed for user with id:1
+2022-07-13 20:40:21 INFO  UserDAO:207 - Delete user with id: 15
+2022-07-13 20:40:21 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:40:21 INFO  UserDAO:218 - User delete is successfull
+2022-07-13 20:40:50 INFO  UserDAO:132 - Get role for user with id: 2
+2022-07-13 20:40:51 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:40:51 INFO  UserDAO:146 - User role with id: 2 role: senior_cashier
+2022-07-13 20:41:27 INFO  UserDAO:261 - Get user with id: 2
+2022-07-13 20:41:27 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:41:27 INFO  UserDAO:279 - User found
+2022-07-13 20:42:04 INFO  UserDAO:261 - Get user with id: 2
+2022-07-13 20:42:05 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:42:05 INFO  UserDAO:279 - User found
+2022-07-13 20:42:58 INFO  UserDAO:234 - Update user with id: 2
+2022-07-13 20:42:58 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:42:59 INFO  UserDAO:248 - User update is successfull
+2022-07-13 20:43:45 INFO  UserDAO:41 - Validation for user: Anna Bobrova with password: 12
+2022-07-13 20:43:46 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:43:46 INFO  UserDAO:54 - User validation is successfull
+2022-07-13 20:47:30 INFO  ProductDAO:42 - Add product to DB: Огурцы 0 5.5 28.345
+2022-07-13 20:47:31 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:47:31 INFO  ProductDAO:62 - Product created
+2022-07-13 20:49:10 INFO  ProductDAO:78 - Updating product with id: 5
+2022-07-13 20:49:10 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:49:10 INFO  ProductDAO:93 - Product update is successfull
+2022-07-13 20:50:02 INFO  ProductDAO:158 - Get product with id: 5
+2022-07-13 20:50:03 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:50:03 INFO  ProductDAO:176 - Product found
+2022-07-13 20:50:33 INFO  ProductDAO:131 - Get all products
+2022-07-13 20:50:34 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:50:34 INFO  ProductDAO:148 - List with products: [Product{id=1, name='book', quantity=10, weight=2.04, price=123.25}, Product{id=4, name='pen', quantity=10, weight=0.1, price=25.5}, Product{id=5, name='Cherry', quantity=0, weight=5.5, price=28.345}]
+2022-07-13 20:51:31 INFO  ProductDAO:42 - Add product to DB: B 1 12.0 12.0
+2022-07-13 20:51:31 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:51:31 INFO  ProductDAO:62 - Product created with id: 6
+2022-07-13 20:51:52 INFO  ProductDAO:107 - Delete product with id: 6
+2022-07-13 20:51:52 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:51:52 INFO  ProductDAO:118 - Product deleted successfully
+2022-07-13 20:52:55 INFO  ReceiptDAO:40 - Create receipt by cashier : BOB with id: 1
+2022-07-13 20:52:55 INFO  ManagerDB:49 - Connection success
+2022-07-13 20:52:55 INFO  ReceiptDAO:58 - Receipt created
+2022-07-13 21:01:37 INFO  ReceiptDAO:72 - Add product with id:5 to  check with id: 7
+2022-07-13 21:01:37 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:01:37 INFO  ReceiptDAO:333 - Receipt with id: 7 is closed
+2022-07-13 21:01:38 WARN  ReceiptDAO:76 - Can not add products to receipt because the receipt with id: 7is closed
+2022-07-13 21:04:45 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:04:45 INFO  ReceiptDAO:333 - Receipt with id: 7 is closed
+2022-07-13 21:12:26 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:12:26 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:12:39 INFO  ReceiptDAO:72 - Add product with id:5 to  check with id: 7
+2022-07-13 21:12:39 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:12:39 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:12:39 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:12:39 WARN  ProductDAO:202 - There is not enough amount of the product with id: 5
+2022-07-13 21:12:39 WARN  ReceiptDAO:82 - Not enough amount of a product with id: 5to add to the receipt with id: 7
+2022-07-13 21:13:51 INFO  ReceiptDAO:72 - Add product with id:1 to  check with id: 7
+2022-07-13 21:13:51 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:13:51 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:13:51 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:13:51 INFO  ProductDAO:204 - The amount of product with id:1 at db: 10
+2022-07-13 21:13:51 WARN  ReceiptDAO:82 - Not enough amount of a product with id: 1to add to the receipt with id: 7
+2022-07-13 21:14:08 INFO  ReceiptDAO:72 - Add product with id:1 to  check with id: 7
+2022-07-13 21:14:09 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:09 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:14:09 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:09 INFO  ProductDAO:204 - The amount of product with id:1 at db: 10
+2022-07-13 21:14:09 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:09 INFO  ReceiptDAO:98 - Adding product to check is successfully
+2022-07-13 21:14:09 INFO  ReceiptDAO:114 - Adding price and amount to check with id:7
+2022-07-13 21:14:09 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:09 INFO  ReceiptDAO:127 - Adding price and amount to receipt is successfully
+2022-07-13 21:14:09 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:09 INFO  ProductDAO:227 - Product amount updated
+2022-07-13 21:14:26 INFO  ReceiptDAO:72 - Add product with id:4 to  check with id: 7
+2022-07-13 21:14:26 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:26 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:14:26 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:26 INFO  ProductDAO:204 - The amount of product with id:4 at db: 10
+2022-07-13 21:14:26 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:26 INFO  ReceiptDAO:98 - Adding product to check is successfully
+2022-07-13 21:14:26 INFO  ReceiptDAO:114 - Adding price and amount to check with id:7
+2022-07-13 21:14:26 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:26 INFO  ReceiptDAO:127 - Adding price and amount to receipt is successfully
+2022-07-13 21:14:26 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:14:26 INFO  ProductDAO:227 - Product amount updated
+2022-07-13 21:25:57 INFO  ReceiptDAO:72 - Add product with id:4 to  check with id: 7
+2022-07-13 21:25:57 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:25:58 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:25:58 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:25:58 INFO  ProductDAO:204 - The amount of product with id:4 at db: 5
+2022-07-13 21:25:58 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:25:58 ERROR ReceiptDAO:94 - Error during adding product to receipt 
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '7-4' for key 'products_in_receipt.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ReceiptDAO.addProductToReceipt(ReceiptDAO.java:92)
+	at App.main(App.java:11)
+2022-07-13 21:25:58 WARN  ReceiptDAO:102 - Adding product to receipt is failed
+2022-07-13 21:26:39 INFO  ReceiptDAO:72 - Add product with id:1 to  check with id: 7
+2022-07-13 21:26:39 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:26:40 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:26:40 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:26:40 INFO  ProductDAO:204 - The amount of product with id:1 at db: 5
+2022-07-13 21:26:40 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:26:40 ERROR ReceiptDAO:94 - Error during adding product to receipt 
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '7-1' for key 'products_in_receipt.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ReceiptDAO.addProductToReceipt(ReceiptDAO.java:92)
+	at App.main(App.java:11)
+2022-07-13 21:26:40 WARN  ReceiptDAO:102 - Adding product to receipt is failed
+2022-07-13 21:28:34 INFO  ReceiptDAO:167 - Delete product with id: 1 in check with id: 2
+2022-07-13 21:28:35 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:28:35 INFO  ReceiptDAO:333 - Receipt with id: 2 is closed
+2022-07-13 21:28:35 WARN  ReceiptDAO:171 - Can not delete products in check because the check with id: 2is closed
+2022-07-13 21:31:34 INFO  ReceiptDAO:167 - Delete product with id: 1 in check with id: 2
+2022-07-13 21:31:35 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:31:35 WARN  ReceiptDAO:335 - Receipt with id: 2 is not closed
+2022-07-13 21:31:35 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:31:35 INFO  ReceiptDAO:184 - Product from check deleted successfully
+2022-07-13 21:31:35 INFO  ReceiptDAO:114 - Adding price and amount to check with id:2
+2022-07-13 21:31:35 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:31:35 INFO  ReceiptDAO:127 - Adding price and amount to receipt is successfully
+2022-07-13 21:33:07 INFO  ReceiptDAO:141 - Delete receipt with id: 2
+2022-07-13 21:33:08 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:33:08 INFO  ReceiptDAO:152 - Receipt deleted successfully
+2022-07-13 21:33:57 INFO  ReceiptDAO:199 - Get  receipt with id: 6
+2022-07-13 21:33:57 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:33:57 ERROR ReceiptDAO:228 - Error during getting all users
+2022-07-13 21:33:57 WARN  ReceiptDAO:234 - Receipt not found
+2022-07-13 21:34:42 INFO  ReceiptDAO:199 - Get  receipt with id: 6
+2022-07-13 21:34:43 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:34:43 INFO  ReceiptDAO:232 - Receipt found
+2022-07-13 21:35:03 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:35:03 INFO  ReceiptDAO:199 - Get  receipt with id: 4
+2022-07-13 21:35:03 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:35:03 INFO  ReceiptDAO:232 - Receipt found
+2022-07-13 21:35:03 INFO  ReceiptDAO:199 - Get  receipt with id: 5
+2022-07-13 21:35:03 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:35:03 INFO  ReceiptDAO:232 - Receipt found
+2022-07-13 21:35:03 INFO  ReceiptDAO:199 - Get  receipt with id: 6
+2022-07-13 21:35:03 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:35:03 INFO  ReceiptDAO:232 - Receipt found
+2022-07-13 21:35:03 INFO  ReceiptDAO:199 - Get  receipt with id: 7
+2022-07-13 21:35:03 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:35:03 INFO  ReceiptDAO:232 - Receipt found
+2022-07-13 21:35:03 INFO  ReceiptDAO:255 - All receipts: [Receipt{id=4, cachier_id=45, cachier_name='BOB', number_of_products=9, total_sum=718.25, openDate='2022-07-10 21:18:56', closeDate='2022-07-10 23:19:44', products_in_check=[Product{id=1, name='book', quantity=5, weight=2.04, price=123.25}, Product{id=4, name='pen', quantity=5, weight=0.1, price=25.5}]}, Receipt{id=5, cachier_id=34, cachier_name='John', number_of_products=8, total_sum=595.0, openDate='2022-07-10 21:39:27', closeDate='2022-07-12 18:07:27', products_in_check=[Product{id=1, name='book', quantity=5, weight=2.04, price=123.25}, Product{id=4, name='pen', quantity=5, weight=0.1, price=25.5}]}, Receipt{id=6, cachier_id=2, cachier_name='Lisa', number_of_products=1, total_sum=123.25, openDate='2022-07-12 14:07:26', closeDate='2022-07-12 18:07:27', products_in_check=[Product{id=1, name='book', quantity=5, weight=2.04, price=123.25}]}, Receipt{id=7, cachier_id=1, cachier_name='BOB', number_of_products=10, total_sum=743.75, openDate='2022-07-13 17:52:55', closeDate='null', products_in_check=[Product{id=1, name='book', quantity=5, weight=2.04, price=123.25}, Product{id=4, name='pen', quantity=5, weight=0.1, price=25.5}]}]
+2022-07-13 21:35:34 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:35:34 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:35:34 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:35:35 INFO  ReceiptDAO:282 - Receipt closed
+2022-07-13 21:35:35 INFO  ReceiptDAO:347 - Adding receipt to archive with id: 7
+2022-07-13 21:35:35 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:35:35 ERROR ReceiptDAO:356 - Error during adding products to receipt
+java.sql.SQLSyntaxErrorException: Unknown column 'pic.id_check' in 'where clause'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ReceiptDAO.addReceiptAndProductsToArchive(ReceiptDAO.java:354)
+	at dao.ReceiptDAO.closeReceipt(ReceiptDAO.java:283)
+	at App.main(App.java:11)
+2022-07-13 21:35:35 WARN  ReceiptDAO:362 - Receipt with id: 7 not added to archive
+2022-07-13 21:36:35 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:36:35 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:36:35 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:36:35 INFO  ReceiptDAO:282 - Receipt closed
+2022-07-13 21:36:35 INFO  ReceiptDAO:347 - Adding receipt to archive with id: 7
+2022-07-13 21:36:35 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:36:35 ERROR ReceiptDAO:356 - Error during adding products to receipt
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '7' for key 'archive_receipt.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ReceiptDAO.addReceiptAndProductsToArchive(ReceiptDAO.java:354)
+	at dao.ReceiptDAO.closeReceipt(ReceiptDAO.java:283)
+	at App.main(App.java:11)
+2022-07-13 21:36:35 WARN  ReceiptDAO:362 - Receipt with id: 7 not added to archive
+2022-07-13 21:37:50 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:37:50 WARN  ReceiptDAO:335 - Receipt with id: 7 is not closed
+2022-07-13 21:37:50 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:37:50 INFO  ReceiptDAO:282 - Receipt closed
+2022-07-13 21:37:50 INFO  ReceiptDAO:347 - Adding receipt to archive with id: 7
+2022-07-13 21:37:51 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:37:51 INFO  ReceiptDAO:360 - Receipt with id: 7 added to archive
+2022-07-13 21:39:02 INFO  ReceiptDAO:396 - Get  receipt from archive with id: 7
+2022-07-13 21:39:03 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:39:03 INFO  ReceiptDAO:429 - Receipt found
+2022-07-13 21:39:55 INFO  ReportDAO:43 - Create report by cashier : BOB with id: 1
+2022-07-13 21:39:55 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:39:55 ERROR ReportDAO:56 - Error during the check creation
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VALUES(1,'BOB',0)' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ReportDAO.createReport(ReportDAO.java:50)
+	at App.main(App.java:11)
+2022-07-13 21:39:55 WARN  ReportDAO:60 - Report  not created
+2022-07-13 21:43:15 INFO  ReportDAO:43 - Create report by cashier : BOB with id: 1
+2022-07-13 21:43:16 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:43:16 ERROR ReportDAO:56 - Error during the report creation
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VALUES(1,'BOB',0)' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ReportDAO.createReport(ReportDAO.java:50)
+	at App.main(App.java:11)
+2022-07-13 21:43:16 WARN  ReportDAO:60 - Report  not created
+2022-07-13 21:43:59 INFO  ReportDAO:43 - Create report by cashier : BOB with id: 1
+2022-07-13 21:43:59 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:43:59 ERROR ReportDAO:56 - Error during the report creation
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VALUES(1,'BOB',0)' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ReportDAO.createReport(ReportDAO.java:50)
+	at App.main(App.java:11)
+2022-07-13 21:43:59 WARN  ReportDAO:60 - Report  not created
+2022-07-13 21:44:55 INFO  ReportDAO:43 - Create report by cashier : BOB with id: 1
+2022-07-13 21:44:56 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:44:56 INFO  ReportDAO:62 - Report created
+2022-07-13 21:44:56 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:44:56 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:44:56 INFO  ReceiptDAO:308 - Closed receipt id: [7]
+2022-07-13 21:44:56 INFO  ReportDAO:98 - Adding receipts to report successfully
+2022-07-13 21:44:56 INFO  ReportDAO:143 - Adding price and amount to report with id:4
+2022-07-13 21:44:56 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:44:56 ERROR ReportDAO:152 - Error during the price and amount adding
+java.sql.SQLSyntaxErrorException: Table 'cash_register.receipts' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at dao.ReportDAO.addPriceAndAmountToReport(ReportDAO.java:150)
+	at dao.ReportDAO.addReceiptsToReport(ReportDAO.java:99)
+	at dao.ReportDAO.createReport(ReportDAO.java:63)
+	at App.main(App.java:11)
+2022-07-13 21:44:56 WARN  ReportDAO:158 - Adding  price and amount to check is failed
+2022-07-13 21:52:13 INFO  ReportDAO:43 - Create report by cashier : BOB with id: 1
+2022-07-13 21:52:14 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:52:14 INFO  ReportDAO:62 - Report created
+2022-07-13 21:52:14 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:52:14 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:52:14 INFO  ReceiptDAO:308 - Closed receipt id: [7]
+2022-07-13 21:52:14 INFO  ReportDAO:98 - Adding receipts to report successfully
+2022-07-13 21:52:14 INFO  ReportDAO:143 - Adding price and amount to report with id:5
+2022-07-13 21:52:14 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:52:14 INFO  ReportDAO:156 - Adding price and amount to report is successfully
+2022-07-13 21:53:13 INFO  ReportDAO:43 - Create report by cashier : BOB with id: 1
+2022-07-13 21:53:13 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:53:14 INFO  ReportDAO:62 - Report created
+2022-07-13 21:53:14 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:53:14 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:53:14 INFO  ReceiptDAO:308 - Closed receipt id: [7]
+2022-07-13 21:53:14 INFO  ReportDAO:98 - Adding receipts to report successfully
+2022-07-13 21:53:14 INFO  ReportDAO:143 - Adding price and amount to report with id:6
+2022-07-13 21:53:14 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:53:14 INFO  ReportDAO:156 - Adding price and amount to report is successfully
+2022-07-13 21:53:14 INFO  ReceiptDAO:373 - Delete all receipts
+2022-07-13 21:53:14 INFO  ManagerDB:49 - Connection success
+2022-07-13 21:53:14 INFO  ReceiptDAO:383 - All receipts deleted successfully
+2022-07-14 15:08:33 INFO  ReportDAO:108 - Get report with id: 2
+2022-07-14 15:08:33 INFO  ManagerDB:49 - Connection success
+2022-07-14 15:08:33 WARN  ReportDAO:131 - Report not found
+2022-07-15 00:36:39 INFO  ProductDAO:131 - Get all products
+2022-07-15 00:36:39 INFO  ManagerDB:50 - Connection success
+2022-07-15 00:36:39 INFO  ProductDAO:148 - List with products: [Product{id=1, name='book', quantity=5, weight=2.04, price=123.25}, Product{id=4, name='pen', quantity=5, weight=0.1, price=25.5}, Product{id=5, name='Cherry', quantity=0, weight=5.5, price=28.345}]
+2022-07-15 01:55:37 INFO  ProductDAO:131 - Get all products
+2022-07-15 01:55:37 INFO  ManagerDB:52 - Connection success
+2022-07-15 01:55:37 INFO  ProductDAO:148 - List with products: [Product{id=1, name='book', quantity=5, weight=2.04, price=123.25}, Product{id=4, name='pen', quantity=5, weight=0.1, price=25.5}, Product{id=5, name='Cherry', quantity=0, weight=5.5, price=28.345}]
+2022-07-15 22:40:38 INFO  UserDAO:182 - Get all users
+2022-07-15 22:40:38 INFO  ManagerDB:52 - Connection success
+2022-07-15 22:40:39 INFO  UserDAO:197 - List with users: [User{id=4, fullName='Nick Avgustin', role='admin', password='null'}, User{id=3, fullName='Jack Nikson', role='commodity_expert', password='null'}, User{id=2, fullName='Anna Bobrova', role='senior_cashier', password='null'}]
+2022-07-15 23:39:26 INFO  UserDAO:101 - Get all users
+2022-07-15 23:39:26 INFO  ManagerDB:52 - Connection success
+2022-07-15 23:39:26 INFO  UserDAO:116 - List with users: [User{id=4, fullName='Nick Avgustin', role='admin', password='null'}, User{id=3, fullName='Jack Nikson', role='commodity_expert', password='null'}, User{id=2, fullName='Anna Bobrova', role='senior_cashier', password='null'}]
+2022-07-16 02:03:08 INFO  UserDAO:105 - Get all users
+2022-07-16 02:03:09 INFO  ManagerDB:52 - Connection success
+2022-07-16 02:03:09 ERROR UserDAO:120 - Error during getting all users
+2022-07-16 02:03:09 INFO  UserDAO:123 - List with users: []
+2022-07-16 02:03:37 INFO  UserDAO:105 - Get all users
+2022-07-16 02:03:37 INFO  ManagerDB:52 - Connection success
+2022-07-16 02:03:37 ERROR UserDAO:120 - Error during getting all users
+2022-07-16 02:03:37 INFO  UserDAO:123 - List with users: []
+2022-07-16 02:05:03 INFO  UserDAO:105 - Get all users
+2022-07-16 02:05:04 INFO  ManagerDB:52 - Connection success
+2022-07-16 02:05:04 INFO  UserDAO:123 - List with users: [User{id=2, fullName='Anna Bobrova', role='senior cashier', password='12'}, User{id=3, fullName='Jack Nikson', role='commodity expert', password='1234'}, User{id=4, fullName='Nick Avgustin', role='admin', password='1234'}, User{id=16, fullName='Viktor Viktorian', role='admin', password='1234'}]
+2022-07-16 02:05:42 INFO  UserDAO:192 - Get user with id: 1
+2022-07-16 02:05:43 INFO  ManagerDB:52 - Connection success
+2022-07-16 02:05:43 WARN  UserDAO:214 - User not found
+2022-07-16 02:06:25 INFO  UserDAO:192 - Get user with id: 2
+2022-07-16 02:06:26 INFO  ManagerDB:52 - Connection success
+2022-07-16 02:06:26 INFO  UserDAO:212 - User found
+2022-07-16 02:06:48 INFO  UserDAO:192 - Get user with id: 16
+2022-07-16 02:06:48 INFO  ManagerDB:52 - Connection success
+2022-07-16 02:06:48 INFO  UserDAO:212 - User found
+2022-07-16 13:18:56 INFO  UserDAO:192 - Get user with id: 16
+2022-07-16 13:18:57 INFO  ManagerDB:52 - Connection success
+2022-07-16 13:18:57 INFO  UserDAO:212 - User found
+2022-07-16 14:06:58 INFO  UserDAO:192 - Get user with id: 16
+2022-07-16 14:06:59 INFO  ManagerDB:52 - Connection success
+2022-07-16 14:06:59 INFO  UserDAO:212 - User found
+2022-07-16 18:44:50 INFO  UserDAO:193 - Get user with id: 16
+2022-07-16 18:44:51 INFO  ManagerDB:52 - Connection success
+2022-07-16 18:44:51 INFO  UserDAO:213 - User found
+2022-07-16 19:41:32 INFO  UserDAO:193 - Get user with id: 16
+2022-07-16 19:41:32 INFO  ManagerDB:52 - Connection success
+2022-07-16 19:41:32 INFO  UserDAO:213 - User found
+2022-07-26 13:14:47 INFO  ProductDAO:165 - Get product with id: 9
+2022-07-26 13:14:48 INFO  ManagerDB:52 - Connection success
+2022-07-26 13:14:48 INFO  ProductDAO:184 - Product found
+2022-07-26 13:30:50 INFO  ProductDAO:165 - Get product with id: 9
+2022-07-26 13:30:51 INFO  ManagerDB:52 - Connection success
+2022-07-26 13:30:51 INFO  ProductDAO:184 - Product found
+2022-07-26 13:32:30 INFO  ProductDAO:165 - Get product with id: 9
+2022-07-26 13:32:31 INFO  ManagerDB:52 - Connection success
+2022-07-26 13:32:31 INFO  ProductDAO:184 - Product found
+2022-07-26 13:32:58 INFO  ProductDAO:165 - Get product with id: 9
+2022-07-26 13:32:59 INFO  ManagerDB:52 - Connection success
+2022-07-26 13:32:59 INFO  ProductDAO:184 - Product found
+2022-07-27 12:24:33 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:25:13 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:25:13 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:25:13 ERROR ProductDAO:166 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:154)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 12:25:13 INFO  ProductDAO:169 - List with products: []
+2022-07-27 12:27:48 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:27:48 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:27:48 ERROR ProductDAO:166 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:154)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 12:27:48 INFO  ProductDAO:169 - List with products: []
+2022-07-27 12:28:38 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:28:38 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:28:38 ERROR ProductDAO:166 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:154)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 12:28:38 INFO  ProductDAO:169 - List with products: []
+2022-07-27 12:30:22 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:30:22 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:30:22 INFO  ProductDAO:169 - List with products: [Product{id=1, name='Book', quantity=5, weight=2.5, price=123.3}, Product{id=4, name='Pen', quantity=7, weight=5.0, price=10.0}, Product{id=7, name='Apple', quantity=12, weight=345.0, price=1231.0}, Product{id=8, name='Potato', quantity=5, weight=12.0, price=15.0}, Product{id=9, name='Cucumber', quantity=12, weight=5.0, price=15.0}]
+2022-07-27 12:30:54 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:30:55 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:30:55 INFO  ProductDAO:169 - List with products: [Product{id=1, name='Book', quantity=5, weight=2.5, price=123.3}, Product{id=4, name='Pen', quantity=7, weight=5.0, price=10.0}, Product{id=7, name='Apple', quantity=12, weight=345.0, price=1231.0}, Product{id=8, name='Potato', quantity=5, weight=12.0, price=15.0}, Product{id=9, name='Cucumber', quantity=12, weight=5.0, price=15.0}]
+2022-07-27 12:33:09 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:33:09 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:33:09 INFO  ProductDAO:169 - List with products: [Product{id=1, name='Book', quantity=5, weight=2.5, price=123.3}, Product{id=4, name='Pen', quantity=7, weight=5.0, price=10.0}, Product{id=7, name='Apple', quantity=12, weight=345.0, price=1231.0}, Product{id=8, name='Potato', quantity=5, weight=12.0, price=15.0}, Product{id=9, name='Cucumber', quantity=12, weight=5.0, price=15.0}]
+2022-07-27 12:34:01 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:34:01 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:34:01 INFO  ProductDAO:169 - List with products: [Product{id=1, name='Book', quantity=5, weight=2.5, price=123.3}, Product{id=4, name='Pen', quantity=7, weight=5.0, price=10.0}, Product{id=7, name='Apple', quantity=12, weight=345.0, price=1231.0}, Product{id=8, name='Potato', quantity=5, weight=12.0, price=15.0}, Product{id=9, name='Cucumber', quantity=12, weight=5.0, price=15.0}]
+2022-07-27 12:34:59 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:34:59 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:35:22 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:35:22 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:37:07 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:37:07 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:38:12 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:38:12 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:45:28 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:45:28 INFO  ManagerDB:52 - Connection success
+2022-07-27 12:45:49 INFO  ProductDAO:142 - Get all products
+2022-07-27 12:45:50 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:08:10 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:08:11 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:08:29 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:08:29 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:09:24 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:09:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:10:15 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:10:16 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:10:43 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:10:43 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:11:15 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:11:15 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:12:50 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:12:50 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:12:50 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: SQL String cannot be NULL
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:85)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:218)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:192)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getInstance(ClientPreparedStatement.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.clientPrepareStatement(ConnectionImpl.java:670)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1643)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1563)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:149)
+	at com.example.cashregister.App.main(App.java:7)
+Caused by: com.mysql.cj.exceptions.WrongArgumentException: SQL String cannot be NULL
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.ClientPreparedQuery.checkNullOrEmptyQuery(ClientPreparedQuery.java:142)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.<init>(ClientPreparedStatement.java:214)
+	... 7 more
+2022-07-27 13:13:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:13:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:13:24 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setString(ClientPreparedStatement.java:1714)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:150)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:13:56 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:13:56 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:15:07 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:15:07 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:07 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:16:08 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:17 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:16:18 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:47 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:16:47 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:54 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:16:55 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:16:55 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:152)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:17:29 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:17:29 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:17:29 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: No value specified for parameter 2
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:989)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:152)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:17:42 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:17:42 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:17:42 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:152)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:19:22 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:19:22 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:19:22 ERROR ProductDAO:165 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:152)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:19:46 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:19:47 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:20:03 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:20:04 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:26:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:26:23 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:26:24 ERROR ProductDAO:171 - Error during getting all products
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:989)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:158)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:26:46 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:26:46 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:27:18 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:27:18 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:27:35 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:27:36 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:27:42 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:27:42 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:28:26 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:28:26 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:29:38 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:29:38 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:36:30 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:36:30 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:38:10 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:38:11 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:38:34 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:38:34 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:39:20 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:39:20 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:39:34 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:39:34 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:39:58 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:39:58 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:41:24 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:41:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:43:32 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:43:32 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:43:51 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:43:51 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:45:06 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:45:07 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:45:07 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''id DESC'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:45:21 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:45:21 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:45:21 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''id'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:45:30 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:45:31 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:45:31 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''id'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:46:00 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:46:00 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:47:11 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:47:11 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:47:18 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:47:18 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:48:47 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:48:47 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:54:09 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:54:09 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:54:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:54:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:55:58 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:55:58 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:56:24 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:56:24 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:56:42 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:56:42 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:57:10 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:57:10 INFO  ManagerDB:52 - Connection success
+2022-07-27 13:57:10 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 'name'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 13:58:13 INFO  ProductDAO:142 - Get all products
+2022-07-27 13:58:14 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:01:50 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:01:50 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:01:50 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''DESC'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:03:17 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:03:17 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:03:17 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: FUNCTION cash_register.id does not exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:05:08 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:05:08 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:12:36 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:12:37 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:12:37 ERROR ProductDAO:173 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''DESC'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:160)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:13:41 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:13:41 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:13:41 ERROR ProductDAO:172 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''DESC'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:159)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:13:58 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:13:58 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:13:58 ERROR ProductDAO:172 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:159)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:14:07 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:14:07 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:14:07 ERROR ProductDAO:172 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''DESC')' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:159)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 14:14:38 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:14:39 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:17:32 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:17:33 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:17:43 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:17:43 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:18:19 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:18:19 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:18:38 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:18:39 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:18:51 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:18:51 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:19:52 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:19:52 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:21:46 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:21:46 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:24:50 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:24:50 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:26:06 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:26:06 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:34:15 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:34:15 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:34:31 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:34:32 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:35:01 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:35:02 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:50:06 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:50:06 INFO  ManagerDB:52 - Connection success
+2022-07-27 14:56:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 14:56:23 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:18:12 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:18:12 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:23:23 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:23:23 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:23:23 ERROR ProductDAO:170 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:157)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 15:23:55 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:23:55 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:23:55 ERROR ProductDAO:170 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BYname ASC LIMIT02' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:157)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 15:24:25 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:24:25 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:24:25 ERROR ProductDAO:170 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BYname ASC  LIMIT 0,2' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:157)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-27 15:25:00 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:25:00 INFO  ManagerDB:52 - Connection success
+2022-07-27 15:25:25 INFO  ProductDAO:142 - Get all products
+2022-07-27 15:25:26 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:03:33 INFO  ProductDAO:211 - Get product with name: Apple
+2022-07-29 13:03:34 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:03:34 INFO  ProductDAO:230 - Product found
+2022-07-29 13:08:11 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:08:11 ERROR ProductDAO:167 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(0,5)' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:08:37 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:08:37 ERROR ProductDAO:167 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(0,5)' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:08:54 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:11:34 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:11:57 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:12:09 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:12:09 ERROR ProductDAO:167 - Error during getting all products
+java.sql.SQLException: Operand should contain 1 column(s)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:12:48 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:12:48 ERROR ProductDAO:166 - Error during getting all products
+java.sql.SQLException: Parameter index out of range (4 > number of parameters, which is 3).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setInt(ClientPreparedStatement.java:1536)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:153)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:13:08 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:13:34 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:23:16 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:23:16 ERROR ProductDAO:168 - Error during getting all products
+java.sql.SQLException: Parameter index out of range (3 > number of parameters, which is 2).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setInt(ClientPreparedStatement.java:1536)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:24:55 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:24:55 ERROR ProductDAO:167 - Error during getting all products
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC LIMIT 0,2' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getAllProducts(ProductDAO.java:155)
+	at com.example.cashregister.App.main(App.java:7)
+2022-07-29 13:25:52 INFO  ManagerDB:52 - Connection success
+2022-07-29 13:45:13 INFO  ManagerDB:52 - Connection success
+2022-07-29 16:29:56 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:29:57 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:29:57 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:29:57 ERROR ProductDAO:192 - Error during getting product
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:29:57 WARN  ProductDAO:198 - Product not found
+2022-07-29 16:30:31 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:30:32 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:30:32 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:30:32 ERROR ProductDAO:192 - Error during getting product
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:30:32 WARN  ProductDAO:198 - Product not found
+2022-07-29 16:31:02 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:31:02 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:31:02 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:31:02 ERROR ProductDAO:192 - Error during getting product
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:31:02 WARN  ProductDAO:198 - Product not found
+2022-07-29 16:31:43 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:31:43 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:31:43 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:31:43 ERROR ProductDAO:192 - Error during getting product
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.getProduct(ProductDAO.java:179)
+	at com.example.cashregister.App.main(App.java:11)
+2022-07-29 16:31:43 WARN  ProductDAO:198 - Product not found
+2022-07-29 16:49:33 INFO  UserDAO:113 - Get all users
+2022-07-29 16:49:34 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.dao.impl.UserDaoImpl.getAllUsers(UserDAO.java:115)
+	at com.example.cashregister.App.main(App.java:12)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 9 more
+2022-07-29 16:49:34 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.dao.impl.UserDaoImpl.getAllUsers(UserDAO.java:115)
+	at com.example.cashregister.App.main(App.java:12)
+2022-07-29 16:49:34 ERROR UserDAO:128 - Error during getting all users
+2022-07-29 16:49:34 INFO  UserDAO:131 - List with users: []
+2022-07-29 16:50:37 ERROR ManagerDB:48 - Connection Fail
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:1001)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:45)
+	at com.example.cashregister.App.main(App.java:13)
+Caused by: java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC;allowPublicKeyRetrieval=true
+	at java.base/java.time.ZoneRegion.checkName(ZoneRegion.java:152)
+	at java.base/java.time.ZoneRegion.ofId(ZoneRegion.java:117)
+	at java.base/java.time.ZoneId.ofWithPrefix(ZoneId.java:426)
+	at java.base/java.time.ZoneId.of(ZoneId.java:405)
+	at java.base/java.time.ZoneId.of(ZoneId.java:357)
+	at com.mysql.cj.protocol.a.NativeProtocol.configureTimeZone(NativeProtocol.java:2257)
+	at com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2284)
+	at com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1307)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:959)
+	... 8 more
+2022-07-29 16:50:37 ERROR ManagerDB:56 - Connection Fail
+java.lang.ClassNotFoundException
+	at com.example.cashregister.connection.notused.ManagerDB.getConnection(ManagerDB.java:55)
+	at com.example.cashregister.App.main(App.java:13)
+2022-07-29 16:51:12 INFO  ManagerDB:52 - Connection success
+2022-07-29 16:51:46 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:51:46 INFO  ManagerDB:52 - Connection success
+2022-07-29 16:51:47 INFO  ProductDAO:196 - Product found
+2022-07-29 16:52:08 INFO  ProductDAO:177 - Get product with id: 1
+2022-07-29 16:52:09 INFO  ManagerDB:52 - Connection success
+2022-07-29 16:52:09 INFO  ProductDAO:196 - Product found
+2022-07-29 17:34:04 INFO  ProductDAO:210 - Get product with name: Apple
+2022-07-29 17:34:04 INFO  ManagerDB:52 - Connection success
+2022-07-29 17:34:04 INFO  ProductDAO:229 - Product found
+2022-07-29 17:34:53 INFO  ProductDAO:210 - Get product with name: Apple
+2022-07-29 17:34:54 INFO  ManagerDB:52 - Connection success
+2022-07-29 17:34:54 INFO  ProductDAO:229 - Product found
+2022-07-29 19:02:53 INFO  ManagerDB:52 - Connection success
+2022-07-29 19:26:42 INFO  MLog:191 - MLog clients using log4j logging.
+2022-07-29 19:26:42 DEBUG MLog:101 - Reading VM config for path list /com/mchange/v2/log/default-mchange-log.properties, /mchange-commons.properties, /c3p0.properties, hocon:/reference,/application,/c3p0,/, /mchange-log.properties, /
+2022-07-29 19:26:42 DEBUG MLog:101 - The configuration file for resource identifier '/mchange-commons.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MLog:101 - The configuration file for resource identifier '/c3p0.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MLog:101 - The configuration file for resource identifier 'hocon:/reference,/application,/c3p0,/' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MLog:101 - The configuration file for resource identifier '/mchange-log.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/mchange-commons.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/mchange-log.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier 'hocon:/reference,/application,/c3p0,/' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/c3p0.properties' could not be found. Skipping.
+2022-07-29 19:26:42 INFO  C3P0Registry:248 - Initializing c3p0-0.9.5.5 [built 11-December-2019 22:18:33 -0800; debug? true; trace: 10]
+2022-07-29 19:26:42 DEBUG DynamicPooledDataSourceManagerMBean:254 - MBean: com.mchange.v2.c3p0:type=PooledDataSource,identityToken=1hge0ywaqkqyzi8e9waez|dc24521,name=1hge0ywaqkqyzi8e9waez|dc24521 registered.
+2022-07-29 19:26:42 DEBUG DynamicPooledDataSourceManagerMBean:246 - MBean: com.mchange.v2.c3p0:type=PooledDataSource,identityToken=1hge0ywaqkqyzi8e9waez|dc24521,name=1hge0ywaqkqyzi8e9waez|dc24521 unregistered, in order to be reregistered after update.
+2022-07-29 19:26:42 DEBUG DynamicPooledDataSourceManagerMBean:254 - MBean: com.mchange.v2.c3p0:type=PooledDataSource,identityToken=1hge0ywaqkqyzi8e9waez|dc24521,name=1hge0ywaqkqyzi8e9waez|dc24521 registered.
+2022-07-29 19:26:42 INFO  AbstractPoolBackedDataSource:527 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, dataSourceName -> 1hge0ywaqkqyzi8e9waez|dc24521, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> null, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 1hge0ywaqkqyzi8e9waez|dc24521, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/cash_register?serverTimezone=UTC&allowPublicKeyRetrieval=true, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 30, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {password=******, user=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {}, usesTraditionalReflectiveProxies -> false ]
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/mchange-commons.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/mchange-log.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier '/c3p0.properties' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG MConfig:101 - The configuration file for resource identifier 'hocon:/reference,/application,/c3p0,/' could not be found. Skipping.
+2022-07-29 19:26:42 DEBUG BasicResourcePool:360 - com.mchange.v2.resourcepool.BasicResourcePool@3c419631 config: [start -> 3; min -> 3; max -> 30; inc -> 3; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; max_resource_age -> 0; max_idle_time -> 0; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 0; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false; force_synchronous_checkins -> false]
+2022-07-29 19:26:42 DEBUG C3P0PooledConnectionPoolManager:401 - Created new pool for auth, username (masked): 'ro******'.
+2022-07-29 19:26:42 DEBUG BasicResourcePool:625 - acquire test -- pool size: 0; target_pool_size: 3; desired target? 1
+2022-07-29 19:26:42 DEBUG BasicResourcePool:1479 - awaitAvailable(): [unknown]
+2022-07-29 19:26:43 DEBUG NewProxyPreparedStatement:1700 - com.mchange.v2.c3p0.impl.NewProxyPreparedStatement@6aba2b86 [wrapping: com.mysql.cj.jdbc.ClientPreparedStatement: SELECT COUNT(1) FROM products] closed orphaned ResultSet: com.mchange.v2.c3p0.impl.NewProxyResultSet@3ce1e309 [wrapping: null]
+2022-07-31 20:43:37 INFO  UserDaoImpl:105 - Get all users
+2022-07-31 20:43:38 ERROR UserDaoImpl:123 - Error during getting all users
+2022-07-31 20:43:38 INFO  UserDaoImpl:126 - List with users: []
+2022-07-31 20:44:14 INFO  UserDaoImpl:105 - Get all users
+2022-07-31 20:44:15 INFO  UserDaoImpl:126 - List with users: [User{id=16, fullName='Viktor Best', role='admin', password='1234'}, User{id=3, fullName='Jack Nikson', role='commodity_expert', password='1234'}, User{id=2, fullName='Bob Bobchinski', role='cashier', password='qwe123'}]
+2022-07-31 20:44:42 INFO  UserDaoImpl:105 - Get all users
+2022-07-31 20:44:43 INFO  UserDaoImpl:126 - List with users: [User{id=16, fullName='Viktor Best', role='admin', password='1234'}, User{id=3, fullName='Jack Nikson', role='commodity_expert', password='1234'}]
+2022-07-31 20:49:20 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 9
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 8
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 7
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 4
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 1
+2022-07-31 20:49:21 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 20:49:21 INFO  ReceiptDaoImpl:258 - All receipts: [Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}, Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}, Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}, Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}, Receipt{id=0, cachier_id=0, cachier_name='null', number_of_products=0, total_sum=0.0, openDate='null', closeDate='null', products_in_check=null}]
+2022-07-31 21:04:26 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 7
+2022-07-31 21:04:26 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 21:05:27 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 7
+2022-07-31 21:05:28 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-07-31 21:07:03 INFO  ReceiptDaoImpl:424 - Get  receipt from archive with id: 7
+2022-07-31 21:07:03 ERROR ReceiptDaoImpl:454 - Error during getting all users
+2022-07-31 21:07:03 WARN  ReceiptDaoImpl:460 - Receipt not found
+2022-07-31 21:11:30 INFO  ReceiptDaoImpl:424 - Get  receipt from archive with id: 7
+2022-07-31 21:11:30 INFO  ReceiptDaoImpl:458 - Receipt found
+2022-07-31 21:21:48 ERROR ReportDaoImpl:159 - Error during getting all reports
+java.sql.SQLException: Column 'number_of_products' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:851)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getInt(DelegatingResultSet.java:633)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getInt(DelegatingResultSet.java:633)
+	at com.example.cashregister.dao.impl.ReportDaoImpl.getAllReports(ReportDaoImpl.java:152)
+	at com.example.cashregister.App.main(App.java:16)
+2022-07-31 21:23:09 ERROR ReportDaoImpl:159 - Error during getting all reports
+java.sql.SQLException: Column 'date' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getString(ResultSetImpl.java:896)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getString(DelegatingResultSet.java:898)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getString(DelegatingResultSet.java:898)
+	at com.example.cashregister.dao.impl.ReportDaoImpl.getAllReports(ReportDaoImpl.java:154)
+	at com.example.cashregister.App.main(App.java:16)
+2022-08-03 18:29:40 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 0
+2022-08-03 18:29:41 ERROR ReceiptDaoImpl:227 - Error during getting all users
+2022-08-03 18:29:41 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-08-03 18:30:39 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 80
+2022-08-03 18:30:40 ERROR ReceiptDaoImpl:227 - Error during getting all users
+2022-08-03 18:30:40 WARN  ReceiptDaoImpl:233 - Receipt not found
+2022-08-03 18:33:31 INFO  ReceiptDaoImpl:197 - Get  receipt with id: 80
+2022-08-03 18:33:32 INFO  ReceiptDaoImpl:231 - Receipt found
+2022-08-04 19:48:57 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:48:57 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:48:57 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:50:09 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:50:10 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:50:10 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:52:05 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:52:06 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:52:06 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:52:06 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:52:06 ERROR ProductDaoImpl:290 - Error during increasing amount of product
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(p.quantity=p.quantity +2) WHERE id=9' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.increaseAmount(ProductDaoImpl.java:288)
+	at com.example.cashregister.dao.impl.ReceiptDaoImpl.cancelProduct(ReceiptDaoImpl.java:488)
+	at com.example.cashregister.App.main(App.java:15)
+2022-08-04 19:52:06 WARN  ProductDaoImpl:296 - Product amount increasing failed
+2022-08-04 19:52:06 INFO  ReceiptDaoImpl:493 - Product from receipt changed successfully
+2022-08-04 19:53:29 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:53:30 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:53:30 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:53:30 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:53:30 ERROR ProductDaoImpl:290 - Error during increasing amount of product
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(p.quantity=p.quantity + 2) WHERE id=9' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.increaseAmount(ProductDaoImpl.java:288)
+	at com.example.cashregister.dao.impl.ReceiptDaoImpl.cancelProduct(ReceiptDaoImpl.java:487)
+	at com.example.cashregister.App.main(App.java:15)
+2022-08-04 19:53:30 WARN  ProductDaoImpl:296 - Product amount increasing failed
+2022-08-04 19:53:30 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:55:11 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:55:12 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:55:12 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:55:12 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:55:12 ERROR ProductDaoImpl:290 - Error during increasing amount of product
+java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex(ClientPreparedStatement.java:1358)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setInt(ClientPreparedStatement.java:1536)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.setInt(DelegatingPreparedStatement.java:418)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.setInt(DelegatingPreparedStatement.java:418)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.increaseAmount(ProductDaoImpl.java:287)
+	at com.example.cashregister.dao.impl.ReceiptDaoImpl.cancelProduct(ReceiptDaoImpl.java:487)
+	at com.example.cashregister.App.main(App.java:15)
+2022-08-04 19:55:12 WARN  ProductDaoImpl:296 - Product amount increasing failed
+2022-08-04 19:55:12 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:57:27 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:57:27 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:57:27 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:57:27 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:57:27 ERROR ProductDaoImpl:288 - Error during increasing amount of product
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(p.quantity=p.quantity + 2) WHERE id=9' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.ProductDaoImpl.increaseAmount(ProductDaoImpl.java:286)
+	at com.example.cashregister.dao.impl.ReceiptDaoImpl.cancelProduct(ReceiptDaoImpl.java:487)
+	at com.example.cashregister.App.main(App.java:15)
+2022-08-04 19:57:27 WARN  ProductDaoImpl:294 - Product amount increasing failed
+2022-08-04 19:57:27 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:58:08 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:58:09 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:58:09 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:58:09 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:58:09 INFO  ProductDaoImpl:292 - Product amount increased
+2022-08-04 19:58:09 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:58:46 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:58:47 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:58:47 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-04 19:58:47 INFO  ReceiptDaoImpl:114 - Adding price and amount to receipt is successfully
+2022-08-04 19:58:47 INFO  ProductDaoImpl:292 - Product amount increased
+2022-08-04 19:58:47 INFO  ReceiptDaoImpl:492 - Product from receipt changed successfully
+2022-08-04 19:59:54 INFO  ReceiptDaoImpl:474 - Cancel product with number: 3 in amount: 2
+2022-08-04 19:59:55 WARN  ReceiptDaoImpl:353 - Receipt with id: 90 is not closed
+2022-08-04 19:59:55 INFO  ReceiptDaoImpl:101 - Adding price and amount to check with id:90
+2022-08-15 19:34:15 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:34:57 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:36:05 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:36:25 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:38:34 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:39:25 INFO  UserDaoImpl:105 - Get all users
+2022-08-15 19:39:41 INFO  UserDaoImpl:105 - Get all users
+2022-08-16 13:26:20 INFO  ProductDaoImpl:170 - Get product with id: 1
+2022-08-16 13:26:21 INFO  ProductDaoImpl:189 - Product found
+2022-08-16 13:47:14 INFO  UserDaoImpl:197 - Get user with id: 16
+2022-08-16 13:47:15 INFO  UserDaoImpl:217 - User found
+2022-08-16 14:20:18 INFO  ProductDaoImpl:205 - Get product with name: book
+2022-08-16 14:20:19 INFO  ProductDaoImpl:224 - Product found
+2022-08-16 16:35:21 INFO  UserDaoImpl:282 - Get user with fullname: Tom Cat
+2022-08-16 16:35:22 ERROR UserDaoImpl:298 - Error during getting user
+java.sql.SQLException: Column 'role' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getString(ResultSetImpl.java:896)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getString(DelegatingResultSet.java:898)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getString(DelegatingResultSet.java:898)
+	at com.example.cashregister.dao.impl.UserDaoImpl.searchUser(UserDaoImpl.java:294)
+	at com.example.cashregister.App.main(App.java:11)
+2022-08-16 16:35:22 WARN  UserDaoImpl:304 - User not found
+2022-08-16 16:36:09 INFO  UserDaoImpl:282 - Get user with fullname: Tom Cat
+2022-08-16 16:36:10 INFO  UserDaoImpl:302 - User found
+2022-08-19 19:11:28 INFO  UserDaoImpl:73 - Add user to DB: Viktor Lysak [B@67b6d4ae
+2022-08-19 19:11:31 ERROR UserDaoImpl:88 - Error during user creation
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'password' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.UserDaoImpl.createUser(UserDaoImpl.java:81)
+	at com.example.cashregister.App.main(App.java:22)
+2022-08-19 19:11:31 WARN  UserDaoImpl:95 - User not added
+2022-08-19 19:13:22 INFO  UserDaoImpl:73 - Add user to DB: Viktor Lysak
+2022-08-19 19:13:24 INFO  UserDaoImpl:92 - User added successfully
+2022-08-19 19:13:24 INFO  UserDaoImpl:235 - Set role with id:4 for user with id: 19
+2022-08-19 19:13:24 INFO  UserDaoImpl:247 - User role established successfully
+2022-08-19 19:15:01 INFO  UserDaoImpl:34 - Validation for user: Viktor Lysak with password: Qwe123
+2022-08-19 19:15:04 WARN  UserDaoImpl:57 - User is not valid
+2022-08-19 19:27:04 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lysak
+2022-08-19 19:27:06 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:28:38 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lysak
+2022-08-19 19:28:40 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:40:59 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lysak
+2022-08-19 19:41:00 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:41:00 INFO  UserDaoImpl:170 - Update user with id: 19
+2022-08-19 19:41:00 INFO  UserDaoImpl:325 - Update role for user with id: 19
+2022-08-19 19:41:00 INFO  UserDaoImpl:337 - Role updated for user with id:19
+2022-08-19 19:41:00 INFO  UserDaoImpl:185 - User update is successfully
+2022-08-19 19:41:00 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lys
+2022-08-19 19:41:00 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:41:39 INFO  UserDaoImpl:286 - Get user with fullname: Viktor Lys
+2022-08-19 19:41:40 INFO  UserDaoImpl:307 - User found
+2022-08-19 19:42:58 INFO  UserDaoImpl:200 - Get user with id: 19
+2022-08-19 19:42:59 ERROR UserDaoImpl:217 - Error during getting user
+java.sql.SQLException: Column 'sole' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getBytes(ResultSetImpl.java:736)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getBytes(DelegatingResultSet.java:408)
+	at org.apache.commons.dbcp2.DelegatingResultSet.getBytes(DelegatingResultSet.java:408)
+	at com.example.cashregister.dao.impl.UserDaoImpl.get(UserDaoImpl.java:213)
+	at com.example.cashregister.App.main(App.java:24)
+2022-08-19 19:42:59 WARN  UserDaoImpl:223 - User not found
+2022-08-19 19:43:43 INFO  UserDaoImpl:200 - Get user with id: 19
+2022-08-19 19:43:44 INFO  UserDaoImpl:221 - User found
+2022-08-19 19:44:43 INFO  UserDaoImpl:107 - Get all users
+2022-08-19 19:53:35 INFO  UserDaoImpl:248 - Get user with fullname: Viktor Lys
+2022-08-19 19:53:36 INFO  UserDaoImpl:269 - User found
+2022-08-26 21:16:16 INFO  UserDaoImpl:26 - Add user to DB: Bra Bla
+2022-08-26 21:16:17 INFO  UserDaoImpl:58 - Set role with id:1 for user with id: 24
+2022-08-26 21:16:17 INFO  UserDaoImpl:69 - User role established successfully
+2022-08-26 21:16:17 INFO  UserDaoImpl:49 - User added successfully
+2022-08-27 12:42:34 INFO  UserDaoImpl:58 - Add user to DB: Bra Bla
+2022-08-27 12:42:35 INFO  UserDaoImpl:247 - Set role with id:1 for user with id: 25
+2022-08-27 12:42:35 INFO  UserDaoImpl:258 - User role established successfully
+2022-08-27 12:43:36 INFO  UserDaoImpl:58 - Add user to DB: Bra Bla
+2022-08-27 12:43:37 INFO  UserDaoImpl:247 - Set role with id:1 for user with id: 26
+2022-08-27 12:43:37 INFO  UserDaoImpl:258 - User role established successfully
+2022-08-27 12:43:37 INFO  UserDaoImpl:99 - User added successfully
+2022-08-27 12:44:45 INFO  UserDaoImpl:58 - Add user to DB: null null
+2022-08-27 12:44:45 INFO  UserDaoImpl:247 - Set role with id:1 for user with id: 27
+2022-08-27 12:44:45 INFO  UserDaoImpl:258 - User role established successfully
+2022-08-27 12:44:45 INFO  UserDaoImpl:99 - User added successfully
+2022-08-27 12:45:13 INFO  UserDaoImpl:58 - Add user to DB: null null
+2022-08-27 12:45:14 ERROR UserDaoImpl:80 - Error during user creation
+java.sql.SQLIntegrityConstraintViolationException: Column 'first_name' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.UserDaoImpl.createUser(UserDaoImpl.java:72)
+	at com.example.cashregister.App.main(App.java:17)
+2022-08-27 12:46:28 INFO  UserDaoImpl:58 - Add user to DB: null null
+2022-08-27 12:46:28 ERROR UserDaoImpl:80 - Error during user creation
+java.sql.SQLIntegrityConstraintViolationException: Column 'first_name' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at org.apache.commons.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:136)
+	at com.example.cashregister.dao.impl.UserDaoImpl.createUser(UserDaoImpl.java:72)
+	at com.example.cashregister.App.main(App.java:17)

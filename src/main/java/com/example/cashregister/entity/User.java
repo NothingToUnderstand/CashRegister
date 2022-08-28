@@ -1,5 +1,6 @@
 package com.example.cashregister.entity;
 
+
 /**
  * Entity of user
  * */
@@ -9,14 +10,16 @@ public class User {
     private String firstName;
     private String lastName;
     private String fullName;
+    private String email;
     private byte[] password;
     private String role;
     private byte[] sole;
 
-     public User() {
+
+    public User() {
         this.id=0;
     }
-    public User(int id,String firstName,String lastname,String fullName, byte[] password,byte[] sole,String role) {
+    public User(int id,String firstName,String lastname,String fullName, byte[] password,byte[] sole,String role,String email) {
         this.id = id;
         this.fullName = fullName;
         this.password = password;
@@ -24,8 +27,12 @@ public class User {
         this.firstName=firstName;
         this.lastName=lastname;
         this.sole=sole;
+        this.email=email;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
     public int getId() {return id;}
 

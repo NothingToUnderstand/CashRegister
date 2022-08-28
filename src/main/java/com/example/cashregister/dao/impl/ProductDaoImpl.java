@@ -4,6 +4,7 @@ import com.example.cashregister.dao.ProductDao;
 import com.example.cashregister.entity.Product;
 import org.apache.log4j.Logger;
 
+import javax.enterprise.context.RequestScoped;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,11 +12,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static com.example.cashregister.connection.ApacheConPool.getConnection;
-import static com.example.cashregister.property.Properties.getProperty;
+import static com.example.cashregister.Service.extra.Properties.getProperty;
 
 /**
  * DAO layer for program interaction with the product table in the database
  **/
+@RequestScoped
 public class ProductDaoImpl implements ProductDao {
 
     private static final Logger log = Logger.getLogger(ProductDaoImpl.class);
@@ -31,7 +33,7 @@ public class ProductDaoImpl implements ProductDao {
      * @return int product id
      */
     @Override
-    public int createProduct(String name, int quantity, double weight, double price, byte[] img) {
+    public int createProduct(String name, int quantity, double weight, double price, byte[] img) throws SQLException {
         log.info("Add product to DB: " + name + " " + quantity + " " + weight + " " + price);
         int id = 0;
         try (Connection con = getConnection();
@@ -49,11 +51,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             log.error("Error during the product creation", e);
             e.printStackTrace();
-        }
-        if (id == 0) {
-            log.warn("Product  not created");
-        } else {
-            log.info("Product created with id: " + id);
+            throw e;
         }
         return id;
     }
@@ -71,9 +69,9 @@ public class ProductDaoImpl implements ProductDao {
      * @return boolean status
      */
     @Override
-    public boolean updateProduct(int id, String name, int quantity, double weight, double price, byte[] img) {
+    public boolean updateProduct(int id, String name, int quantity, double weight, double price, byte[] img) throws SQLException {
         log.info("Updating product with id: " + id);
-        boolean status = false;
+        boolean status;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("update_product"))) {
             ps.setString(1, name);
@@ -86,11 +84,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             log.error("Error during updating the product", e);
             e.printStackTrace();
-        }
-        if (status) {
-            log.info("Product update is successfull");
-        } else {
-            log.warn("Product update failed");
+            throw e;
         }
         return status;
     }
@@ -103,7 +97,7 @@ public class ProductDaoImpl implements ProductDao {
      * @return boolean status
      */
     @Override
-    public boolean deleteProduct(int id) {
+    public boolean deleteProduct(int id) throws SQLException {
         log.info("Delete product with id: " + id);
         boolean status = false;
         try (Connection con = getConnection();
@@ -113,6 +107,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             log.error("Error during removing the product");
             e.printStackTrace();
+            throw  e;
         }
         if (status) {
             log.info("Product deleted successfully");
@@ -133,7 +128,7 @@ public class ProductDaoImpl implements ProductDao {
      * @return List<User> List of all users
      */
     @Override
-    public ArrayList<Product> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) {
+    public ArrayList<Product> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) throws SQLException {
         String query = String.format(getProperty("get_all_products"), column + " " + direction);
         ArrayList<Product> products = new ArrayList<>();
         try (Connection con = getConnection();
@@ -154,6 +149,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             log.error("Error during getting all products", e);
             e.printStackTrace();
+            throw e;
 
         }
         return products;
@@ -166,9 +162,9 @@ public class ProductDaoImpl implements ProductDao {
      * @return product
      */
     @Override
-    public Product get(int id) {
+    public Product get(int id) throws SQLException {
         log.info("Get product with id: " + id);
-        Product product = new Product();
+        Product product = null;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("get_product"))) {
             ps.setInt(1, id);
@@ -184,11 +180,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             log.error("Error during getting product", e);
             e.printStackTrace();
-        }
-        if (product.getId() != 0) {
-            log.info("Product found");
-        } else {
-            log.warn("Product not found");
+            throw e;
         }
         return product;
     }
@@ -201,9 +193,9 @@ public class ProductDaoImpl implements ProductDao {
      * @return product
      */
     @Override
-    public Product searchProduct(String name) {
+    public Product searchProduct(String name) throws SQLException {
         log.info("Get product with name: " + name);
-        Product product = new Product();
+        Product product = null;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("get_product_by_name"))) {
             ps.setString(1, name);
@@ -219,11 +211,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             log.error("Error during getting product", e);
             e.printStackTrace();
-        }
-        if (product.getId() != 0) {
-            log.info("Product found");
-        } else {
-            log.warn("Product not found");
+            throw e;
         }
         return product;
     }
@@ -234,7 +222,7 @@ public class ProductDaoImpl implements ProductDao {
      * @return int amount
      */
     @Override
-    public int countRows() {
+    public int countRows() throws SQLException {
         int amount = 0;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("count_rows_in_products"))) {
@@ -245,6 +233,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             log.error("Error during getting amount of products", e);
             e.printStackTrace();
+            throw e;
         }
         return amount;
     }
@@ -256,20 +245,14 @@ public class ProductDaoImpl implements ProductDao {
      * @param id     :the id of a product
      * @param amount :the new amount of a product at db
      */
-    protected void decreaseAmount(int id, int amount) {
-        boolean status = false;
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(String.format(getProperty("decrease_quantity"),amount))) {
+    protected void decreaseAmount(Connection con,int id, int amount) throws SQLException {
+        try (PreparedStatement ps = con.prepareStatement(String.format(getProperty("decrease_quantity"),amount))) {
             ps.setInt(1, id);
-            status = ps.executeUpdate() == 1;
+          ps.executeUpdate();
         } catch (SQLException e) {
             log.error("Error during decreasing amount of product", e);
             e.printStackTrace();
-        }
-        if (status) {
-            log.info("Product amount decreased");
-        } else {
-            log.warn("Product decreasing failed");
+            throw e;
         }
     }
     /**
@@ -278,20 +261,14 @@ public class ProductDaoImpl implements ProductDao {
      * @param id     :the id of a product
      * @param amount :the new amount of a product at db
      */
-    protected void increaseAmount(int id, int amount) {
-        boolean status = false;
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(String.format(getProperty("increase_quantity"),amount))) {
+    protected void increaseAmount(Connection con,int id, int amount) throws SQLException {
+        try (PreparedStatement ps = con.prepareStatement(String.format(getProperty("increase_quantity"),amount))) {
             ps.setInt(1, id);
-            status = ps.executeUpdate() == 1;
+             ps.executeUpdate();
         } catch (SQLException e) {
             log.error("Error during increasing amount of product", e);
             e.printStackTrace();
-        }
-        if (status) {
-            log.info("Product amount increased");
-        } else {
-            log.warn("Product amount increasing failed");
+            throw e;
         }
     }
 }
