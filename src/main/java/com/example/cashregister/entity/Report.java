@@ -11,9 +11,7 @@ public class Report {
     private String date;
     private boolean z_report;
 
-    public Report() {
-        this.id = 0;
-    }
+
 
     public Report(int id, int cashier_id, String cashier_name, int number_of_receipts, double total_sum, String date,boolean z) {
         this.id = id;

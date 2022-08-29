@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ReceiptService extends MainService<Receipt>{
-    int createReceipt(int cashierId, String cashierName) throws SQLException;
+    Integer createReceipt(Integer cashierId, String cashierName) throws SQLException;
 
     boolean addProductToReceipt(String receiptId, String productId, String amount) throws SQLException;
 

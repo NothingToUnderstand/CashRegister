@@ -14,9 +14,6 @@ public class Receipt {
     private String closeDate;
     private List<Product> products_in_receipt;
 
-    public Receipt() {
-        this.id = 0;
-    }
 
     public Receipt(int id, int cashier_id, String cashier_name, int number_of_products, double total_sum, String openDate, String closeDate, List<Product> products_in_receipt) {
         this.id = id;

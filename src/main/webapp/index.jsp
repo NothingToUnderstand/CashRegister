@@ -58,6 +58,7 @@
         <li ><fmt:message key="allaccounts"/></li>
         <li ><fmt:message key="sumandprice"/></li>
         <li ><fmt:message key="10"/></li>
+        <li ><fmt:message key="di"/></li>
         <li ><fmt:message key="allclosedreceipts"/></li>
         <li ><fmt:message key="Zreporttruncates"/></li>
         <li ><fmt:message key="onlyclosedreceipts"/></li>

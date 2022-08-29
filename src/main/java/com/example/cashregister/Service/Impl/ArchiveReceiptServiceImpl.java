@@ -18,6 +18,9 @@ public class ArchiveReceiptServiceImpl implements ArchiveReceiptService {
     private static final Logger log = Logger.getLogger(ArchiveReceiptServiceImpl.class);
     @Override
     public ArrayList<Receipt> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) throws SQLException {
+        if(column==null||direction==null||limitfrom==null||limitquantity==null){
+            throw new NumberFormatException();
+        }
         return this.archiveReceiptDao.getAll(column, direction, limitfrom, limitquantity);
     }
 

@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public interface ProductService extends MainService<Product>{
-    int createProduct(String name, String quantity, String weight, String price, Part img) throws SQLException, IOException;
+    int createProduct(String name, String quantity, String weight, String price, byte[] img) throws SQLException;
 
-    boolean updateProduct(String id, String name, String quantity, String weight, String price, Part img) throws SQLException;
+    boolean updateProduct(String id, String name, String quantity, String weight, String price, byte[] img) throws SQLException;
 
     boolean deleteProduct(String id)throws SQLException;
     Product searchProduct(String name) throws SQLException;

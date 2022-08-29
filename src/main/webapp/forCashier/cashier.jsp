@@ -24,7 +24,7 @@
     <hr class="hl">
     <p>${user.getFullName()}</p>
     <p>Id: ${user.getId()}</p>
-    <p><fmt:message key="email"/>: ${user.getEmail()}</p>
+    <p style="font-size: 15px"><fmt:message key="email"/>: ${user.getEmail()}</p>
 
     <hr class="hl">
     <a href="${pageContext.request.contextPath}/update/user?id=${user.getId()}"><fmt:message key="updateuser"/></a>

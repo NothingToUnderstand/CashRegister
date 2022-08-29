@@ -20,6 +20,9 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     @Override
     public ArrayList<Receipt> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) throws SQLException {
+        if(column==null||direction==null||limitfrom==null||limitquantity==null){
+            throw new NumberFormatException();
+        }
         return this.receiptDao.getAll(column, direction, limitfrom, limitquantity);
     }
 
@@ -41,7 +44,10 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
-    public int createReceipt(int cashierId, String cashierName) throws SQLException {
+    public Integer createReceipt(Integer cashierId, String cashierName) throws SQLException {
+        if (cashierId==null||cashierName==null){
+            throw new NumberFormatException();
+        }
         return this.receiptDao.createReceipt(cashierId, cashierName);
     }
 
@@ -103,8 +109,9 @@ public class ReceiptServiceImpl implements ReceiptService {
             idReceipt=Integer.parseInt(id);
         }catch (NumberFormatException e){
             log.error("error id is not valid");
+            throw e;
         }
-        if(receipt.getNumberOfProducts()!=0) {
+        if(receipt.getNumberOfProducts()>0) {
             return this.receiptDao.closeReceipt(idReceipt);
         }else{
             return false;

@@ -24,6 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ArrayList<User> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) throws SQLException {
+        if(column==null||direction==null||limitfrom==null||limitquantity==null){
+            throw new NumberFormatException();
+        }
         return this.userDao.getAll(column, direction, limitfrom, limitquantity);
     }
 

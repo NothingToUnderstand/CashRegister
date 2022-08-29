@@ -19,6 +19,9 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public ArrayList<Report> getAll(String column, String direction, Integer limitfrom, Integer limitquantity) throws SQLException {
+        if(column==null||direction==null||limitfrom==null||limitquantity==null){
+            throw new NumberFormatException();
+        }
         return this.reportDao.getAll(column, direction, limitfrom, limitquantity);
     }
 
@@ -40,7 +43,10 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public int createReport(int cashierId, String cashierName, boolean zReport) throws SQLException{
+    public Integer createReport(Integer cashierId, String cashierName, Boolean zReport) throws SQLException{
+        if(cashierId==null||cashierName==null||zReport==null){
+            throw new NumberFormatException();
+        }
         return this.reportDao.createReport(cashierId, cashierName, zReport);
     }
 }

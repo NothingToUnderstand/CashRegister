@@ -16,9 +16,6 @@ public class User {
     private byte[] sole;
 
 
-    public User() {
-        this.id=0;
-    }
     public User(int id,String firstName,String lastname,String fullName, byte[] password,byte[] sole,String role,String email) {
         this.id = id;
         this.fullName = fullName;

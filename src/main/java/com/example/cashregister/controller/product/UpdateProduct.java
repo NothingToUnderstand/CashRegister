@@ -58,7 +58,7 @@ public class UpdateProduct extends HttpServlet {
                     req.getParameter("quantity"),
                     req.getParameter("weight"),
                     req.getParameter("price"),
-                    req.getPart("img"))) {
+                    req.getPart("img").getInputStream().readAllBytes())) {
                 log.info("Update is successfully");
                 req.getSession().setAttribute("message", "Product updated");
             } else {

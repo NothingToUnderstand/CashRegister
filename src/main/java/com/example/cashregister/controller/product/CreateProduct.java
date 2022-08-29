@@ -42,7 +42,7 @@ public class CreateProduct extends HttpServlet {
                     req.getParameter("quantity"),
                     req.getParameter("weight"),
                     req.getParameter("price"),
-                    req.getPart("img"));
+                    req.getPart("img").getInputStream().readAllBytes());
         } catch (SQLException e) {
             log.error("error during product creation",e);
             resp.sendRedirect("/cashregister/error");
