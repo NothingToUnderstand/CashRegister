@@ -14,13 +14,18 @@
 <header>
     <jsp:include page="/menu.jsp"></jsp:include>
 </header>
-<div class="wrapper">
-    <div class="box">
-        <h1>500</h1>
-        <p><fmt:message key="sorry"/></p>
-        <p>&#58;&#40;</p>
-        <p><a href="${pageContext.request.contextPath}/"><fmt:message key="tryagain"/></a></p>
-    </div>
+<%
+    String message = pageContext.getException().getMessage();
+    String exception = pageContext.getException().getClass().toString();
+%>
+<div class="wr">
+    <h5><%= exception %></h5>
+    <h5><%= message %></h5>
+    <img style="width: 120px;height: 120px" src="https://www.dropbox.com/s/xq0841cp3icnuqd/flame.png?raw=1"/>
+    <h3><fmt:message key="sorry"/></h3>
+    <h3><a href="${pageContext.request.contextPath}/"><fmt:message key="tryagain"/></a></h3>
 </div>
+
+
 </body>
 </html>

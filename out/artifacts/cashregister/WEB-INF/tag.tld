@@ -1,0 +1,11 @@
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>Example TLD</short-name>
+
+    <tag>
+        <name>MyTag</name>
+        <tag-class>com.example.cashregister.Service.extra.Tag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+</taglib>

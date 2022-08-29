@@ -47,7 +47,7 @@
     </select>
     <div class="form-inline" style="float: right;">
         <form action="${pageContext.request.contextPath}/acc" method="post">
-            <input pattern="^[ 0-9]+$" style="width:120px;" class="form-control form-control-sm" type="number" placeholder="<fmt:message key="search"/>.." value="${id}" name="id">
+            <input pattern="^[ 0-9]+$" style="width:120px;" class="form-control form-control-sm" type="number" placeholder="<fmt:message key="search"/>.."  name="forsearch">
             <button style="width:80px;" class="btn btn-primary btn-sm" type="submit"><fmt:message key="search"/></button>
         </form>
     </div>

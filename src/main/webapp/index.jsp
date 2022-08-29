@@ -3,6 +3,7 @@
 <html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/WEB-INF/tag.tld" prefix="tag"%>
 <fmt:setLocale value="${lang}"/>
 <fmt:setBundle basename="messages"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -40,7 +41,7 @@
 
 <div id="Welcome" class="tabcontent">
     <div class="hor">
-    <h2 style="text-align: center"><b><fmt:message key="welcome_to_app"/></b></h2>
+        <h2 style="text-align: center"><b><fmt:message key="welcome_to_app"/> <tag:MyTag></tag:MyTag></b></h2>
     <div class="wrapper">
     <img  class="back"
          src="https://cdn-icons-png.flaticon.com/512/94/94648.png" alt="grn">
@@ -53,7 +54,7 @@
 
 <div id="Benefits" class="tabcontent">
     <ul>
-        <li ><fmt:message key="Twolanguages"/></li>
+        <li><fmt:message key="Twolanguages"/></li>
         <li ><fmt:message key="allaccounts"/></li>
         <li ><fmt:message key="sumandprice"/></li>
         <li ><fmt:message key="10"/></li>
