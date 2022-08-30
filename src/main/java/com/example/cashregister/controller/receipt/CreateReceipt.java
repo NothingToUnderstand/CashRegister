@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 @WebServlet("/create/receipt")
 public class CreateReceipt extends HttpServlet {
     private static final Logger log = Logger.getLogger(CreateReceipt.class);
@@ -35,11 +38,11 @@ public class CreateReceipt extends HttpServlet {
         }
         if (id != 0) {
             log.info("Receipt created with id: " + id);
-            req.getSession().setAttribute("message", "New receipt created with id: " + id);
+            setMessage("New receipt created with id: " + id);
             resp.addIntHeader("/cashregister/receiptid",id);
         } else {
             log.warn("Receipt wasn't created ");
-            req.getSession().setAttribute("errormessage", "New receipt wasn't created");
+            setErrormessage("New receipt wasn't created");
         }
         resp.sendRedirect("/cashregister/acc?id="+id);
     }

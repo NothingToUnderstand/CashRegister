@@ -1,4 +1,4 @@
-package com.example.cashregister.controller.email;
+package com.example.cashregister.controller.user.email;
 
 import com.example.cashregister.Service.abstractFactory.ServiceAbstractFactory;
 import com.example.cashregister.dao.UserDao;
@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
 import static com.example.cashregister.security.PasswordEncryptionService.getEncryptedPassword;
 
 /**
@@ -27,8 +29,8 @@ public class NewPassword extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getHeader("referer")==null) {
-            req.getSession().setAttribute("errormessage","You should validate token before visit this");
+        if (req.getHeader("referer") == null) {
+            setErrormessage("You should validate token before visit this");
             resp.sendRedirect("/cashregister/");
             return;
         }
@@ -40,10 +42,10 @@ public class NewPassword extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
-            if (service.createUserService().updatePasswordByEmail(id,req.getParameter("password"))) {
-                req.getSession().setAttribute("message", "Password was changed successfully");
+            if (service.createUserService().updatePasswordByEmail(id, req.getParameter("password"))) {
+                setMessage("Password was changed successfully");
             } else {
-                req.getSession().setAttribute("errormessage", "Password was not changed");
+                setErrormessage("Password was not changed");
             }
         } catch (SQLException e) {
             resp.sendRedirect("/cashregister/error");

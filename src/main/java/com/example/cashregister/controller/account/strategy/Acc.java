@@ -28,7 +28,6 @@ public abstract class Acc<T> {
         req.setAttribute("page", sort.getPage());
         req.setAttribute("amount", sort.getAmount());
         req.setAttribute("numpage", sort.getNumberOfPages());
-        req.setAttribute("user", getLoginedUser(req.getSession()));
         req.setAttribute("items", sort.getList());
         return req;
     };

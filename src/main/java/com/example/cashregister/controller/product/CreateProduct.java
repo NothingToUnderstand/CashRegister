@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 /**
  * Create product servlet
  */
@@ -50,11 +53,11 @@ public class CreateProduct extends HttpServlet {
 
         if (id != 0) {
             log.info("Product created with id: " + id);
-            req.getSession().setAttribute("message", "New product created with id: " + id);
+            setMessage("New product created with id: " + id);
             resp.sendRedirect("/cashregister/acc");
         } else {
             log.warn("Product wasn't created ");
-            req.getSession().setAttribute("errormessage", "New product wasn't created");
+            setErrormessage("New product wasn't created");
         }
     }
 }

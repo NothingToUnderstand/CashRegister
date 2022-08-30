@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 /**
  * Delete product servlet
  * */
@@ -29,10 +32,11 @@ public class DeleteProduct extends HttpServlet {
         try {
             if (service.createProductService().deleteProduct(request.getParameter("id"))) {
                 log.info("Delete success");
-                request.getSession().setAttribute("message","Product with id:"+request.getParameter("id")+" was deleted");
+                setMessage("Product with id:"+request.getParameter("id")+" was deleted");
             } else {
                 log.warn("Delete failed");
                 request.getSession().setAttribute("errormessage","Product wasn't deleted");
+                setErrormessage("Product wasn't deleted");
             }
         } catch (SQLException e) {
             log.error("error during removing product",e);

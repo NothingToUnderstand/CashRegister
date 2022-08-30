@@ -1,6 +1,6 @@
-<%@ page import="com.example.cashregister.entity.User" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="/WEB-INF/tag.tld" prefix="tag"%>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <fmt:setLocale value="${lang}"/>
@@ -35,13 +35,9 @@
             src="https://i.pinimg.com/originals/c7/ab/cd/c7abcd3ce378191a3dddfa4cdb2be46f.png" width="30px"
             height="30px" alt="account" title="Account"/></a>
     <a class="vl"></a>
-    <a id="close" onclick="hide()" ><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/OOjs_UI_icon_close.svg/1200px-OOjs_UI_icon_close.svg.png" width="30px" height="30px" alt="close notifications" title="close/open notifications"/></a>
     <input id="lu" type="number" hidden readonly value="${loginedUser.getId()}">
-
     <div class="center">
-        <span id="errormessage" class="active " style="color: #8a0d0d"><b>${errormessage}</b></span>
-        <span id="message" class="active " style="color: #e7f608"><b>${message}</b></span>
+  <tag:MyTag></tag:MyTag>
     </div>
     <div class="topnav-right">
         <c:choose>

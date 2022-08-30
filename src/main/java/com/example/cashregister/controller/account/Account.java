@@ -34,7 +34,6 @@ public class Account extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (!role(req).equals("cashier")) {
-            System.out.println(jsp);
             try {
                 accounts.get(req, req.getParameter("col"),
                         req.getParameter("dir"),
@@ -58,7 +57,6 @@ public class Account extends HttpServlet {
                 receiptId = 0;
             }
             req.setAttribute("receipt", receipt);
-            req.setAttribute("user", getLoginedUser(req.getSession()));
         }
         getServletContext().getRequestDispatcher(jsp).forward(req, resp);
     }

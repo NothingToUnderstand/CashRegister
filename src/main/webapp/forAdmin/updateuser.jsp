@@ -25,13 +25,17 @@
             <td class="title"><fmt:message key="firstname"/></td>
             <td><input type="text" name="firstname" value="${user.getFirstName()}" required
                        pattern="^[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
-            <td>Aaa</td>
+            <td><a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="advicename"/>">
+                <img style="width:20px;height:20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="lastname"/></td>
             <td><input type="text" name="lastname" value="${user.getLastName()}" required
                        pattern="^[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
-            <td>Aaa</td>
+            <td><a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="advicename"/>">
+                <img style="width:20px;height:20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
 
         </tr>
         <tr>
@@ -43,14 +47,20 @@
                                          src="https://cdn-icons-png.flaticon.com/512/61/61457.png" width="20px"
                                          height="20px"/></a>
             </td>
-            <td>Aaaa123</td>
+            <td>
+                <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="advicepass"/>">
+                    <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+                </a>
+            </td>
 
         </tr>
         <tr>
             <td class="title"><fmt:message key="email"/></td>
             <td><input type="email" name="email" value="${user.getEmail()}" required
                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/></td>
-            <td>aa1@gmail.com</td>
+            <td>        <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="adviceemail"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
 
         </tr>
         <c:if test="${loginedUser.getRole()=='admin'}">
@@ -60,13 +70,16 @@
                     <option value="cashier"><fmt:message key="cashier"/></option>
                     <option value="senior_cashier"><fmt:message key="senior_cashier"/></option>
                     <option value="commodity_expert"><fmt:message key="commodity_expert"/></option>
-                    <option value="admin"  selected><fmt:message key="admin"/></option>
+                    <option value="admin" selected><fmt:message key="admin"/></option>
                 </select></td>
             </tr>
         </c:if>
         <c:if test="${loginedUser.getRole()!='admin'}">
             <td class="title"><fmt:message key="role"/> :</td>
-            <td><input class="read" name="roleid" value="<fmt:message key="${user.getRole()}"/>" readonly/></td>
+            <td><input class="read" name="roleid" value="${user.getRole()}" placeholder="<fmt:message key="${user.getRole()}"/>" hidden readonly/>
+            <input class="read" value="<fmt:message key="${user.getRole()}"/>" readonly/>
+
+            </td>
         </c:if>
         <tr>
             <td colspan="2">

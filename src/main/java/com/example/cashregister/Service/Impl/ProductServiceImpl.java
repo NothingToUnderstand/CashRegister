@@ -66,9 +66,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean updateProduct(String id_,String name, String quantity_, String weight_, String price_,byte[] img) throws SQLException,NumberFormatException{
-        if (id_==null || name==null || quantity_==null || weight_==null ||
-                price_==null|| img==null) {
+    public boolean updateProduct(String id_,String quantity_, String weight_, String price_) throws SQLException,NumberFormatException{
+        if (id_==null || quantity_==null || weight_==null ||
+                price_==null) {
             throw new NumberFormatException();
         }
         int id;
@@ -85,7 +85,7 @@ public class ProductServiceImpl implements ProductService {
             log.error("number format exception", e);
             throw new NumberFormatException();
         }
-        return this.productDao.updateProduct(id, name, quantity, weight, price, img);
+        return this.productDao.updateProduct(id,quantity, weight, price);
     }
 
     @Override

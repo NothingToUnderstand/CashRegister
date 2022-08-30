@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 /**
  * Logout servlet
  */
@@ -22,7 +24,7 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         log.info("LogOut");
-        request.setAttribute("message","See you later");
+        setMessage("See you later");
         request.setAttribute("lang","en");
         request.getSession().invalidate();
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);

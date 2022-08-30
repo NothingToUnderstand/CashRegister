@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 @WebServlet("/add/product")
 public class AddProductsToReceipt extends HttpServlet {
     private static final Logger log = Logger.getLogger(AddProductsToReceipt.class);
@@ -29,9 +32,9 @@ public class AddProductsToReceipt extends HttpServlet {
                     req.getParameter("productId"),
                     req.getParameter("quantity"))) {
                 log.info("product with id: " + req.getParameter("productId") + " added");
-                req.getSession().setAttribute("message", "product with id: " + req.getParameter("productId") + " added");
+                setMessage("product with id: " + req.getParameter("productId") + " added");
             } else {
-                req.getSession().setAttribute("errormessage", "product with id: " + req.getParameter("productId") + " not added");
+             setErrormessage("product with id: " + req.getParameter("productId") + " not added");
                 log.info("product with id: " + req.getParameter("productId") + " not added");
             }
             resp.sendRedirect("/cashregister/all/products");
@@ -40,7 +43,7 @@ public class AddProductsToReceipt extends HttpServlet {
             resp.sendRedirect("/cashregister/error");
         } catch (NumberFormatException e) {
             log.error("params are not valid");
-            req.getSession().setAttribute("errormessage", "params are not valid");
+            setErrormessage("params are not valid");
             resp.sendRedirect("/cashregister/all/products");
         }
 

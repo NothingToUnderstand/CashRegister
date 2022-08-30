@@ -69,17 +69,15 @@ public class ProductDaoImpl implements ProductDao {
      * @return boolean status
      */
     @Override
-    public boolean updateProduct(int id, String name, int quantity, double weight, double price, byte[] img) throws SQLException {
+    public boolean updateProduct(int id,int quantity, double weight, double price) throws SQLException {
         log.info("Updating product with id: " + id);
         boolean status;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("update_product"))) {
-            ps.setString(1, name);
-            ps.setInt(2, quantity);
-            ps.setDouble(3, weight);
-            ps.setDouble(4, price);
-            ps.setBytes(5, img);
-            ps.setInt(6, id);
+            ps.setInt(1, quantity);
+            ps.setDouble(2, weight);
+            ps.setDouble(3, price);
+            ps.setInt(4, id);
             status = ps.executeUpdate() == 1;
         } catch (SQLException e) {
             log.error("Error during updating the product", e);

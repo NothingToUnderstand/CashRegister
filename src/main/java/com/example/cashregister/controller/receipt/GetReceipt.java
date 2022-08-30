@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+
 /**
  * Getting receipt servlet
 * */
@@ -31,14 +33,14 @@ public class GetReceipt extends HttpServlet {
         } catch (SQLException e) {
             response.sendRedirect("/cashregister/error");
         }catch (NumberFormatException e){
-            request.getSession().setAttribute("errormessage","id is not valid");
+            setErrormessage("id is not valid");
             response.sendRedirect("/cashregister/acc");
         }
         if(receipt!=null){
             request.setAttribute("receipt", receipt);
             getServletContext().getRequestDispatcher("/forSeniorCashier/inforeceipt.jsp").forward(request,response);
         }else{
-            request.getSession().setAttribute("errormessage","There is no such receipt");
+            setErrormessage("There is no such receipt");
             response.sendRedirect("/cashregister/acc");
         }
 

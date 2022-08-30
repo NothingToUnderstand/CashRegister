@@ -17,6 +17,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+
 /**
  * Security filter for users
  */
@@ -37,7 +39,7 @@ public class SecurityFilter implements Filter {
             chain.doFilter(request, response);
         } else {
             log.warn("User with role: "+role+" is not allowed to visit: "+uri);
-            ((HttpServletRequest) req).getSession().setAttribute("errormessage","You are not allowed to visit this");
+            setErrormessage("You are not allowed to visit this");
             response.sendRedirect("/cashregister/");
         }
     }

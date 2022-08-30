@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 @WebServlet("/cancel/product")
 public class CancelProductsInReceipt extends HttpServlet {
 
@@ -42,13 +45,13 @@ public class CancelProductsInReceipt extends HttpServlet {
             resp.sendRedirect("/cashregister/error");
         } catch (NumberFormatException e) {
             log.error("params are not valid");
-            req.getSession().setAttribute("errormessage", "params are not valid");
+            setErrormessage("params are not valid");
             resp.sendRedirect("/cashregister/info/receipt");
         }
         if (status) {
-            req.getSession().setAttribute("message", "delete is successfully");
+            setMessage("delete is successfully");
         } else {
-            req.getSession().setAttribute("errormessage", "delete is failed");
+            setErrormessage("delete is failed");
         }
 
         resp.sendRedirect("/cashregister/info/receipt");

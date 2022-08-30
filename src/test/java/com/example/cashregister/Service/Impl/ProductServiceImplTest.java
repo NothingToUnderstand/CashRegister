@@ -67,11 +67,11 @@ public static void init(){
     @Test
     void updateProduct() throws SQLException {
         assertThrows(NumberFormatException.class, () -> {
-            productService.updateProduct("ABC", "ABC", "ABC", "ABC", "ABC", null);
+            productService.updateProduct("ABC", "ABC", "ABC", "ABC");
         });
         when(productDao.updateProduct(any(Integer.class),
-                any(String.class), any(Integer.class), any(Double.class), any(Double.class), any(byte[].class))).thenReturn(true);
-        assertTrue(productService.updateProduct("1","abc","1","1.1","1.1",new byte[1]));
+                any(Integer.class), any(Double.class), any(Double.class))).thenReturn(true);
+        assertTrue(productService.updateProduct("1","1","1.1","1.1"));
     }
 
     @Test

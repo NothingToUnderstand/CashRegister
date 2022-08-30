@@ -20,12 +20,16 @@
         <tr>
             <td class="title"><fmt:message key="firstname"/></td>
             <td ><input type="text" name="firstname" value="${firstname}" required pattern="^[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
-            <td>Aaa</td>
+            <td><a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="advicename"/>">
+                <img style="width:20px;height:20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="lastname"/></td>
             <td ><input type="text" name="lastname" value="${lastname}" required pattern="^[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
-            <td>Aaa</td>
+            <td>  <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="advicename"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="password"/></td>
@@ -33,14 +37,20 @@
                 <input type="password" id="password-input" name="password"  required pattern="[A-ZА-ЯЁ]{1,}[A-Za-zА-Яа-яЁё]{3,}[0-9]{3,}"/>
                 <a onclick="lock()"><img alt="show password" id="img" src="https://cdn-icons-png.flaticon.com/512/61/61457.png" width="20px" height="20px" /></a>
             </td>
-            <td>Aaaa123</td>
+            <td>
+                <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="advicepass"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a>
+            </td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="email"/></td>
             <td >
                 <input type="email"  name="email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
             </td>
-            <td>aa1@gmail.com</td>
+            <td>        <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="adviceemail"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="role"/>:</td>

@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
 import static com.example.cashregister.security.PasswordEncryptionService.getEncryptedPassword;
 import static com.example.cashregister.security.UserSession.getLoginedUser;
 import static com.example.cashregister.security.UserSession.storeLoginedUser;
@@ -39,13 +41,13 @@ public class UpdateUser extends HttpServlet {
             id = Integer.parseInt(req.getParameter("id"));
         } catch (NumberFormatException e) {
             log.error("number format exception", e);
-            req.getSession().setAttribute("errormessage", "id is not valid");
-            resp.sendRedirect("/cashregister/update/user");
+            setErrormessage("id is not valid");
+            resp.sendRedirect("/cashregister/acc");
             return;
         }
         if (id != user.getId() && !user.getRole().equals("admin")) {
             resp.sendRedirect("/cashregister/");
-            req.getSession().setAttribute("errormessage", "you can`t change another user");
+            setErrormessage("you can`t change another user");
             return;
         }
         try {
@@ -54,8 +56,8 @@ public class UpdateUser extends HttpServlet {
             resp.sendRedirect("/cashregister/error");
         } catch (NumberFormatException e) {
             log.error("number format exception", e);
-            req.getSession().setAttribute("errormessage", "id is not valid");
-            resp.sendRedirect("/cashregister/update/user");
+            setErrormessage("id is not valid");
+            resp.sendRedirect("/cashregister/acc");
             return;
         }
         getServletContext().getRequestDispatcher("/forAdmin/updateuser.jsp").forward(req, resp);
@@ -73,24 +75,25 @@ public class UpdateUser extends HttpServlet {
                     req.getParameter("password"),
                     req.getParameter("roleid"),
                     req.getParameter("email"));
-                log.info("user was updated");
-                req.getSession().setAttribute("message", "user was updated");
+                    log.info("user was updated");
+
+                setMessage("user was updated");
         } catch (SQLException e) {
             log.error("error during updating user");
             resp.sendRedirect("/error");
         } catch (NumberFormatException e) {
             log.error("params not valid");
-            req.getSession().setAttribute("errormessage", "params are not valid");
+            setErrormessage("params are not valid");
             resp.sendRedirect("/cashregister/update/user");
         }
         if (updateduser==null){
-            req.getSession().setAttribute("errormessage", "There is no such user");
+            setErrormessage("User was not updated");
             resp.sendRedirect("/cashregister/acc");
             return;
         }
         if (updateduser.getId() == user.getId()) {
-                storeLoginedUser(req.getSession(), updateduser);
-
+            resp.sendRedirect("/cashregister/logout");
+            return;
         }
         resp.sendRedirect("/cashregister/acc");
     }

@@ -7,10 +7,18 @@ import javax.servlet.jsp.tagext.SimpleTag;
 
 import java.io.IOException;
 
+import static com.example.cashregister.Service.extra.Notifications.*;
+
 public class Tag implements SimpleTag {
     JspContext jspContext;
     public void doTag() throws IOException {
-        jspContext.getOut().print("<span style=\"color: green;\">Cash Register</span>");
+        String getMess=getMessage();
+        String getERMess=getErrormessage();
+        if (getMess != null) {
+            jspContext.getOut().print("<span style=\" color: #e7f608 \"><b>"+getMess+"</b></span>");
+        } else if(getERMess!=null){
+            jspContext.getOut().print("<span style=\" color: #8a0d0d \"><b>"+getERMess+"</b></span>");
+        }
     }
 
     @Override

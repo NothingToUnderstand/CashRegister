@@ -21,26 +21,37 @@
         <tr>
             <td class="title"><fmt:message key="name"/></td>
             <td><input type="text" name="name" value="${product.name}"  required pattern="[A-ZА-ЯЁ]{1}[A-Za-zА-Яа-яЁё]{2,}"/></td>
-            <td>Aaa</td>
+            <td>        <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="advicename"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="quantity"/></td>
             <td><input type="number" name="quantity" value="${product.quantity}" required pattern="^[0-9]+$"/></td>
-            <td>1</td>
+            <td>        <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="advicequantity"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="weight"/></td>
             <td><input type="text" name="weight" value="${product.weight}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
-            <td>1.1</td>
+            <td> <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="adviceprice"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="price"/></td>
             <td><input type="text" name="price" value="${product.price}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
-            <td>1.1</td>
+            <td>        <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="adviceprice"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="image"/></td>
             <td><input type="file" name="img" value="${img}" size="2" required  placeholder="Product img" title="Product img"/></td>
+            <td><a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="adviceimg"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td colspan="2">

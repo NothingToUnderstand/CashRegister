@@ -1,4 +1,4 @@
-package com.example.cashregister.controller.email;
+package com.example.cashregister.controller.user.email;
 
 import com.example.cashregister.Service.abstractFactory.ServiceAbstractFactory;
 import com.example.cashregister.Service.extra.EmailServiceOtpToken;
@@ -15,6 +15,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
 
 /**
  * Servlet implementation class ForgotPassword
@@ -45,10 +48,10 @@ public class ForgotPassword extends HttpServlet {
             emailServiceOtpToken.sendOtp(user.getEmail());
             String otp = String.valueOf(emailServiceOtpToken.getOtpvalue());
             request.getSession().setAttribute("otp", otp);
-            request.getSession().setAttribute("message", "Otp was send to your email");
+            setMessage( "Otp was send to your email");
             response.sendRedirect("/cashregister/validateOtp?id=" + user.getId());
         } else {
-            request.getSession().setAttribute("errormessage", "Your email is not valid");
+            setErrormessage("Your data is not valid");
             response.sendRedirect("/cashregister/login");
         }
     }

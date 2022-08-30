@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 /**
  * Update product servlet
  */
@@ -42,7 +45,7 @@ public class UpdateProduct extends HttpServlet {
             req.setAttribute("product", product);
             getServletContext().getRequestDispatcher("/forCommodityExpert/updateproduct.jsp").forward(req, resp);
         } else {
-            req.getSession().setAttribute("errormessage", "There is no such product");
+            setErrormessage("There is no such product");
             resp.sendRedirect("/cashregister/acc");
         }
 
@@ -54,16 +57,14 @@ public class UpdateProduct extends HttpServlet {
         try {
             if (service.createProductService().updateProduct(
                     req.getParameter("id"),
-                    req.getParameter("name"),
                     req.getParameter("quantity"),
                     req.getParameter("weight"),
-                    req.getParameter("price"),
-                    req.getPart("img").getInputStream().readAllBytes())) {
+                    req.getParameter("price"))) {
                 log.info("Update is successfully");
-                req.getSession().setAttribute("message", "Product updated");
+                setMessage("Product updated");
             } else {
                 log.warn("Update is failed");
-                req.getSession().setAttribute("errormessage", "Product wasn't updated");
+                setErrormessage("Product wasn't updated");
             }
             resp.sendRedirect("/cashregister/acc");
         } catch (SQLException e) {

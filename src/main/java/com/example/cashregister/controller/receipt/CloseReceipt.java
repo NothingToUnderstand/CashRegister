@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 @WebServlet("/close/receipt")
 public class CloseReceipt extends HttpServlet {
     private static final Logger log = Logger.getLogger(CloseReceipt.class);
@@ -32,10 +35,10 @@ public class CloseReceipt extends HttpServlet {
         }
         if(status){
             log.info("Receipt is closed");
-            req.getSession().setAttribute("message","receipt with id "+req.getParameter("id")+" is closed");
+            setMessage("receipt with id "+req.getParameter("id")+" is closed");
         }else{
             log.warn("Receipt is not closed");
-            req.getSession().setAttribute("errormessage","receipt with id "+req.getParameter("id")+" is not closed");
+            setErrormessage("receipt with id "+req.getParameter("id")+" is not closed");
         }
         resp.sendRedirect("/cashregister/acc");
     }

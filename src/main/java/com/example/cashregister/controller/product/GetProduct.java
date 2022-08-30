@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 /**
  *Get product servlet
  * */
@@ -36,9 +39,9 @@ public class GetProduct extends HttpServlet {
         }
         if(product!=null){
             request.setAttribute("product", product);
-            request.getSession().setAttribute("message","Getting product with id: "+request.getParameter("id"));
+            setMessage("Getting product with id: "+request.getParameter("id"));
         }else{
-            request.getSession().setAttribute("errormessage","There is no such product");
+            setErrormessage("There is no such product");
         }
         request.setAttribute("user", UserSession.getLoginedUser(request.getSession()));
         getServletContext().getRequestDispatcher("/forCommodityExpert/infoproduct.jsp").forward(request,response);

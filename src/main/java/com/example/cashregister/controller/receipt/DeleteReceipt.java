@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 /**
  * Delete receipt servlet
  */
@@ -32,17 +35,17 @@ public class DeleteReceipt extends HttpServlet {
         try {
             if (service.createReceiptService().deleteReceipt(request.getParameter("id"))) {
                 log.info("Delete success");
-                request.getSession().setAttribute("message", "Receipt with id:" + request.getParameter("id") + " was deleted");
-            } else {
+                setMessage("Receipt with id:" + request.getParameter("id") + " was deleted");
+                } else {
                 log.warn("Delete failed");
-                request.getSession().setAttribute("errormessage", "Receipt wasn't deleted");
+                setErrormessage("Receipt wasn't deleted");
             }
         } catch (SQLException e) {
             log.error("error during receipt removing", e);
             response.sendRedirect("/cashregister/error");
         } catch (NumberFormatException e) {
             log.error("error during receipt removing", e);
-            request.getSession().setAttribute("errormessage", "Id is not valid");
+            setErrormessage("Id is not valid");
             response.sendRedirect("/cashregister/acc");
         }
         response.sendRedirect("/cashregister/acc");

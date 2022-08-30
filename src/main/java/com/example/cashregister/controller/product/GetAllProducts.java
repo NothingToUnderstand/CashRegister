@@ -69,11 +69,7 @@ public class GetAllProducts extends HttpServlet {
         if (req.getParameter("name") != null) {
             try {
                 Product product=service.createProductService().searchProduct(req.getParameter("name"));
-                if(product==null){
-                    req.setAttribute("errormessage","There is no such product");
-                }else{
                     req.setAttribute("search",product);
-                }
             } catch (SQLException e) {
                 log.error("error during product searching",e);
                 resp.sendRedirect("/cashregister/error");

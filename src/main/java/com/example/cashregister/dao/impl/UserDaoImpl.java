@@ -320,6 +320,7 @@ public class UserDaoImpl implements UserDao {
 
     private void updateRole(Connection con, int idUser, String role) throws SQLException {
         log.info("Update role for user with id: " + idUser);
+        System.out.println(role);
         try (PreparedStatement ps = con.prepareStatement(getProperty("update_role"))) {
             ps.setString(1, role);
             ps.setInt(2, idUser);

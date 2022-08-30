@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -23,26 +23,33 @@
         </tr>
         <tr>
             <td class="title"><fmt:message key="name"/> :</td>
-            <td ><input class="read" type="text" name="name" value="${product.getName()}" readonly/></td>
+            <td >${product.getName()}</td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="quantity"/> :</td>
             <td ><input type="text" name="quantity" value="${product.getQuantity()}" required pattern="^[0-9]+$"/></td>
-            <td>1</td>
+            <td>        <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="advicequantity"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="weight"/> :</td>
             <td  ><input type="text" name="weight" value="${product.getWeight()}" required pattern="^[0-9]+(\.[0-9]{1})?"/></td>
-        <td>1.1</td>
+            <td>        <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="adviceprice"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="price"/> :</td>
             <td ><input  type="text" name="price" value="${product.getPrice()}"/></td>
-            <td>1.1</td>
+            <td>        <a data-bs-toggle="tooltip" data-bs-placement="right" title=" <fmt:message key="adviceprice"/>">
+                <img style="width:20px;height: 20px" src="https://cdn-icons-png.flaticon.com/512/41/41943.png" alt="advice"/>
+            </a></td>
         </tr>
         <tr>
             <td class="title"><fmt:message key="image"/> :</td>
-            <td ><input type="file" name="img" value="${product.getImgbase64()}" size="2" required  placeholder="Product img" title="Product img"/></td>
+            <td><img alt="product image" src="data:image/jpg;base64, ${product.getImgbase64()}" title="product image"
+                 style="height:30px;width: 30px;"></td>
         </tr>
         <tr>
             <td colspan="2">

@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+
 
 @WebServlet("/info/archive/receipt")
 public class GetArchiveReceipt extends HttpServlet {
@@ -34,7 +36,7 @@ public class GetArchiveReceipt extends HttpServlet {
                 req.setAttribute("receipt", archiveReceipt);
                 getServletContext().getRequestDispatcher("/forAdmin/infoarchivereceipt.jsp").forward(req,resp);
             }else{
-                req.getSession().setAttribute("errormessage","There is no such receipt in archive");
+                setErrormessage("There is no such receipt in archive");
                 resp.sendRedirect("/cashregister/archive/receipts");
             }
         } catch (SQLException e) {
@@ -42,7 +44,7 @@ public class GetArchiveReceipt extends HttpServlet {
             resp.sendRedirect("/cashregister/error");
         }catch (NumberFormatException e){
             log.error("params are not valid",e);
-            req.getSession().setAttribute("errormessage","params are not valid");
+            setErrormessage("params are not valid");
             resp.sendRedirect("/cashregister/archive/receipts");
         }
 

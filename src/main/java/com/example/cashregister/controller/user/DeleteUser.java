@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.example.cashregister.Service.extra.Notifications.setErrormessage;
+import static com.example.cashregister.Service.extra.Notifications.setMessage;
+
 /**
  * Delete user servlet
  */
@@ -30,10 +33,11 @@ public class DeleteUser extends HttpServlet {
         try {
             if (service.createUserService().deleteUser(request.getParameter("id"))) {
                 log.info("user deleted successfully");
-                request.getSession().setAttribute("message", "User was removed");
+                setMessage("User was removed");
             } else {
                 log.warn("user wasn't deleted");
                 request.getSession().setAttribute("errormessage", "User was not removed");
+                setErrormessage("User was not removed");
             }
             response.sendRedirect("/cashregister/acc");
         } catch (SQLException e) {
@@ -42,6 +46,7 @@ public class DeleteUser extends HttpServlet {
         } catch (NumberFormatException e) {
             log.error("error during user removing", e);
             request.getSession().setAttribute("errormessage", "Id is not valid");
+            setErrormessage("Id is not valid");
             response.sendRedirect("/cashregister/acc");
         }
     }

@@ -22,12 +22,12 @@
 <div class="sidenav">
     <h3><fmt:message key="cashier"/>:</h3>
     <hr class="hl">
-    <p>${user.getFullName()}</p>
-    <p>Id: ${user.getId()}</p>
-    <p><fmt:message key="email"/>: ${user.getEmail()}</p>
+    <p>${loginedUser.getFullName()}</p>
+    <p>Id: ${loginedUser.getId()}</p>
+    <p style="font-size: 15px"><fmt:message key="email"/>: ${loginedUser.getEmail()}</p>
 
     <hr class="hl">
-    <a href="${pageContext.request.contextPath}/update/user?id=${user.getId()}"><fmt:message key="updateuser"/></a>
+    <a href="${pageContext.request.contextPath}/update/user?id=${loginedUser.getId()}"><fmt:message key="updateuser"/></a>
     <hr class="hl">
     <c:if test="${receipt.getId()==null}">
         <form method="post" action="${pageContext.request.contextPath}/create/receipt?id=${receipt.getId()}">
