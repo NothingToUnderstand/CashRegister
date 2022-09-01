@@ -83,7 +83,7 @@
         </c:if>
         <tr>
             <td colspan="2">
-                <input class="btn btn-success" type="submit" value="Submit"/>
+                <input class="btn btn-success" type="submit" value="<fmt:message key="submit"/>"/>
                 <a class="btn btn-warning" href="${pageContext.request.contextPath}/acc"><fmt:message key="cancel"/></a>
             </td>
         </tr>

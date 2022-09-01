@@ -52,10 +52,10 @@
                 <td>${search.getId()}</td>
                 <td>${search.getCashier_id()}</td>
                 <td>${search.getCashier_name()}</td>
-                <td>${report.getNumberOfReceipts()}</td>
+                <td>${search.getNumberOfReceipts()}</td>
                 <td>${search.getTotalSum()}</td>
-                <td>${report.getDate()}</td>
-                <td>${report.isZReport()}</td>
+                <td>${search.getDate()}</td>
+                <td>${search.isZReport()}</td>
             </tr>
             </tbody>
         </table>

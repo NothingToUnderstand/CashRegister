@@ -44,14 +44,16 @@ public class Account extends HttpServlet {
                 resp.sendRedirect("/cashregister/error");
             }
         } else {
-            if (req.getParameter("id") != null) {
+
                 try {
-                    receiptId = Integer.parseInt(req.getParameter("id"));
+                    if (req.getParameter("id") != null) {
+                        receiptId = Integer.parseInt(req.getParameter("id"));
+                    }
                     receipt = service.createReceiptService().get(String.valueOf(receiptId));
                 } catch (NumberFormatException|SQLException e) {
                     resp.sendRedirect("/cashregister/error");
                 }
-            }
+
             if (receipt != null && receipt.getCloseDate() != null) {
                 receipt = null;
                 receiptId = 0;

@@ -73,13 +73,25 @@
                 <td>${search.getNumberOfProducts()}</td>
                 <td>${search.getTotalSum()}</td>
                 <td>${search.getOpenDate()}</td>
-                <td>${search.getCloseDate()}</td>
+                <c:if test="${search.getCloseDate()!=null}">
+                    <td>${search.getCloseDate()}</td>
+                </c:if>
+                <c:if test="${search.getCloseDate()==null&&search.getNumberOfProducts()!=0}">
+                    <td>
+                        <form action="${pageContext.request.contextPath}/close/receipt" method="post">
+                            <input type="number" value="${search.getId()}" name="id" hidden readonly>
+                            <button class="btn btn-success" type="submit"><fmt:message key="close"/></button>
+                        </form>
+                    </td>
+                </c:if>
+                <c:if test="${search.getCloseDate()==null&&search.getNumberOfProducts()==0}">
+                    <td></td>
+                </c:if>
                 <td><a class="btn btn-info"
                        href="${pageContext.request.contextPath}/info/receipt?id=${search.getId()}"><fmt:message key="info"/></a></td>
                 <c:if test="${search.getCloseDate()==null}">
-
-                <td><a class="btn btn-danger"
-                       href="${pageContext.request.contextPath}/delete/receipt?id=${search.getId()}"><fmt:message key="delete"/></a></td>
+                    <td><a class="btn btn-danger"
+                           href="${pageContext.request.contextPath}/delete/receipt?id=${search.getId()}"><fmt:message key="delete"/></a></td>
                 </c:if>
             </tr>
             </tbody>
