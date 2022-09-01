@@ -58,11 +58,6 @@
     <br>
     <span class="mt-5 mb-3 text-muted">&copy; 2022</span>
 </form>
-<p >Bob Bobchinski - Qqwe123 -cashier</p>
-<p>Jack Nikson - Qqwe123 -commodity_expert</p>
-<p>David Murchanski - Qqwe123 -senior_cashier</p>
-<p>Tom Cat - Qqwe123 -admin</p>
-
 <script>
     <%@include file="script.js" %>
 </script>
