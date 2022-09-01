@@ -1,4 +1,4 @@
-package com.example.cashregister.controller.user.email;
+package com.example.cashregister.controller.email;
 
 import com.example.cashregister.Service.abstractFactory.ServiceAbstractFactory;
 import com.example.cashregister.Service.extra.EmailServiceOtpToken;

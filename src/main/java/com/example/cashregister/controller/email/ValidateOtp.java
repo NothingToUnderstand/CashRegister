@@ -1,4 +1,4 @@
-package com.example.cashregister.controller.user.email;
+package com.example.cashregister.controller.email;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
