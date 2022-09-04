@@ -1,15 +1,18 @@
 package com.example.cashregister.entity;
+
+import java.io.Serializable;
+
 /**
  * Entity of report
  * */
-public class Report {
-    private int id;
-    private int cashier_id;
-    private String cashier_name;
-    private int number_of_receipts;
-    private double total_sum;
-    private String date;
-    private boolean z_report;
+public class Report implements Serializable {
+    private final int id;
+    private final int cashier_id;
+    private final String cashier_name;
+    private final int number_of_receipts;
+    private final double total_sum;
+    private final String date;
+    private final boolean z_report;
 
 
 

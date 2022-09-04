@@ -45,7 +45,6 @@ public class DeleteUser extends HttpServlet {
             response.sendRedirect("/cashregister/error");
         } catch (NumberFormatException e) {
             log.error("error during user removing", e);
-            request.getSession().setAttribute("errormessage", "Id is not valid");
             setErrormessage("Id is not valid");
             response.sendRedirect("/cashregister/acc");
         }

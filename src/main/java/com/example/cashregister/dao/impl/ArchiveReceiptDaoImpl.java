@@ -20,6 +20,7 @@ import static com.example.cashregister.Service.extra.Properties.getProperty;
 @RequestScoped
 public class ArchiveReceiptDaoImpl implements ArchiveReceiptDao {
     private static final Logger log = Logger.getLogger(ArchiveReceiptDaoImpl.class);
+
     /**
      * method gets the receipt from archive
      * @param id receipt id

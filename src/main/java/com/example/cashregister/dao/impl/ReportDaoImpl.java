@@ -16,7 +16,8 @@ import static com.example.cashregister.Service.extra.Properties.getProperty;
 
 /*
  * DAO layer for program interaction with the report table in the database
- */@RequestScoped
+ */
+@RequestScoped
 public class ReportDaoImpl implements ReportDao {
     private static final Logger log = Logger.getLogger(ReportDaoImpl.class);
 
