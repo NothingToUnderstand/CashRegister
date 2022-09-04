@@ -1,19 +1,21 @@
 package com.example.cashregister.entity;
 
 
+import java.io.Serializable;
+
 /**
  * Entity of user
  * */
-public class User {
-    private int id;
+public class User implements Serializable {
+    private final int id;
 
-    private String firstName;
-    private String lastName;
-    private String fullName;
-    private String email;
-    private byte[] password;
-    private String role;
-    private byte[] sole;
+    private final String firstName;
+    private final String lastName;
+    private final String fullName;
+    private final String email;
+    private final byte[] password;
+    private final String role;
+    private final byte[] sole;
 
 
     public User(int id,String firstName,String lastname,String fullName, byte[] password,byte[] sole,String role,String email) {

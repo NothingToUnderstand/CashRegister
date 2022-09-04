@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.archive_receipt</OriginalElement>
+  <nodes>
+    <node x="416.25" y="210.0">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.products_in_receipt</node>
+    <node x="561.0" y="-65.0">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.products</node>
+    <node x="1208.8984848484852" y="-1.5878787878787932">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.roles</node>
+    <node x="745.0" y="-77.0">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.archive_receipt</node>
+    <node x="306.0" y="-89.0">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.receipt</node>
+    <node x="1058.8939393939395" y="243.00000000000006">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.users_roles</node>
+    <node x="626.25" y="203.0">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.products_in_archive_receipt</node>
+    <node x="90.0" y="-89.0">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.report</node>
+    <node x="171.75" y="210.0">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.receipts_in_report</node>
+    <node x="1020.7454545454547" y="-8.587878787878793">fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.user</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.users_roles" target="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.user" relationship="REFERENCES">
+      <point x="-46.39393939393938" y="-40.00000000000006" />
+      <point x="1072.0" y="236.5625" />
+      <point x="1102.7454545454548" y="236.5625" />
+      <point x="0.0" y="77.5" />
+    </edge>
+    <edge source="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.products_in_archive_receipt" target="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.products" relationship="REFERENCES">
+      <point x="-61.25" y="-65.5" />
+      <point x="687.5" y="162.0" />
+      <point x="632.5" y="162.0" />
+      <point x="0.0" y="89.5" />
+    </edge>
+    <edge source="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.products_in_receipt" target="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.products" relationship="REFERENCES">
+      <point x="45.75" y="-65.5" />
+      <point x="553.5" y="162.0" />
+      <point x="632.5" y="162.0" />
+      <point x="0.0" y="89.5" />
+    </edge>
+    <edge source="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.products_in_receipt" target="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.receipt" relationship="REFERENCES">
+      <point x="-45.75" y="-65.5" />
+      <point x="462.0" y="174.25" />
+      <point x="403.0" y="174.25" />
+      <point x="0.0" y="101.5" />
+    </edge>
+    <edge source="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.users_roles" target="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.roles" relationship="REFERENCES">
+      <point x="52.60606060606062" y="-43.00000000000006" />
+      <point x="1171.0" y="197.70303030303035" />
+      <point x="1290.8984848484852" y="197.70303030303035" />
+      <point x="0.0" y="41.5" />
+    </edge>
+    <edge source="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.receipts_in_report" target="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.report" relationship="REFERENCES">
+      <point x="-42.75" y="-41.0" />
+      <point x="182.0" y="210.0" />
+      <point x="0.0" y="101.5" />
+    </edge>
+    <edge source="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.receipts_in_report" target="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.receipt" relationship="REFERENCES">
+      <point x="42.75" y="-41.0" />
+      <point x="300.0" y="174.25" />
+      <point x="403.0" y="174.25" />
+      <point x="0.0" y="101.5" />
+    </edge>
+    <edge source="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.products_in_archive_receipt" target="fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.archive_receipt" relationship="REFERENCES">
+      <point x="61.25" y="-65.5" />
+      <point x="810.0" y="126.0" />
+      <point x="0.0" y="101.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8" showDependencies="false" x="723.609375" y="116.5625" />
+  <SelectedNodes>
+    <node>fa047aec-0e07-4bde-9ffa-fee78dcd1f49.TABLE:cash_register.archive_receipt</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

@@ -3,14 +3,12 @@ package com.example.cashregister.dao.impl;
 import com.example.cashregister.dao.ProductDao;
 import com.example.cashregister.entity.Product;
 import org.apache.log4j.Logger;
-
 import javax.enterprise.context.RequestScoped;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import static com.example.cashregister.connection.ApacheConPool.getConnection;
 import static com.example.cashregister.Service.extra.Properties.getProperty;
 
@@ -61,11 +59,9 @@ public class ProductDaoImpl implements ProductDao {
      * method for changing the product field by its id
      *
      * @param id       product's id
-     * @param name     name of product
      * @param quantity quantity of product
      * @param weight   weight of this product
      * @param price    price of this product
-     * @param img      product image
      * @return boolean status
      */
     @Override
@@ -243,7 +239,7 @@ public class ProductDaoImpl implements ProductDao {
      * @param id     :the id of a product
      * @param amount :the new amount of a product at db
      */
-    protected void decreaseAmount(Connection con,int id, int amount) throws SQLException {
+     void decreaseAmount(Connection con,int id, int amount) throws SQLException {
         try (PreparedStatement ps = con.prepareStatement(String.format(getProperty("decrease_quantity"),amount))) {
             ps.setInt(1, id);
           ps.executeUpdate();
@@ -259,7 +255,7 @@ public class ProductDaoImpl implements ProductDao {
      * @param id     :the id of a product
      * @param amount :the new amount of a product at db
      */
-    protected void increaseAmount(Connection con,int id, int amount) throws SQLException {
+     void increaseAmount(Connection con,int id, int amount) throws SQLException {
         try (PreparedStatement ps = con.prepareStatement(String.format(getProperty("increase_quantity"),amount))) {
             ps.setInt(1, id);
              ps.executeUpdate();

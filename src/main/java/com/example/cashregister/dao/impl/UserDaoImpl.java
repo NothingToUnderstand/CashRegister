@@ -26,12 +26,12 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean updatePasswordByEmail(int id, byte[] password) throws SQLException {
         log.info("Update user password with id: " + id);
-        boolean status=false;
+        boolean status = false;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(getProperty("update_user_password"))) {
             ps.setBytes(1, password);
             ps.setInt(2, id);
-           status=ps.executeUpdate()==1;
+            status = ps.executeUpdate() == 1;
         } catch (SQLException e) {
             log.error("Error during updating user", e);
             e.printStackTrace();
@@ -179,7 +179,7 @@ public class UserDaoImpl implements UserDao {
             ps.setString(4, email);
             ps.setInt(5, id);
             status = ps.executeUpdate() == 1;
-            updateRole(con,id, role);
+            updateRole(con, id, role);
             con.commit();
         } catch (SQLException e) {
             log.error("Error during updating user", e);
@@ -244,7 +244,7 @@ public class UserDaoImpl implements UserDao {
         try (PreparedStatement ps = con.prepareStatement(getProperty("set_role"))) {
             ps.setInt(1, userId);
             ps.setInt(2, roleId);
-             ps.executeUpdate();
+            ps.executeUpdate();
         } catch (SQLException e) {
             log.error("Error during setting user role", e);
             e.printStackTrace();

@@ -11,7 +11,8 @@ import static com.example.cashregister.Service.extra.Properties.getProperty;
  * */
 public class ApacheConPool{
     private static BasicDataSource dataSource;
-    private ApacheConPool(){}
+
+    private ApacheConPool() {}
 
     //Singleton
     public static Connection getConnection() throws SQLException {
@@ -21,6 +22,8 @@ public class ApacheConPool{
         init();
         return  dataSource.getConnection();
     }
+
+
     private static void  init() {
         dataSource.setUrl(getProperty("url"));
         dataSource.setUsername(getProperty("username"));

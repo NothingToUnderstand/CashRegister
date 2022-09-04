@@ -1,19 +1,20 @@
 package com.example.cashregister.entity;
 
+import java.io.Serializable;
 import java.util.Base64;
 
 /**
  * Entity of product
  */
-public class Product {
+public class Product implements Serializable {
 
-    private int id;
-    private String name;
-    private int quantity;
-    private double weight;
-    private double price;
-    private String imgbase64;
-    private byte[] img;
+    private final int id;
+    private final String name;
+    private final int quantity;
+    private final double weight;
+    private final double price;
+    private final String imgbase64;
+
     private int number_in_receipt;
 
 
@@ -24,7 +25,6 @@ public class Product {
         this.quantity = quantity;
         this.weight = weight;
         this.price = price;
-        this.img = img;
         imgbase64 = Base64.getEncoder().encodeToString(img);
     }
 
@@ -34,7 +34,6 @@ public class Product {
         this.quantity = quantity;
         this.weight = weight;
         this.price = price;
-        this.img = img;
         imgbase64 = Base64.getEncoder().encodeToString(img);
         this.number_in_receipt = number_in_receipt;
     }

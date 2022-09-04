@@ -1,18 +1,19 @@
 package com.example.cashregister.entity;
 
+import java.io.Serializable;
 import java.util.List;
 /**
  * Entity of receipt
  * */
-public class Receipt {
-    private int id;
-    private int cashier_id;
-    private String cashier_name;
-    private int number_of_products;
-    private double total_sum;
-    private String openDate;
-    private String closeDate;
-    private List<Product> products_in_receipt;
+public class Receipt implements Serializable {
+    private final int id;
+    private final int cashier_id;
+    private final String cashier_name;
+    private final int number_of_products;
+    private final double total_sum;
+    private final String openDate;
+    private final String closeDate;
+    private final List<Product> products_in_receipt;
 
 
     public Receipt(int id, int cashier_id, String cashier_name, int number_of_products, double total_sum, String openDate, String closeDate, List<Product> products_in_receipt) {
